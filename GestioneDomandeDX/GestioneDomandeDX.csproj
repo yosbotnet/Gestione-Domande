@@ -170,6 +170,9 @@
     <Compile Include="tipocommissione.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="v_tipipatente.cs">
+      <DependentUpon>modelloEF.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormPrincipale.resx">
       <DependentUpon>FormPrincipale.cs</DependentUpon>
     </EmbeddedResource>

@@ -276,5 +276,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="v_tipipatente">
+      <EntityTypeMapping TypeName="egafMainEF.v_tipipatente">
+        <MappingFragment StoreEntitySet="v_tipipatente">
+          <ScalarProperty Name="QTA" ColumnName="QTA" />
+          <ScalarProperty Name="MD_DESCRIZIONE" ColumnName="MD_DESCRIZIONE" />
+          <ScalarProperty Name="TC_DESCRIZIONE" ColumnName="TC_DESCRIZIONE" />
+          <ScalarProperty Name="TC_ID" ColumnName="TC_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

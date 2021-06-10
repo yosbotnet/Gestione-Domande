@@ -350,5 +350,16 @@
       <End Role="tipocommissione" EntitySet="tipocommissione" />
       <End Role="risposte" EntitySet="risposte" />
     </AssociationSet>
+    <EntitySet Name="v_tipipatente" EntityType="egafMainEF.v_tipipatente" />
   </EntityContainer>
+  <EntityType Name="v_tipipatente">
+    <Key>
+      <PropertyRef Name="TC_ID" />
+      <PropertyRef Name="QTA" />
+    </Key>
+    <Property Name="TC_ID" Type="Int32" Nullable="false" />
+    <Property Name="TC_DESCRIZIONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MD_DESCRIZIONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QTA" Type="Int64" Nullable="false" />
+  </EntityType>
 </Schema>

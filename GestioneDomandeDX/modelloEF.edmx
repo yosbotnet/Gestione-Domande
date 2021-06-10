@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="egafMainEF.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="egafMainEF.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="abb_dom_materie_minist">
           <Key>
             <PropertyRef Name="AB9_ID" />
@@ -273,6 +273,18 @@
           <Property Name="TC_MM_REVISIONE" Type="varchar" MaxLength="1" />
           <Property Name="TC_TACHIGRAFO" Type="varchar" MaxLength="1" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_tipipatente">
+          <Key>
+            <PropertyRef Name="TC_ID" />
+            <PropertyRef Name="QTA" />
+          </Key>
+          <Property Name="TC_ID" Type="int" Nullable="false" />
+          <Property Name="TC_DESCRIZIONE" Type="varchar" MaxLength="50" />
+          <Property Name="MD_DESCRIZIONE" Type="varchar" MaxLength="100" />
+          <Property Name="QTA" Type="bigint" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Domande_TipoCommissione_TC_ID">
           <End Role="tipocommissione" Type="Self.tipocommissione" Multiplicity="0..1" />
           <End Role="domande" Type="Self.domande" Multiplicity="*" />
@@ -331,6 +343,14 @@
           <EntitySet Name="releaseopere" EntityType="Self.releaseopere" Schema="egaf_main" store:Type="Tables" />
           <EntitySet Name="risposte" EntityType="Self.risposte" Schema="egaf_main" store:Type="Tables" />
           <EntitySet Name="tipocommissione" EntityType="Self.tipocommissione" Schema="egaf_main" store:Type="Tables" />
+          <EntitySet Name="v_tipipatente" EntityType="Self.v_tipipatente" store:Type="Views" store:Schema="egaf_main">
+            <DefiningQuery>SELECT
+`v_tipipatente`.`TC_ID`, 
+`v_tipipatente`.`TC_DESCRIZIONE`, 
+`v_tipipatente`.`MD_DESCRIZIONE`, 
+`v_tipipatente`.`QTA`
+FROM `v_tipipatente` AS `v_tipipatente`</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Domande_TipoCommissione_TC_ID" Association="Self.FK_Domande_TipoCommissione_TC_ID">
             <End Role="tipocommissione" EntitySet="tipocommissione" />
             <End Role="domande" EntitySet="domande" />
@@ -348,8 +368,7 @@
             <End Role="risposte" EntitySet="risposte" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="egafMainEF" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -703,7 +722,18 @@
             <End Role="tipocommissione" EntitySet="tipocommissione" />
             <End Role="risposte" EntitySet="risposte" />
           </AssociationSet>
+          <EntitySet Name="v_tipipatente" EntityType="egafMainEF.v_tipipatente" />
         </EntityContainer>
+        <EntityType Name="v_tipipatente">
+          <Key>
+            <PropertyRef Name="TC_ID" />
+            <PropertyRef Name="QTA" />
+          </Key>
+          <Property Name="TC_ID" Type="Int32" Nullable="false" />
+          <Property Name="TC_DESCRIZIONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MD_DESCRIZIONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="QTA" Type="Int64" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -982,6 +1012,16 @@
                 <ScalarProperty Name="TC_MENUMULTIESAME" ColumnName="TC_MENUMULTIESAME" />
                 <ScalarProperty Name="TC_MM_REVISIONE" ColumnName="TC_MM_REVISIONE" />
                 <ScalarProperty Name="TC_TACHIGRAFO" ColumnName="TC_TACHIGRAFO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_tipipatente">
+            <EntityTypeMapping TypeName="egafMainEF.v_tipipatente">
+              <MappingFragment StoreEntitySet="v_tipipatente">
+                <ScalarProperty Name="QTA" ColumnName="QTA" />
+                <ScalarProperty Name="MD_DESCRIZIONE" ColumnName="MD_DESCRIZIONE" />
+                <ScalarProperty Name="TC_DESCRIZIONE" ColumnName="TC_DESCRIZIONE" />
+                <ScalarProperty Name="TC_ID" ColumnName="TC_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

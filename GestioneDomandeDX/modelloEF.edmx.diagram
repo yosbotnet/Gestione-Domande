@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6fbb35c5fcce4bc4b1139f04b804833c" Name="Diagram1">
+      <Diagram DiagramId="6fbb35c5fcce4bc4b1139f04b804833c" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="egafMainEF.abb_dom_materie_minist" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="egafMainEF.abbinamento_esami_materie" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="egafMainEF.dettaglioregole" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
@@ -18,6 +18,7 @@
         <AssociationConnector Association="egafMainEF.FK_Risposte_Domande_DO_ID" ManuallyRouted="false" />
         <AssociationConnector Association="egafMainEF.FK_Esami_TipoCommissione_TC_ID" ManuallyRouted="false" />
         <AssociationConnector Association="egafMainEF.FK_Risposte_TipoCommissione_TC_ID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="egafMainEF.v_tipipatente" Width="1.5" PointX="10.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

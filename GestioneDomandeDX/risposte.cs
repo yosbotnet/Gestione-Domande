@@ -11,8 +11,7 @@ namespace GestioneDomandeDX
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class risposte
     {
@@ -41,9 +40,9 @@ namespace GestioneDomandeDX
         public string RI_IMG { get; set; }
         public string RI_IMG2 { get; set; }
         public string RI_ALTROTESTO { get; set; }
-        [Browsable(false)]
+    
         public virtual domande domande { get; set; }
-        [Browsable(false)]
+        [NotMapped]
         public virtual tipocommissione tipocommissione { get; set; }
     }
 }

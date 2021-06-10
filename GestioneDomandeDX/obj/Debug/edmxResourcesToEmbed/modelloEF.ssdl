@@ -268,6 +268,18 @@
     <Property Name="TC_MM_REVISIONE" Type="varchar" MaxLength="1" />
     <Property Name="TC_TACHIGRAFO" Type="varchar" MaxLength="1" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_tipipatente">
+    <Key>
+      <PropertyRef Name="TC_ID" />
+      <PropertyRef Name="QTA" />
+    </Key>
+    <Property Name="TC_ID" Type="int" Nullable="false" />
+    <Property Name="TC_DESCRIZIONE" Type="varchar" MaxLength="50" />
+    <Property Name="MD_DESCRIZIONE" Type="varchar" MaxLength="100" />
+    <Property Name="QTA" Type="bigint" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Domande_TipoCommissione_TC_ID">
     <End Role="tipocommissione" Type="Self.tipocommissione" Multiplicity="0..1" />
     <End Role="domande" Type="Self.domande" Multiplicity="*" />
@@ -326,6 +338,14 @@
     <EntitySet Name="releaseopere" EntityType="Self.releaseopere" Schema="egaf_main" store:Type="Tables" />
     <EntitySet Name="risposte" EntityType="Self.risposte" Schema="egaf_main" store:Type="Tables" />
     <EntitySet Name="tipocommissione" EntityType="Self.tipocommissione" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="v_tipipatente" EntityType="Self.v_tipipatente" store:Type="Views" store:Schema="egaf_main">
+      <DefiningQuery>SELECT
+`v_tipipatente`.`TC_ID`, 
+`v_tipipatente`.`TC_DESCRIZIONE`, 
+`v_tipipatente`.`MD_DESCRIZIONE`, 
+`v_tipipatente`.`QTA`
+FROM `v_tipipatente` AS `v_tipipatente`</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_Domande_TipoCommissione_TC_ID" Association="Self.FK_Domande_TipoCommissione_TC_ID">
       <End Role="tipocommissione" EntitySet="tipocommissione" />
       <End Role="domande" EntitySet="domande" />

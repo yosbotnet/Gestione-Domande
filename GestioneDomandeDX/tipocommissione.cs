@@ -10,8 +10,6 @@
 namespace GestioneDomandeDX
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
-
     using System.Collections.Generic;
     
     public partial class tipocommissione

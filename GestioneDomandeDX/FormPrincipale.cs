@@ -170,11 +170,6 @@ namespace GestioneDomandeDX
             
         }
 
-        private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
-        {
-            context.SaveChanges();
-            
-        }
 
         private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {

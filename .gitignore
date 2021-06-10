@@ -2,3 +2,7 @@
 .vs/GestioneDomandeDX/v14/.suo
 *.exe
 GestioneDomandeDX/obj/Debug/GestioneDomandeDX.pdb
+*.Cache
+*.pdb
+*.dll
+*.Cache

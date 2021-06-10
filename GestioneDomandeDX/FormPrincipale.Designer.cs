@@ -44,6 +44,8 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.grpSceltaViaIniziale = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.menuPatenti = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -104,9 +106,10 @@
             this.txtIniziale,
             this.btnSceltaIniziale,
             this.barListItem1,
-            this.listaPatenti});
+            this.listaPatenti,
+            this.menuPatenti});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 7;
+            this.ribbonControl1.MaxItemId = 8;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -165,7 +168,8 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.grpSceltaViaIniziale});
+            this.grpSceltaViaIniziale,
+            this.ribbonPageGroup2});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Scelta Esame";
             // 
@@ -186,6 +190,18 @@
             this.grpSceltaViaIniziale.Name = "grpSceltaViaIniziale";
             this.grpSceltaViaIniziale.ShowCaptionButton = false;
             this.grpSceltaViaIniziale.Text = "Scelta Via Iniziale";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.menuPatenti);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            // 
+            // menuPatenti
+            // 
+            this.menuPatenti.Caption = "Lista Patente";
+            this.menuPatenti.Id = 7;
+            this.menuPatenti.Name = "menuPatenti";
             // 
             // FormPrincipale
             // 
@@ -225,6 +241,8 @@
         private DevExpress.XtraBars.BarListItem barListItem1;
         private DevExpress.XtraBars.BarListItem listaPatenti;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraBars.BarSubItem menuPatenti;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
     }
 }
 

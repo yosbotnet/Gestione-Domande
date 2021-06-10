@@ -47,20 +47,24 @@ namespace GestioneDomandeDX
         egafEntities context;
         List<int> HandleCambiatiMaster;
         List<int> HandleCambiatiDetail;
+        List<int> RisposteFlaggate;
         List<BarItem> itemMenu;
         Dictionary<string, int> DictTC;
         public FormPrincipale()
         {
+            #region Inizializzazione
             InitializeComponent();
             context = new egafEntities();
             HandleCambiatiMaster = new List<int>();
             HandleCambiatiDetail = new List<int>();
             itemMenu = new List<BarItem>();
+            RisposteFlaggate = new List<int>();
             DictTC = context.v_tipipatente.ToDictionary(tc =>tc.MD_DESCRIZIONE,tc=>tc.TC_ID);
             //----Inizializzo il BarManager
             BarManager barm = new BarManager();
             barm.Form = this;
             barm.BeginUpdate();
+            #endregion
             #region aggiunta Patenti al menu patenti
             //----Qua devo creare una serie di bottoni per ogni TC senza subpatente. per quelli che ce l'hanno faccio un submenu
             //controllo se la patente ha subpatenti
@@ -96,12 +100,60 @@ namespace GestioneDomandeDX
             gridView.DataController.AllowIEnumerableDetails = true;
 
         }
-
+        private bool valida(domande d)
+        {
+            //data una domanda
+            //ottengo le regole, ottenibili da es_re_id. es_re_id è ottenibile da ES_ID
+            int? reID = context.esami.Where(e => e.ES_ID == d.DO_ES_ID).Select(e => e.ES_RE_ID).First();
+            v_regole re = context.v_regole.Where(vr => vr.RE_ID == reID).First();
+            int rispFalse = 0;        
+            //controllo se le risposte rispettano le regole
+            //calcolo sbagliato, re ris x dom - re limite risp false è quello giusto
+            if(re.Risposte_libere == 0)
+            {
+                rispFalse = (int)re.RE_RISXDOM - 1;
+                foreach (risposte e in d.risposte)
+                {
+                    if (e.RI_VF == "F")
+                    {
+                        rispFalse--;
+                    }
+                }
+                if (rispFalse != 0)
+                    return false;
+                return true;
+            }
+            else
+            {
+                rispFalse = 0;
+                foreach (risposte e in d.risposte)
+                {
+                    if (e.RI_VF == "F")
+                    {
+                        rispFalse++;
+                    }
+                }
+                return rispFalse >= re.RE_LIMITE_MIN_RISPFALSE && rispFalse <= re.RE_LIMITE_RISPFALSE;
+            }
+            
+            //se si daro vero
+            //se no darò falso
+        }
         private void clickSubMenu(object sender, ItemClickEventArgs e)
         {
-            //IMAGE INDEX INDICA IL TC_ID
-            int idNuovo = e.Item.ImageIndex;
-            grdMain.DataSource = new BindingList<domande>(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
+            try
+            {
+                //IMAGE INDEX INDICA IL TC_ID
+                int idNuovo = e.Item.ImageIndex;
+                HandleCambiatiMaster.Clear();
+                HandleCambiatiDetail.Clear();
+                grdMain.DataSource = new BindingList<domande>(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
+            }
+            catch
+            {
+                MessageBox.Show("Vuoto");
+            }
+
         }
 
         private void FormPrincipale_Load(object sender, EventArgs e)
@@ -112,7 +164,8 @@ namespace GestioneDomandeDX
         {
 
             var iniziali = ((string)txtIniziale.EditValue).Split(',').AsEnumerable();
-
+            HandleCambiatiMaster.Clear();
+            HandleCambiatiDetail.Clear();
             grdMain.DataSource = context.domande.Where(d => iniziali.Any(i => d.DO_CODICE_MINST.StartsWith(i))).ToList();
         }
 
@@ -166,6 +219,14 @@ namespace GestioneDomandeDX
             if (((GridView)sender).IsDetailView)
             {
                 HandleCambiatiDetail.Add(e.RowHandle);
+                if (!valida(((risposte)((GridView)sender).GetRow(e.RowHandle)).domande))
+                {
+                    RisposteFlaggate.Add(e.RowHandle);
+                    MessageBox.Show("Invalida");
+                }else if (RisposteFlaggate.Contains(e.RowHandle))
+                {
+                    RisposteFlaggate.Remove(e.RowHandle);
+                }
             }
             else
             {
@@ -197,7 +258,12 @@ namespace GestioneDomandeDX
                 if (HandleCambiatiDetail.Contains(e.RowHandle))
                 {
                     e.Appearance.BackColor = Color.Yellow;
+                    if (RisposteFlaggate.Contains(e.RowHandle))
+                    {
+                        e.Appearance.BackColor = Color.Red;
+                    }
                 }
+                
             }
             else
             {

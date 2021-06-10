@@ -286,5 +286,31 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="v_esami">
+      <EntityTypeMapping TypeName="egafMainEF.v_esami">
+        <MappingFragment StoreEntitySet="v_esami">
+          <ScalarProperty Name="ES_NONSELEZIONABILE" ColumnName="ES_NONSELEZIONABILE" />
+          <ScalarProperty Name="ES_REVISIONE" ColumnName="ES_REVISIONE" />
+          <ScalarProperty Name="ES_RE_ID" ColumnName="ES_RE_ID" />
+          <ScalarProperty Name="ES_DESCRIZIONE" ColumnName="ES_DESCRIZIONE" />
+          <ScalarProperty Name="ES_ID" ColumnName="ES_ID" />
+          <ScalarProperty Name="ES_TC_ID" ColumnName="ES_TC_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_regole">
+      <EntityTypeMapping TypeName="egafMainEF.v_regole">
+        <MappingFragment StoreEntitySet="v_regole">
+          <ScalarProperty Name="Risposte_libere" ColumnName="Risposte_libere" />
+          <ScalarProperty Name="RE_LIMITE_MIN_RISPFALSE" ColumnName="RE_LIMITE_MIN_RISPFALSE" />
+          <ScalarProperty Name="RE_LIMITE_RISPFALSE" ColumnName="RE_LIMITE_RISPFALSE" />
+          <ScalarProperty Name="RE_TIPOREGOLA" ColumnName="RE_TIPOREGOLA" />
+          <ScalarProperty Name="RE_RISXDOM" ColumnName="RE_RISXDOM" />
+          <ScalarProperty Name="RE_DESCRIZIONE" ColumnName="RE_DESCRIZIONE" />
+          <ScalarProperty Name="RE_PROG" ColumnName="RE_PROG" />
+          <ScalarProperty Name="RE_ID" ColumnName="RE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

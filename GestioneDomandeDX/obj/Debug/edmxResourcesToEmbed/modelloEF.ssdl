@@ -269,6 +269,35 @@
     <Property Name="TC_TACHIGRAFO" Type="varchar" MaxLength="1" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_esami' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_esami">
+    <Key>
+      <PropertyRef Name="ES_ID" />
+    </Key>
+    <Property Name="ES_TC_ID" Type="int" />
+    <Property Name="ES_ID" Type="int" Nullable="false" />
+    <Property Name="ES_DESCRIZIONE" Type="varchar" MaxLength="50" />
+    <Property Name="ES_RE_ID" Type="int" />
+    <Property Name="ES_REVISIONE" Type="utinyint" />
+    <Property Name="ES_NONSELEZIONABILE" Type="utinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_regole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_regole">
+    <Key>
+      <PropertyRef Name="RE_ID" />
+      <PropertyRef Name="RE_PROG" />
+    </Key>
+    <Property Name="RE_ID" Type="int" Nullable="false" />
+    <Property Name="RE_PROG" Type="int" Nullable="false" />
+    <Property Name="RE_DESCRIZIONE" Type="varchar" MaxLength="255" />
+    <Property Name="RE_RISXDOM" Type="int" />
+    <Property Name="RE_TIPOREGOLA" Type="varchar" MaxLength="2" />
+    <Property Name="RE_LIMITE_RISPFALSE" Type="int" />
+    <Property Name="RE_LIMITE_MIN_RISPFALSE" Type="int" />
+    <Property Name="Risposte_libere" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="v_tipipatente">
     <Key>
@@ -338,6 +367,28 @@ warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a prima
     <EntitySet Name="releaseopere" EntityType="Self.releaseopere" Schema="egaf_main" store:Type="Tables" />
     <EntitySet Name="risposte" EntityType="Self.risposte" Schema="egaf_main" store:Type="Tables" />
     <EntitySet Name="tipocommissione" EntityType="Self.tipocommissione" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="v_esami" EntityType="Self.v_esami" store:Type="Views" store:Schema="egaf_main">
+      <DefiningQuery>SELECT
+`v_esami`.`ES_TC_ID`, 
+`v_esami`.`ES_ID`, 
+`v_esami`.`ES_DESCRIZIONE`, 
+`v_esami`.`ES_RE_ID`, 
+`v_esami`.`ES_REVISIONE`, 
+`v_esami`.`ES_NONSELEZIONABILE`
+FROM `v_esami` AS `v_esami`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_regole" EntityType="Self.v_regole" store:Type="Views" store:Schema="egaf_main">
+      <DefiningQuery>SELECT
+`v_regole`.`RE_ID`, 
+`v_regole`.`RE_PROG`, 
+`v_regole`.`RE_DESCRIZIONE`, 
+`v_regole`.`RE_RISXDOM`, 
+`v_regole`.`RE_TIPOREGOLA`, 
+`v_regole`.`RE_LIMITE_RISPFALSE`, 
+`v_regole`.`RE_LIMITE_MIN_RISPFALSE`, 
+`v_regole`.`Risposte_libere`
+FROM `v_regole` AS `v_regole`</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="v_tipipatente" EntityType="Self.v_tipipatente" store:Type="Views" store:Schema="egaf_main">
       <DefiningQuery>SELECT
 `v_tipipatente`.`TC_ID`, 

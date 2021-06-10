@@ -351,6 +351,8 @@
       <End Role="risposte" EntitySet="risposte" />
     </AssociationSet>
     <EntitySet Name="v_tipipatente" EntityType="egafMainEF.v_tipipatente" />
+    <EntitySet Name="v_esami" EntityType="egafMainEF.v_esami" />
+    <EntitySet Name="v_regole" EntityType="egafMainEF.v_regole" />
   </EntityContainer>
   <EntityType Name="v_tipipatente">
     <Key>
@@ -361,5 +363,30 @@
     <Property Name="TC_DESCRIZIONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="MD_DESCRIZIONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="QTA" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="v_esami">
+    <Key>
+      <PropertyRef Name="ES_ID" />
+    </Key>
+    <Property Name="ES_TC_ID" Type="Int32" />
+    <Property Name="ES_ID" Type="Int32" Nullable="false" />
+    <Property Name="ES_DESCRIZIONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ES_RE_ID" Type="Int32" />
+    <Property Name="ES_REVISIONE" Type="Byte" />
+    <Property Name="ES_NONSELEZIONABILE" Type="Byte" />
+  </EntityType>
+  <EntityType Name="v_regole">
+    <Key>
+      <PropertyRef Name="RE_ID" />
+      <PropertyRef Name="RE_PROG" />
+    </Key>
+    <Property Name="RE_ID" Type="Int32" Nullable="false" />
+    <Property Name="RE_PROG" Type="Int32" Nullable="false" />
+    <Property Name="RE_DESCRIZIONE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RE_RISXDOM" Type="Int32" />
+    <Property Name="RE_TIPOREGOLA" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="RE_LIMITE_RISPFALSE" Type="Int32" />
+    <Property Name="RE_LIMITE_MIN_RISPFALSE" Type="Int32" />
+    <Property Name="Risposte_libere" Type="Int32" />
   </EntityType>
 </Schema>

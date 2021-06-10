@@ -91,6 +91,7 @@ namespace GestioneDomandeDX
             
             menuPatenti.AddItems(itemMenu.ToArray());
             barm.ItemClick += clickSubMenu;
+            barm.EndUpdate();
             #endregion
             gridView.DataController.AllowIEnumerableDetails = true;
 
@@ -206,19 +207,6 @@ namespace GestioneDomandeDX
                 }
             }
             
-        }
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            if (this.Handle != null)
-            {
-                this.BeginInvoke((MethodInvoker)delegate
-                {
-                    Console.WriteLine("event invoked");
-                    base.OnSizeChanged(e);
-                    
-
-                });
-            }
         }
         private void FormPrincipale_SizeChanged(object sender, EventArgs e)
         {

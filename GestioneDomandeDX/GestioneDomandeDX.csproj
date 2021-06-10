@@ -176,6 +176,12 @@
     <Compile Include="tipocommissione.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="v_esami.cs">
+      <DependentUpon>modelloEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_regole.cs">
+      <DependentUpon>modelloEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="v_tipipatente.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>

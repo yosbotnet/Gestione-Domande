@@ -35,5 +35,7 @@ namespace GestioneDomandeDX
         public DbSet<risposte> risposte { get; set; }
         public DbSet<tipocommissione> tipocommissione { get; set; }
         public DbSet<v_tipipatente> v_tipipatente { get; set; }
+        public DbSet<v_esami> v_esami { get; set; }
+        public DbSet<v_regole> v_regole { get; set; }
     }
 }

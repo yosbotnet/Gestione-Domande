@@ -215,6 +215,7 @@ namespace GestioneDomandeDX
                 {
                     Console.WriteLine("event invoked");
                     base.OnSizeChanged(e);
+                    
 
                 });
             }

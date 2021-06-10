@@ -12,6 +12,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraGrid;
 using System.ComponentModel.DataAnnotations;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace GestioneDomandeDX
 {
@@ -47,25 +48,23 @@ namespace GestioneDomandeDX
         List<int> HandleCambiatiMaster;
         List<int> HandleCambiatiDetail;
         List<BarItem> itemMenu;
-        IDictionary<string, int> DictTC;
+        Dictionary<string, int> DictTC;
         public FormPrincipale()
         {
             InitializeComponent();
             context = new egafEntities();
-            //DictTC = context.tipocommissione.Select(t => new { t.TC_DESCRIZIONE, t.TC_ID }).ToArray().ToDictionary(x => x.TC_DESCRIZIONE, x => x.TC_ID);
-            DictTC = context.v_tipipatente.Select(tp => new { tp.MD_DESCRIZIONE, tp.TC_ID }).ToDictionary(x => x.MD_DESCRIZIONE, x => x.TC_ID);
-            listaPatenti.Strings.AddRange(DictTC.Keys.ToArray());
             HandleCambiatiMaster = new List<int>();
             HandleCambiatiDetail = new List<int>();
             itemMenu = new List<BarItem>();
+            DictTC = context.v_tipipatente.ToDictionary(tc =>tc.MD_DESCRIZIONE,tc=>tc.TC_ID);
             //----Inizializzo il BarManager
             BarManager barm = new BarManager();
             barm.Form = this;
             barm.BeginUpdate();
+            #region aggiunta Patenti al menu patenti
             //----Qua devo creare una serie di bottoni per ogni TC senza subpatente. per quelli che ce l'hanno faccio un submenu
             //controllo se la patente ha subpatenti
-            BarSubItem submenu = new BarSubItem(barm, "test", new BarItem[] { new BarButtonItem(barm,"test2"), new BarButtonItem(barm,"test3") });
-            foreach(KeyValuePair<string,int> coppia in DictTC)
+            foreach (KeyValuePair<string,int> coppia in DictTC)
             {
                 //if(Query returns more than 1 exam)
                 //get the exams
@@ -74,6 +73,14 @@ namespace GestioneDomandeDX
                 if(context.v_tipipatente.Where(v=>v.TC_ID == tc_id).Select(v=> v.QTA).Any(c=>c>1))
                 {
                     //Dovrei trovare gli esami ed aggiungerli
+                    var listaEsami = context.esami.Where(e => e.ES_TC_ID == tc_id).Select(e=> new { e.ES_TC_ID,e.ES_ID,e.ES_DESCRIZIONE,e.ES_RE_ID,e.ES_REVISIONE,e.ES_NONSELEZIONABILE}).ToList();
+                    List<BarButtonItem> bottoniEsame = new List<BarButtonItem>();
+                    foreach(var es in listaEsami)
+                    {
+                        bottoniEsame.Add(new BarButtonItem(barm, es.ES_DESCRIZIONE,tc_id));
+                    }
+                    string nome = coppia.Key;
+                    itemMenu.Add(new BarSubItem(barm,nome,bottoniEsame.ToArray()));
                 }
                 else
                 {
@@ -82,45 +89,24 @@ namespace GestioneDomandeDX
                 }
             }
             
-            menuPatenti.AddItem(submenu);
             menuPatenti.AddItems(itemMenu.ToArray());
             barm.ItemClick += clickSubMenu;
-            //menuPatenti.AddItems();
+            #endregion
             gridView.DataController.AllowIEnumerableDetails = true;
 
         }
 
         private void clickSubMenu(object sender, ItemClickEventArgs e)
         {
-            if (e.Link.OwnerItem.Name == "")
-            {
-                MessageBox.Show("submenuitem");
-            }
+            //IMAGE INDEX INDICA IL TC_ID
+            int idNuovo = e.Item.ImageIndex;
+            grdMain.DataSource = new BindingList<domande>(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
         }
 
         private void FormPrincipale_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void btnScegliMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-            //Qua devo scegliere l'esame in base alla commissione. Una volta scelto dovro cercare tutte le domande e risposte
-
-            int idNuovo = DictTC[listaPatenti.Caption];
-            grdMain.DataSource = new BindingList<domande>(context.tipocommissione.Select(tc => tc).Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
-
-        }
-
-        private void listaPatenti_ItemClick(object sender, DevExpress.XtraBars.ListItemClickEventArgs e)
-        {
-
-            listaPatenti.Caption = ((BarListItem)sender).Strings[((BarListItem)sender).ItemIndex];
-
-
-        }
-
         private void btnSceltaIniziale_ItemClick(object sender, ItemClickEventArgs e)
         {
 
@@ -192,13 +178,14 @@ namespace GestioneDomandeDX
         {
             dettagli = (GridView)e.View;
             //dettagli.Name = gridView
-            dettagli.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(gridView_RowUpdated);
+            dettagli.RowUpdated += new RowObjectEventHandler(gridView_RowUpdated);
             dettagli.RowStyle += new RowStyleEventHandler(gridView_RowStyle);
+            dettagli.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace;
         }
 
         private void grdMain_ViewRemoved(object sender, ViewOperationEventArgs e)
         {
-            ((GridView)e.View).RowUpdated -= new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(gridView_RowUpdated);
+            ((GridView)e.View).RowUpdated -= new RowObjectEventHandler(gridView_RowUpdated);
             ((GridView)e.View).RowStyle -= new RowStyleEventHandler(gridView_RowStyle);
         }
 
@@ -218,6 +205,22 @@ namespace GestioneDomandeDX
                     e.Appearance.BackColor = Color.Yellow;
                 }
             }
+            
+        }
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            if (this.Handle != null)
+            {
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    Console.WriteLine("event invoked");
+                    base.OnSizeChanged(e);
+
+                });
+            }
+        }
+        private void FormPrincipale_SizeChanged(object sender, EventArgs e)
+        {
             
         }
     }

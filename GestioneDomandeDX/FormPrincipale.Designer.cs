@@ -1,4 +1,6 @@
-﻿namespace GestioneDomandeDX
+﻿using DevExpress.XtraGrid.Views.Grid;
+
+namespace GestioneDomandeDX
 {
     partial class FormPrincipale
     {
@@ -28,24 +30,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grdMain = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.menuScelta = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.txtIniziale = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.btnSceltaIniziale = new DevExpress.XtraBars.BarButtonItem();
             this.barListItem1 = new DevExpress.XtraBars.BarListItem();
-            this.listaPatenti = new DevExpress.XtraBars.BarListItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.grpSceltaViaIniziale = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.menuPatenti = new DevExpress.XtraBars.BarSubItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.grpSceltaViaIniziale = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -59,7 +58,6 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsDetail.EnableDetailToolTip = true;
             this.gridView1.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled;
-            this.gridView1.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView1_RowUpdated);
             // 
             // grdMain
             // 
@@ -68,7 +66,7 @@
             this.grdMain.MainView = this.gridView;
             this.grdMain.MenuManager = this.ribbonControl1;
             this.grdMain.Name = "grdMain";
-            this.grdMain.Size = new System.Drawing.Size(758, 217);
+            this.grdMain.Size = new System.Drawing.Size(1370, 460);
             this.grdMain.TabIndex = 1;
             this.grdMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView,
@@ -78,13 +76,14 @@
             // 
             // gridView
             // 
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Name = "regolaCambiamento";
-            formatConditionRuleExpression1.PredefinedName = "Red Fill";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.gridView.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Name = "regolaCambiamento";
+            formatConditionRuleExpression2.PredefinedName = "Red Fill";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.gridView.FormatRules.Add(gridFormatRule2);
             this.gridView.GridControl = this.grdMain;
             this.gridView.Name = "gridView";
+            this.gridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow;
             this.gridView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled;
             this.gridView.OptionsView.ShowChildrenInGroupPanel = true;
             this.gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView_RowStyle);
@@ -102,11 +101,9 @@
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.menuScelta,
-            this.barButtonItem1,
             this.txtIniziale,
             this.btnSceltaIniziale,
             this.barListItem1,
-            this.listaPatenti,
             this.menuPatenti});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 8;
@@ -116,20 +113,13 @@
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbonControl1.Size = new System.Drawing.Size(758, 143);
+            this.ribbonControl1.Size = new System.Drawing.Size(1370, 143);
             // 
             // menuScelta
             // 
             this.menuScelta.Caption = "Scegli Esame";
             this.menuScelta.Id = 1;
             this.menuScelta.Name = "menuScelta";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Scegli";
-            this.barButtonItem1.Id = 2;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnScegliMenu_ItemClick);
             // 
             // txtIniziale
             // 
@@ -156,31 +146,27 @@
             this.barListItem1.Id = 5;
             this.barListItem1.Name = "barListItem1";
             // 
-            // listaPatenti
+            // menuPatenti
             // 
-            this.listaPatenti.Caption = "Lista Patenti";
-            this.listaPatenti.Id = 6;
-            this.listaPatenti.Name = "listaPatenti";
-            this.listaPatenti.ShowChecks = true;
-            this.listaPatenti.ListItemClick += new DevExpress.XtraBars.ListItemClickEventHandler(this.listaPatenti_ItemClick);
+            this.menuPatenti.Caption = "Lista Patente";
+            this.menuPatenti.Id = 7;
+            this.menuPatenti.Name = "menuPatenti";
             // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.grpSceltaViaIniziale,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.grpSceltaViaIniziale});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Scelta Esame";
             // 
-            // ribbonPageGroup1
+            // ribbonPageGroup2
             // 
-            this.ribbonPageGroup1.AllowTextClipping = false;
-            this.ribbonPageGroup1.ItemLinks.Add(this.listaPatenti);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.ShowCaptionButton = false;
-            this.ribbonPageGroup1.Text = "Scelta via menu";
+            this.ribbonPageGroup2.AllowTextClipping = false;
+            this.ribbonPageGroup2.ItemLinks.Add(this.menuPatenti);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.ShowCaptionButton = false;
+            this.ribbonPageGroup2.Text = "Scelta via menu";
             // 
             // grpSceltaViaIniziale
             // 
@@ -191,30 +177,18 @@
             this.grpSceltaViaIniziale.ShowCaptionButton = false;
             this.grpSceltaViaIniziale.Text = "Scelta Via Iniziale";
             // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.menuPatenti);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
-            // 
-            // menuPatenti
-            // 
-            this.menuPatenti.Caption = "Lista Patente";
-            this.menuPatenti.Id = 7;
-            this.menuPatenti.Name = "menuPatenti";
-            // 
             // FormPrincipale
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 360);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1370, 603);
             this.Controls.Add(this.grdMain);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "FormPrincipale";
             this.Ribbon = this.ribbonControl1;
             this.Text = "Gestione Domande";
             this.Load += new System.EventHandler(this.FormPrincipale_Load);
+            this.SizeChanged += new System.EventHandler(this.FormPrincipale_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
@@ -229,9 +203,7 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarSubItem menuScelta;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraGrid.GridControl grdMain;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraBars.BarEditItem txtIniziale;
@@ -239,7 +211,6 @@
         private DevExpress.XtraBars.BarButtonItem btnSceltaIniziale;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup grpSceltaViaIniziale;
         private DevExpress.XtraBars.BarListItem barListItem1;
-        private DevExpress.XtraBars.BarListItem listaPatenti;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.BarSubItem menuPatenti;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;

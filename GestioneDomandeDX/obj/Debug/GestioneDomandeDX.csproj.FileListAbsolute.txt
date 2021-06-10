@@ -141,3 +141,4 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\es\DevExpress.Xpo.v15.2.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ja\DevExpress.Xpo.v15.2.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ru\DevExpress.Xpo.v15.2.resources.dll
+C:\Users\stagista\Documents\Visual Studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.EditForm.resources

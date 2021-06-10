@@ -11,6 +11,7 @@ namespace GestioneDomandeDX
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class domande
@@ -51,7 +52,8 @@ namespace GestioneDomandeDX
         public string DO_GRDOMCORR { get; set; }
         public string DO_ALTROTESTO { get; set; }
         public string DO_TESTO_AIUTO { get; set; }
-        [NotMapped]
+
+        [Display(AutoGenerateField = false)]
         public virtual tipocommissione tipocommissione { get; set; }
         public virtual ICollection<risposte> risposte { get; set; }
     }

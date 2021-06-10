@@ -132,6 +132,12 @@
     <Compile Include="domande.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="EditForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="esami.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
@@ -173,6 +179,9 @@
     <Compile Include="v_tipipatente.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipale.resx">
       <DependentUpon>FormPrincipale.cs</DependentUpon>
     </EmbeddedResource>

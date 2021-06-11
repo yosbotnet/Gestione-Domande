@@ -1,0 +1,234 @@
+﻿<XtraSerializer version="1.0" application="View">
+  <property name="#LayoutVersion" />
+  <property name="OptionsView" isnull="true" iskey="true">
+    <property name="RowAutoHeight">true</property>
+    <property name="ShowChildrenInGroupPanel">true</property>
+  </property>
+  <property name="ActiveFilterEnabled">true</property>
+  <property name="Columns" iskey="true" value="31">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="Name">colDO_ID</property>
+      <property name="FieldName">DO_ID</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">0</property>
+      <property name="Visible">true</property>
+      <property name="Width">60</property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="Name">colDO_MINIST_MA_ID</property>
+      <property name="FieldName">DO_MINIST_MA_ID</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">1</property>
+      <property name="Visible">true</property>
+      <property name="Width">60</property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTO</property>
+      <property name="FieldName">DO_TESTO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">2</property>
+      <property name="Visible">true</property>
+      <property name="Width">150</property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="Name">colDO_IMG</property>
+      <property name="FieldName">DO_IMG</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">3</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="Name">colDO_AR_ID</property>
+      <property name="FieldName">DO_AR_ID</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="Name">colDO_CODICE_MINST</property>
+      <property name="FieldName">DO_CODICE_MINST</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">4</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item7" isnull="true" iskey="true">
+      <property name="Name">colDO_CODICE_EGAF</property>
+      <property name="FieldName">DO_CODICE_EGAF</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">5</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item8" isnull="true" iskey="true">
+      <property name="Name">colDO_IMG2</property>
+      <property name="FieldName">DO_IMG2</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">6</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item9" isnull="true" iskey="true">
+      <property name="Name">colDO_MULTIMEDIALE</property>
+      <property name="FieldName">DO_MULTIMEDIALE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">7</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item10" isnull="true" iskey="true">
+      <property name="Name">colDO_STATISTICA</property>
+      <property name="FieldName">DO_STATISTICA</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item11" isnull="true" iskey="true">
+      <property name="Name">colDO_COMMENTO</property>
+      <property name="FieldName">DO_COMMENTO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">8</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item12" isnull="true" iskey="true">
+      <property name="Name">colDO_FLAG_BLOCCATA</property>
+      <property name="FieldName">DO_FLAG_BLOCCATA</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">9</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item13" isnull="true" iskey="true">
+      <property name="Name">colDO_NOTE</property>
+      <property name="FieldName">DO_NOTE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">10</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item14" isnull="true" iskey="true">
+      <property name="Name">colDO_FLAG_BLOCCATA_EGAF</property>
+      <property name="FieldName">DO_FLAG_BLOCCATA_EGAF</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item15" isnull="true" iskey="true">
+      <property name="Name">colDO_NOTE_EGAF</property>
+      <property name="FieldName">DO_NOTE_EGAF</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item16" isnull="true" iskey="true">
+      <property name="Name">colDO_TEORICOPRATICO</property>
+      <property name="FieldName">DO_TEORICOPRATICO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">11</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item17" isnull="true" iskey="true">
+      <property name="Name">colDO_ES_ID</property>
+      <property name="FieldName">DO_ES_ID</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item18" isnull="true" iskey="true">
+      <property name="Name">colDO_FLAG_OBSOLETA</property>
+      <property name="FieldName">DO_FLAG_OBSOLETA</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item19" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTOCN</property>
+      <property name="FieldName">DO_TESTOCN</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item20" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTOES</property>
+      <property name="FieldName">DO_TESTOES</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item21" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTOMA</property>
+      <property name="FieldName">DO_TESTOMA</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item22" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTODE</property>
+      <property name="FieldName">DO_TESTODE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">12</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item23" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTOGB</property>
+      <property name="FieldName">DO_TESTOGB</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item24" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTOFR</property>
+      <property name="FieldName">DO_TESTOFR</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">13</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item25" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTORU</property>
+      <property name="FieldName">DO_TESTORU</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item26" isnull="true" iskey="true">
+      <property name="Name">colDO_PROGRESSIVO</property>
+      <property name="FieldName">DO_PROGRESSIVO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">14</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item27" isnull="true" iskey="true">
+      <property name="Name">colDO_STATISTICAV</property>
+      <property name="FieldName">DO_STATISTICAV</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item28" isnull="true" iskey="true">
+      <property name="Name">colDO_STATISTICAF</property>
+      <property name="FieldName">DO_STATISTICAF</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item29" isnull="true" iskey="true">
+      <property name="Name">colDO_GRDOMCORR</property>
+      <property name="FieldName">DO_GRDOMCORR</property>
+      <property name="ColumnEditName" />
+      <property name="Width">56</property>
+    </property>
+    <property name="Item30" isnull="true" iskey="true">
+      <property name="Name">colDO_ALTROTESTO</property>
+      <property name="FieldName">DO_ALTROTESTO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">15</property>
+      <property name="Visible">true</property>
+      <property name="Width">56</property>
+    </property>
+    <property name="Item31" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTO_AIUTO</property>
+      <property name="FieldName">DO_TESTO_AIUTO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">16</property>
+      <property name="Visible">true</property>
+      <property name="Width">103</property>
+    </property>
+  </property>
+  <property name="ActiveFilterString" />
+  <property name="GroupSummarySortInfoState" />
+  <property name="FindFilterText" />
+  <property name="FindPanelVisible">false</property>
+</XtraSerializer>

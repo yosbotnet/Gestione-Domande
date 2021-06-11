@@ -13,6 +13,8 @@ using DevExpress.XtraGrid;
 using System.ComponentModel.DataAnnotations;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraEditors;
 
 namespace GestioneDomandeDX
 {
@@ -28,16 +30,19 @@ namespace GestioneDomandeDX
 
             OBBIETTIVI ATTUALI
             -GESTIRE IL SALVATAGGIO
-                +CONTROLLARE SE I DATI SALVATI RISPETTANO LE REGOLE
+                +CONTROLLARE SE I DATI SALVATI RISPETTANO LE REGOLE FATTO
                 +COLORARE LE RIGHE MODIFICATE  FATTO
-                +USARE  System.ComponentModel.DataAnnotations PER I REQUISITI
-                +USARE CLASSE ValidationAttribute PER I CONTROLLI PRECENDENTI
+                +USARE  System.ComponentModel.DataAnnotations PER I REQUISITI 
             -DECIDERE SULLA MODALITà DI CARICAMENTO FATTO
             -GESTIRE IL TESTO IN TEDESCO E FRANCESE
                 !VIENE AGGIUNTO UN CARATTERE IN PIù IN MEZZO AGLI ALTRI
             -Combobox per alcuni flag
-
-
+            -cambiare form modifica
+            -lock e gestione crash
+            -aggiunta domande e risposte
+            --pulsante per entrare e lockare, uscire e unlockare
+            -!se non sei in modifca, grid readonly
+            -applicare modifiche in certi campi anche in quelli con codice egaf uguali
 
 
 
@@ -46,24 +51,28 @@ namespace GestioneDomandeDX
         GridView dettagli;
         egafEntities context;
         List<int> HandleCambiatiMaster;
-        List<int> HandleCambiatiDetail;
-        List<int> RisposteFlaggate;
+        List<Tuple<int, int>> HandleCambiatiDetail;
+        List<Tuple<int,int>> RisposteFlaggate;
         List<BarItem> itemMenu;
         Dictionary<string, int> DictTC;
+        RepositoryItemMemoEdit memoEdit;
         public FormPrincipale()
         {
             #region Inizializzazione
             InitializeComponent();
             context = new egafEntities();
             HandleCambiatiMaster = new List<int>();
-            HandleCambiatiDetail = new List<int>();
+            HandleCambiatiDetail = new List<Tuple<int,int>>();
             itemMenu = new List<BarItem>();
-            RisposteFlaggate = new List<int>();
+            RisposteFlaggate = new List<Tuple<int, int>>();
+            memoEdit = new RepositoryItemMemoEdit();
+            memoEdit.WordWrap = true;
             DictTC = context.v_tipipatente.ToDictionary(tc =>tc.MD_DESCRIZIONE,tc=>tc.TC_ID);
             //----Inizializzo il BarManager
             BarManager barm = new BarManager();
-            barm.Form = this;
+            barm.Form = this;            
             barm.BeginUpdate();
+            
             #endregion
             #region aggiunta Patenti al menu patenti
             //----Qua devo creare una serie di bottoni per ogni TC senza subpatente. per quelli che ce l'hanno faccio un submenu
@@ -89,10 +98,10 @@ namespace GestioneDomandeDX
                 else
                 {
                     //creo un nuovo bottone con nome = coppia.Key
-                    itemMenu.Add(new BarButtonItem(barm, coppia.Key));
+                    itemMenu.Add(new BarButtonItem(barm, coppia.Key,tc_id));
                 }
             }
-            
+            //context.releaseopere.Select(ro => ro.)
             menuPatenti.AddItems(itemMenu.ToArray());
             barm.ItemClick += clickSubMenu;
             barm.EndUpdate();
@@ -106,38 +115,20 @@ namespace GestioneDomandeDX
             //ottengo le regole, ottenibili da es_re_id. es_re_id è ottenibile da ES_ID
             int? reID = context.esami.Where(e => e.ES_ID == d.DO_ES_ID).Select(e => e.ES_RE_ID).First();
             v_regole re = context.v_regole.Where(vr => vr.RE_ID == reID).First();
-            int rispFalse = 0;        
+            int rispFalse = d.risposte.Where(r => r.RI_VF == "F").Count();
+            int rispVere = d.risposte.Where(r => r.RI_VF == "V").Count();
+
             //controllo se le risposte rispettano le regole
-            //calcolo sbagliato, re ris x dom - re limite risp false è quello giusto
-            if(re.Risposte_libere == 0)
+            if (re.Risposte_libere == 0)
             {
-                rispFalse = (int)re.RE_RISXDOM - 1;
-                foreach (risposte e in d.risposte)
-                {
-                    if (e.RI_VF == "F")
-                    {
-                        rispFalse--;
-                    }
-                }
-                if (rispFalse != 0)
-                    return false;
-                return true;
+                //re ris x dom == totale risposte
+                return rispVere == 1 && rispFalse == re.RE_RISXDOM - 1;
             }
             else
-            {
-                rispFalse = 0;
-                foreach (risposte e in d.risposte)
-                {
-                    if (e.RI_VF == "F")
-                    {
-                        rispFalse++;
-                    }
-                }
-                return rispFalse >= re.RE_LIMITE_MIN_RISPFALSE && rispFalse <= re.RE_LIMITE_RISPFALSE;
+            {                
+                return rispVere >= re.RE_LIMITE_MIN_RISPFALSE - re.RE_LIMITE_RISPFALSE;
+                
             }
-            
-            //se si daro vero
-            //se no darò falso
         }
         private void clickSubMenu(object sender, ItemClickEventArgs e)
         {
@@ -147,11 +138,28 @@ namespace GestioneDomandeDX
                 int idNuovo = e.Item.ImageIndex;
                 HandleCambiatiMaster.Clear();
                 HandleCambiatiDetail.Clear();
+                context = new egafEntities();
+                
+                /*
+                context.Entry(context.risposte).State = EntityState.Detached;
+                context.Entry(context.domande).State = EntityState.Detached;
+                */
                 grdMain.DataSource = new BindingList<domande>(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
+                gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
+                RepositoryItemComboBox a = new RepositoryItemComboBox();
+                a.Closed += onCloseCmb;
+                a.Items.Add("");
+                a.Items.Add("Bloccata");
+                a.Items.Add("Errata");
+                a.ReadOnly = false;
+                a.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.True;
+                a.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+                gridView.OptionsBehavior.Editable = true;
+                gridView.Columns["DO_FLAG_BLOCCATA"].ColumnEdit = a;
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Vuoto");
+                MessageBox.Show(ex.ToString());
             }
 
         }
@@ -166,7 +174,33 @@ namespace GestioneDomandeDX
             var iniziali = ((string)txtIniziale.EditValue).Split(',').AsEnumerable();
             HandleCambiatiMaster.Clear();
             HandleCambiatiDetail.Clear();
+            
             grdMain.DataSource = context.domande.Where(d => iniziali.Any(i => d.DO_CODICE_MINST.StartsWith(i))).ToList();
+            gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
+            RepositoryItemComboBox a = new RepositoryItemComboBox();
+            a.Closed += onCloseCmb;
+            a.Items.Add("");
+            a.Items.Add("Bloccata");
+            a.Items.Add("Errata");
+            a.ReadOnly = false;
+            a.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.True;
+            a.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            gridView.OptionsBehavior.Editable = true;
+            gridView.Columns["DO_FLAG_BLOCCATA"].ColumnEdit = a;
+
+        }
+
+        private void onCloseCmb(object sender, EventArgs e)
+        {
+
+            int flagBlock = ((ComboBoxEdit)sender).SelectedIndex;
+            
+            GridView main = (GridView)((GridControl)((ComboBoxEdit)sender).Parent).MainView;
+            var domanda = (main.GetFocusedRow() as domande);
+            int d = domanda.DO_ID;
+            ((BindingList<domande>)grdMain.DataSource).Where(dom => dom.DO_ID == d).Select(dom => dom.DO_FLAG_BLOCCATA = flagBlock);
+
+           // d["DO_FLAG_BLOCCATA"] = flagBlock;
         }
 
         #region Gestione Master-Detail
@@ -216,23 +250,25 @@ namespace GestioneDomandeDX
             context.SaveChanges();
             //dovrei creare un gridview.RowStyle event in cui l'aggiorno
             //è un dettaglio?
-            if (((GridView)sender).IsDetailView)
+            GridView griglia = sender as GridView;
+            if (griglia.IsDetailView)
             {
-                HandleCambiatiDetail.Add(e.RowHandle);
-                if (!valida(((risposte)((GridView)sender).GetRow(e.RowHandle)).domande))
+                HandleCambiatiDetail.Add(new Tuple<int, int>(griglia.SourceRowHandle,e.RowHandle));
+                if (!valida(((risposte)griglia.GetRow(e.RowHandle)).domande))
                 {
-                    RisposteFlaggate.Add(e.RowHandle);
+                    
+                    RisposteFlaggate.Add(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle));
                     MessageBox.Show("Invalida");
-                }else if (RisposteFlaggate.Contains(e.RowHandle))
+                }else if (RisposteFlaggate.Contains(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle)))
                 {
-                    RisposteFlaggate.Remove(e.RowHandle);
+                    RisposteFlaggate.Remove(new Tuple<int, int>(griglia.SourceRowHandle,e.RowHandle));
                 }
             }
             else
             {
                 HandleCambiatiMaster.Add(e.RowHandle);
             }
-            ((GridView)sender).RefreshRow(e.RowHandle);
+            griglia.RefreshRow(e.RowHandle);
             
 
         }
@@ -242,7 +278,7 @@ namespace GestioneDomandeDX
             //dettagli.Name = gridView
             dettagli.RowUpdated += new RowObjectEventHandler(gridView_RowUpdated);
             dettagli.RowStyle += new RowStyleEventHandler(gridView_RowStyle);
-            dettagli.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace;
+            dettagli.Columns["RI_TESTO"].ColumnEdit = memoEdit;
         }
 
         private void grdMain_ViewRemoved(object sender, ViewOperationEventArgs e)
@@ -253,12 +289,13 @@ namespace GestioneDomandeDX
 
         private void gridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            if (((GridView)sender).IsDetailView)
+            GridView griglia = sender as GridView;
+            if (griglia.IsDetailView)
             {
-                if (HandleCambiatiDetail.Contains(e.RowHandle))
+                if (HandleCambiatiDetail.Contains(new Tuple<int, int>(griglia.SourceRowHandle,e.RowHandle)))
                 {
                     e.Appearance.BackColor = Color.Yellow;
-                    if (RisposteFlaggate.Contains(e.RowHandle))
+                    if (RisposteFlaggate.Contains(new Tuple<int,int>(griglia.SourceRowHandle, e.RowHandle)))
                     {
                         e.Appearance.BackColor = Color.Red;
                     }
@@ -277,6 +314,12 @@ namespace GestioneDomandeDX
         private void FormPrincipale_SizeChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnSalvaLayout_Click(object sender, EventArgs e)
+        {
+            gridView.OptionsLayout.Columns.StoreAllOptions = true;
+            gridView.SaveLayoutToXml(@"..\..\layout.xml");
         }
     }
 }

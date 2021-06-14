@@ -15,6 +15,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace GestioneDomandeDX
 {
@@ -28,7 +29,7 @@ namespace GestioneDomandeDX
             ---------------------------------------------------------------------------------
                                                  LUNEDI 14/6
             ---------------------------------------------------------------------------------
-            -DOMANDA NON MODIFICABILE QUANDO IL TESTO è VUOTO
+            -DOMANDA NON MODIFICABILE QUANDO IL TESTO è VUOTO FATTo
             -AL Click Esplodere la view delle risposte
             ---------------------------------------------------------------------------------
                                                  OBIETTIVI GIORNALIERI
@@ -80,6 +81,7 @@ namespace GestioneDomandeDX
                 lck.unLock();
             Dictionary<string, int> DictTC = context.v_tipipatente.ToDictionary(tc =>tc.MD_DESCRIZIONE,tc=>tc.TC_ID);
             TABEDITABILI = false;
+            
             gridView.OptionsBehavior.Editable = TABEDITABILI;
             //----Inizializzo il BarManager
             BarManager barm = new BarManager();
@@ -124,6 +126,7 @@ namespace GestioneDomandeDX
             gridView.DataController.AllowIEnumerableDetails = true;
 
         }
+
         private bool valida(domande d)
         {
             //data una domanda
@@ -152,7 +155,14 @@ namespace GestioneDomandeDX
                 //IMAGE INDEX INDICA IL TC_ID
                 int idNuovo = e.Item.ImageIndex;
                 setupGrid(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
-
+                if(context.v_releaseopere.Where(ro=> ro.RO_TC_ID == idNuovo).FirstOrDefault().RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA == 1)
+                {
+                    gridView.Columns["DO_TESTO"].OptionsColumn.AllowEdit = false;
+                }
+                else
+                {
+                    gridView.Columns["DO_TESTO"].OptionsColumn.AllowEdit = true;
+                }
             }
             catch(Exception ex)
             {
@@ -165,8 +175,15 @@ namespace GestioneDomandeDX
             try
             {
                 var iniziali = ((string)txtIniziale.EditValue).Split(',').AsEnumerable();
+                //Si va in readonly
                 setupGrid(context.domande.Where(d => iniziali.Any(i => d.DO_CODICE_MINST.StartsWith(i))).ToList());
-            }catch (Exception ex)
+                TABEDITABILI = false;
+                gridView.OptionsBehavior.Editable = TABEDITABILI;
+                listaDettagli.ForEach(d => d.OptionsBehavior.Editable = TABEDITABILI);
+                btnLock.Enabled = false;
+                btnLascia.Enabled = false;
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -293,6 +310,12 @@ namespace GestioneDomandeDX
             gridView.SaveLayoutToXml(@"..\..\layout.xml");
         }
 
+        private void expandVisibleRows()
+        {
+            GridViewInfo viewInfo = gridView.GetViewInfo() as GridViewInfo;
+            int visibleRows = viewInfo.RowsInfo.Count;
+            //viewInfo.RowsInfo.GetFirstScrollableRow
+        }
         private void btnPrendi_ItemClick(object sender, ItemClickEventArgs e)
         {
             
@@ -355,6 +378,15 @@ namespace GestioneDomandeDX
         private void FormPrincipale_FormClosing(object sender, FormClosingEventArgs e)
         {
             lck.unLock();
+        }
+
+        private void gridView_RowClick(object sender, RowClickEventArgs e)
+        {
+            domande d = ((GridView)sender).GetRow(e.RowHandle) as domande;
+            if(context.v_releaseopere.Where(ro=> ro.RO_TC_ID == d.esami.ES_TC_ID).FirstOrDefault().RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA == 1  )
+            {
+                gridView.SetMasterRowExpanded(e.RowHandle, true);
+            }
         }
     }
     /// <summary>

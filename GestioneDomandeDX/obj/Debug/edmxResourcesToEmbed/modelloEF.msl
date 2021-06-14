@@ -321,5 +321,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="v_releaseopere">
+      <EntityTypeMapping TypeName="egafMainEF.v_releaseopere">
+        <MappingFragment StoreEntitySet="v_releaseopere">
+          <ScalarProperty Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" ColumnName="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" />
+          <ScalarProperty Name="RO_TC_ID" ColumnName="RO_TC_ID" />
+          <ScalarProperty Name="RO_ID" ColumnName="RO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

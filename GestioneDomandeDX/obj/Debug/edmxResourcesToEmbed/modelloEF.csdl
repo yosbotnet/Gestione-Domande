@@ -360,6 +360,7 @@
       <End Role="esami" EntitySet="esami" />
       <End Role="domande" EntitySet="domande" />
     </AssociationSet>
+    <EntitySet Name="v_releaseopere" EntityType="egafMainEF.v_releaseopere" />
   </EntityContainer>
   <EntityType Name="v_tipipatente">
     <Key>
@@ -416,4 +417,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="v_releaseopere">
+    <Key>
+      <PropertyRef Name="RO_ID" />
+    </Key>
+    <Property Name="RO_ID" Type="Int32" Nullable="false" />
+    <Property Name="RO_TC_ID" Type="Int32" />
+    <Property Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" Type="Int32" />
+  </EntityType>
 </Schema>

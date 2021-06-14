@@ -196,6 +196,9 @@
     <Compile Include="v_regole.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="v_releaseopere.cs">
+      <DependentUpon>modelloEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="v_tipipatente.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>

@@ -306,6 +306,16 @@ warning 6002: The table/view 'def.egaf_main.v_regole' does not have a primary ke
     <Property Name="Risposte_libere" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_releaseopere' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_releaseopere">
+    <Key>
+      <PropertyRef Name="RO_ID" />
+    </Key>
+    <Property Name="RO_ID" Type="int" Nullable="false" />
+    <Property Name="RO_TC_ID" Type="int" />
+    <Property Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="v_tipipatente">
     <Key>
@@ -409,6 +419,13 @@ FROM `v_esami` AS `v_esami`</DefiningQuery>
 `v_regole`.`RE_LIMITE_MIN_RISPFALSE`, 
 `v_regole`.`Risposte_libere`
 FROM `v_regole` AS `v_regole`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_releaseopere" EntityType="Self.v_releaseopere" store:Type="Views" store:Schema="egaf_main">
+      <DefiningQuery>SELECT
+`v_releaseopere`.`RO_ID`, 
+`v_releaseopere`.`RO_TC_ID`, 
+`v_releaseopere`.`RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA`
+FROM `v_releaseopere` AS `v_releaseopere`</DefiningQuery>
     </EntitySet>
     <EntitySet Name="v_tipipatente" EntityType="Self.v_tipipatente" store:Type="Views" store:Schema="egaf_main">
       <DefiningQuery>SELECT

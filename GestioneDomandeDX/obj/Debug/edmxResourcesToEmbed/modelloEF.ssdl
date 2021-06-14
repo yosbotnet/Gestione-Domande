@@ -101,6 +101,14 @@
     <Property Name="ES_DESCRIZIONE_APP" Type="varchar" MaxLength="250" />
     <Property Name="ES_ESCLUDI_DA_APP" Type="utinyint" />
   </EntityType>
+  <EntityType Name="locks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER" Type="varchar" MaxLength="45" />
+    <Property Name="DATAORA" Type="datetime" Precision="0" />
+  </EntityType>
   <EntityType Name="regole">
     <Key>
       <PropertyRef Name="RE_ID" />
@@ -309,6 +317,18 @@ warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a prima
     <Property Name="MD_DESCRIZIONE" Type="varchar" MaxLength="100" />
     <Property Name="QTA" Type="bigint" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Domande_Esame_ES_ID">
+    <End Role="esami" Type="Self.esami" Multiplicity="0..1" />
+    <End Role="domande" Type="Self.domande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="esami">
+        <PropertyRef Name="ES_ID" />
+      </Principal>
+      <Dependent Role="domande">
+        <PropertyRef Name="DO_ES_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Domande_TipoCommissione_TC_ID">
     <End Role="tipocommissione" Type="Self.tipocommissione" Multiplicity="0..1" />
     <End Role="domande" Type="Self.domande" Multiplicity="*" />
@@ -363,6 +383,7 @@ warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a prima
     <EntitySet Name="dettaglioregole" EntityType="Self.dettaglioregole" Schema="egaf_main" store:Type="Tables" />
     <EntitySet Name="domande" EntityType="Self.domande" Schema="egaf_main" store:Type="Tables" />
     <EntitySet Name="esami" EntityType="Self.esami" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="locks" EntityType="Self.locks" Schema="egaf_main" store:Type="Tables" />
     <EntitySet Name="regole" EntityType="Self.regole" Schema="egaf_main" store:Type="Tables" />
     <EntitySet Name="releaseopere" EntityType="Self.releaseopere" Schema="egaf_main" store:Type="Tables" />
     <EntitySet Name="risposte" EntityType="Self.risposte" Schema="egaf_main" store:Type="Tables" />
@@ -397,6 +418,10 @@ FROM `v_regole` AS `v_regole`</DefiningQuery>
 `v_tipipatente`.`QTA`
 FROM `v_tipipatente` AS `v_tipipatente`</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_Domande_Esame_ES_ID" Association="Self.FK_Domande_Esame_ES_ID">
+      <End Role="esami" EntitySet="esami" />
+      <End Role="domande" EntitySet="domande" />
+    </AssociationSet>
     <AssociationSet Name="FK_Domande_TipoCommissione_TC_ID" Association="Self.FK_Domande_TipoCommissione_TC_ID">
       <End Role="tipocommissione" EntitySet="tipocommissione" />
       <End Role="domande" EntitySet="domande" />

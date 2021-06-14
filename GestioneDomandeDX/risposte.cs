@@ -11,17 +11,27 @@ namespace GestioneDomandeDX
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class risposte
     {
+        public enum bloccata
+        {
+            [Description("")]
+            normale = 0,
+            [Description("Bloccata")]
+            bloccata = 1,
+            [Description("Errata")]
+            errata = 2
+        }
         public int RI_ID { get; set; }
         public Nullable<int> RI_DO_ID { get; set; }
         public string RI_TESTOORDINE { get; set; }
         public string RI_TESTO { get; set; }
         public string RI_VF { get; set; }
         public string RI_COMMENTO { get; set; }
+        [EnumDataType(typeof(bloccata))]
         public Nullable<int> RI_FLAG_BLOCCATA { get; set; }
         public string RI_NOTE { get; set; }
         public Nullable<int> RI_FLAG_BLOCCATA_EGAF { get; set; }

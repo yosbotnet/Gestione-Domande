@@ -37,5 +37,6 @@ namespace GestioneDomandeDX
         public DbSet<v_tipipatente> v_tipipatente { get; set; }
         public DbSet<v_esami> v_esami { get; set; }
         public DbSet<v_regole> v_regole { get; set; }
+        public DbSet<locks> locks { get; set; }
     }
 }

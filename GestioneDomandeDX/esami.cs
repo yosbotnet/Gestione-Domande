@@ -14,6 +14,11 @@ namespace GestioneDomandeDX
     
     public partial class esami
     {
+        public esami()
+        {
+            this.domande = new HashSet<domande>();
+        }
+    
         public int ES_ID { get; set; }
         public string ES_MNEMO { get; set; }
         public string ES_DESCRIZIONE { get; set; }
@@ -39,5 +44,6 @@ namespace GestioneDomandeDX
         public Nullable<byte> ES_ESCLUDI_DA_APP { get; set; }
     
         public virtual tipocommissione tipocommissione { get; set; }
+        public virtual ICollection<domande> domande { get; set; }
     }
 }

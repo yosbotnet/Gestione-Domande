@@ -14,7 +14,6 @@ namespace GestioneDomandeDX
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
     public partial class domande
     {
         public enum bloccata
@@ -26,7 +25,7 @@ namespace GestioneDomandeDX
             [Description("Errata")]
             errata = 2
         }
-        
+
         public domande()
         {
             this.risposte = new HashSet<risposte>();
@@ -64,9 +63,10 @@ namespace GestioneDomandeDX
         public string DO_GRDOMCORR { get; set; }
         public string DO_ALTROTESTO { get; set; }
         public string DO_TESTO_AIUTO { get; set; }
-
         [Display(AutoGenerateField = false)]
         public virtual tipocommissione tipocommissione { get; set; }
         public virtual ICollection<risposte> risposte { get; set; }
+        [Display(AutoGenerateField = false)]
+        public virtual esami esami { get; set; }
     }
 }

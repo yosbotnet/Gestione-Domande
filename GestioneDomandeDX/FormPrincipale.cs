@@ -18,7 +18,7 @@ using DevExpress.XtraEditors;
 
 namespace GestioneDomandeDX
 {
-    
+
     public partial class FormPrincipale : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         /*
@@ -29,7 +29,14 @@ namespace GestioneDomandeDX
 
 
             OBBIETTIVI ATTUALI
-            -GESTIRE IL SALVATAGGIO
+            ---------------------------------------------------------------------------------
+                                                 IMPORTANTE
+            ---------------------------------------------------------------------------------
+            -RISTRUTTURARE IL CODICE PER ADATTARLO ALLA LISTA DI GRIGLIE
+            ---------------------------------------------------------------------------------
+                                                 IMPORTANTE
+            ---------------------------------------------------------------------------------
+            -GESTIRE IL SALVATAGGIO FATTO
                 +CONTROLLARE SE I DATI SALVATI RISPETTANO LE REGOLE FATTO
                 +COLORARE LE RIGHE MODIFICATE  FATTO
                 +USARE  System.ComponentModel.DataAnnotations PER I REQUISITI 
@@ -38,28 +45,28 @@ namespace GestioneDomandeDX
                 !VIENE AGGIUNTO UN CARATTERE IN PIù IN MEZZO AGLI ALTRI
             -Combobox per alcuni flag 1/2
             -cambiare form modifica
-            -lock e gestione crash
-            -aggiunta domande e risposte
-            --pulsante per entrare e lockare, uscire e unlockare
-            -!se non sei in modifca, grid readonly
+            -lock e gestione crash FATTO
+            -aggiunta domande e risposte GESTITO DALLA GRIGLIA
+            --pulsante per entrare e lockare, uscire e unlockare FATTO
+            -!se non sei in modifca, grid readonly FATTO
             -applicare modifiche in certi campi anche in quelli con codice egaf uguali
-
-
+            -rendere la domanda non modificabile quando il testo risposta contiene il testo della domanda
+            -Organizzare in funzioni parti di codice ripetuta
 
 
         */
         GridView dettagli;
         egafEntities context;
+        lockUtils lck;
         List<int> HandleCambiatiMaster;
         List<Tuple<int, int>> HandleCambiatiDetail;
         List<Tuple<int,int>> RisposteFlaggate;
         List<BarItem> itemMenu;
-        Dictionary<string, int> DictTC;
+        // forse avro bisogno di un List<GridView> per tutte le viste presenti. Servirà per applicare un singolo cambiamento a tutte
+        List<GridView> listaDettagli;
+        bool TABEDITABILI;
         RepositoryItemMemoEdit memoEdit;
-        public bool IsLocked(egafEntities ctx)
-        {
-            return false;
-        }
+
         public FormPrincipale()
         {
             #region Inizializzazione
@@ -71,7 +78,16 @@ namespace GestioneDomandeDX
             RisposteFlaggate = new List<Tuple<int, int>>();
             memoEdit = new RepositoryItemMemoEdit();
             memoEdit.WordWrap = true;
-            DictTC = context.v_tipipatente.ToDictionary(tc =>tc.MD_DESCRIZIONE,tc=>tc.TC_ID);
+            //LockUtils
+            lck = new lockUtils(context);
+            listaDettagli = new List<GridView>();
+            if (context.locks.Any(l => l.USER == Environment.UserName))
+                lck.unLock();
+            Dictionary<string, int> DictTC = context.v_tipipatente.ToDictionary(tc =>tc.MD_DESCRIZIONE,tc=>tc.TC_ID);
+            TABEDITABILI = false;
+            gridView.OptionsBehavior.Editable = TABEDITABILI;
+            btnLascia.Enabled = false;
+            btnLock.Enabled = true;
             //----Inizializzo il BarManager
             BarManager barm = new BarManager();
             barm.Form = this;            
@@ -153,7 +169,6 @@ namespace GestioneDomandeDX
             }
 
         }
-
         private void FormPrincipale_Load(object sender, EventArgs e)
         {
 
@@ -168,8 +183,6 @@ namespace GestioneDomandeDX
             grdMain.DataSource = context.domande.Where(d => iniziali.Any(i => d.DO_CODICE_MINST.StartsWith(i))).ToList();
             gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
         }
-
-
         private void onClickCmb(object sender, EventArgs e)
         {
             int flagBlock = ((ComboBoxEdit)sender).SelectedIndex;
@@ -179,8 +192,6 @@ namespace GestioneDomandeDX
             int d = domanda.DO_ID;
             ((BindingList<domande>)grdMain.DataSource).Where(dom => dom.DO_ID == d).Select(dom => dom.DO_FLAG_BLOCCATA = flagBlock);
         }
-
-
         #region Gestione Master-Detail
         private void gridView_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
         {
@@ -209,20 +220,8 @@ namespace GestioneDomandeDX
             e.RelationCount = 1;
         }
         #endregion
-
-        private void gridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
-        {
-            //Controllo se rispetta le regole
-        }
-
-        
-
-        private void gridView_MasterRowCollapsed(object sender, DevExpress.XtraGrid.Views.Grid.CustomMasterRowEventArgs e)
-        {
-            
-        }
-
-
+        private void gridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e) {}
+        private void gridView_MasterRowCollapsed(object sender, DevExpress.XtraGrid.Views.Grid.CustomMasterRowEventArgs e){}
         private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
             context.SaveChanges();
@@ -253,18 +252,19 @@ namespace GestioneDomandeDX
         private void grdMain_ViewRegistered(object sender, ViewOperationEventArgs e)
         {
             dettagli = (GridView)e.View;
-            //dettagli.Name = gridView
+            listaDettagli.Add(dettagli);
             dettagli.RowUpdated += new RowObjectEventHandler(gridView_RowUpdated);
             dettagli.RowStyle += new RowStyleEventHandler(gridView_RowStyle);
             dettagli.Columns["RI_TESTO"].ColumnEdit = memoEdit;
-        }
+            dettagli.OptionsBehavior.Editable = TABEDITABILI;
 
+        }
         private void grdMain_ViewRemoved(object sender, ViewOperationEventArgs e)
         {
             ((GridView)e.View).RowUpdated -= new RowObjectEventHandler(gridView_RowUpdated);
             ((GridView)e.View).RowStyle -= new RowStyleEventHandler(gridView_RowStyle);
+            listaDettagli.Remove(((GridView)e.View));
         }
-
         private void gridView_RowStyle(object sender, RowStyleEventArgs e)
         {
             GridView griglia = sender as GridView;
@@ -293,11 +293,76 @@ namespace GestioneDomandeDX
         {
             
         }
-
         private void btnSalvaLayout_Click(object sender, EventArgs e)
         {
             gridView.OptionsLayout.Columns.StoreAllOptions = true;
             gridView.SaveLayoutToXml(@"..\..\layout.xml");
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            btnLock.Enabled = false;
+            btnLascia.Enabled = true;
+            if (lck.IsLocked())
+            {
+                MessageBox.Show("La tabella è Lockata. Aspettare");
+                TABEDITABILI = false;
+                return;
+            }
+            //unlocko la griglia
+            unlockGriglia();
+
+        }
+        void lockGriglia()
+        {
+            lck.unLock();
+            TABEDITABILI = false;
+            gridView.OptionsBehavior.Editable = false;
+            listaDettagli.Select(d => d.OptionsBehavior.Editable = false);
+        }
+        void unlockGriglia()
+        {
+            lck.lockTables();
+            TABEDITABILI = true;
+            gridView.OptionsBehavior.Editable = true;
+            listaDettagli.Select(d => d.OptionsBehavior.Editable = true);
+        }
+
+        private void btnLascia_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (lck.IsLocked())
+            {
+                lockGriglia();
+                lck.unLock();
+            }
+            btnLock.Enabled = true;
+            btnLascia.Enabled = false;
+            return;
+        }
+    }
+    public class lockUtils
+    {
+        egafEntities ctx;
+        public lockUtils(egafEntities con)
+        {
+            this.ctx = con;
+        }
+        public bool IsLocked()
+        {
+            
+            return ctx.locks.Count() > 0;
+        }
+        public void lockTables()
+        {
+            locks newLock = new locks();
+            newLock.DATAORA = DateTime.Now;
+            newLock.USER = Environment.UserName;
+            ctx.locks.Add(newLock);
+            ctx.SaveChanges();
+        }
+        public void unLock()
+        {
+            ctx.Database.ExecuteSqlCommand("TRUNCATE TABLE locks");
         }
     }
 }

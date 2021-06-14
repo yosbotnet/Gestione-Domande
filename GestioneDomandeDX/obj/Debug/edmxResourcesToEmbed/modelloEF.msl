@@ -312,5 +312,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="locks">
+      <EntityTypeMapping TypeName="egafMainEF.locks">
+        <MappingFragment StoreEntitySet="locks">
+          <ScalarProperty Name="DATAORA" ColumnName="DATAORA" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

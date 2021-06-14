@@ -158,6 +158,9 @@
     <Compile Include="FormPrincipale.Designer.cs">
       <DependentUpon>FormPrincipale.cs</DependentUpon>
     </Compile>
+    <Compile Include="locks.cs">
+      <DependentUpon>modelloEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="modelloEF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

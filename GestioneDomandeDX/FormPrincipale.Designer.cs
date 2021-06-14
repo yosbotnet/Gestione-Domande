@@ -74,9 +74,12 @@ namespace GestioneDomandeDX
             this.btnSceltaIniziale = new DevExpress.XtraBars.BarButtonItem();
             this.barListItem1 = new DevExpress.XtraBars.BarListItem();
             this.menuPatenti = new DevExpress.XtraBars.BarSubItem();
+            this.btnLock = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLascia = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.grpSceltaViaIniziale = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.btnSalvaLayout = new System.Windows.Forms.Button();
             this.controlloOrtografico = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -96,11 +99,11 @@ namespace GestioneDomandeDX
             // grdMain
             // 
             this.grdMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdMain.Location = new System.Drawing.Point(0, 143);
+            this.grdMain.Location = new System.Drawing.Point(0, 158);
             this.grdMain.MainView = this.gridView;
             this.grdMain.MenuManager = this.ribbon;
             this.grdMain.Name = "grdMain";
-            this.grdMain.Size = new System.Drawing.Size(1370, 460);
+            this.grdMain.Size = new System.Drawing.Size(1370, 445);
             this.grdMain.TabIndex = 1;
             this.grdMain.UseEmbeddedNavigator = true;
             this.grdMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -386,19 +389,22 @@ namespace GestioneDomandeDX
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
+            this.ribbon.SearchEditItem,
             this.menuScelta,
             this.txtIniziale,
             this.btnSceltaIniziale,
             this.barListItem1,
-            this.menuPatenti});
+            this.menuPatenti,
+            this.btnLock,
+            this.btnLascia});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 8;
+            this.ribbon.MaxItemId = 10;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.ribbon.Size = new System.Drawing.Size(1370, 143);
+            this.ribbon.Size = new System.Drawing.Size(1370, 158);
             // 
             // menuScelta
             // 
@@ -437,36 +443,58 @@ namespace GestioneDomandeDX
             this.menuPatenti.Id = 7;
             this.menuPatenti.Name = "menuPatenti";
             // 
+            // btnLock
+            // 
+            this.btnLock.Caption = "Prendi Controllo";
+            this.btnLock.Id = 8;
+            this.btnLock.Name = "btnLock";
+            this.btnLock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // btnLascia
+            // 
+            this.btnLascia.Caption = "Lascia il Controllo";
+            this.btnLascia.Id = 9;
+            this.btnLascia.Name = "btnLascia";
+            this.btnLascia.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLascia_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup2,
-            this.grpSceltaViaIniziale});
+            this.grpSceltaViaIniziale,
+            this.ribbonPageGroup1});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Scelta Esame";
             // 
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.AllowTextClipping = false;
+            this.ribbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup2.ItemLinks.Add(this.menuPatenti);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.ShowCaptionButton = false;
             this.ribbonPageGroup2.Text = "Scelta via menu";
             // 
             // grpSceltaViaIniziale
             // 
             this.grpSceltaViaIniziale.AllowTextClipping = false;
+            this.grpSceltaViaIniziale.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.grpSceltaViaIniziale.ItemLinks.Add(this.txtIniziale);
             this.grpSceltaViaIniziale.ItemLinks.Add(this.btnSceltaIniziale);
             this.grpSceltaViaIniziale.Name = "grpSceltaViaIniziale";
-            this.grpSceltaViaIniziale.ShowCaptionButton = false;
             this.grpSceltaViaIniziale.Text = "Scelta Via Iniziale";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnLock);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnLascia);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Lock";
             // 
             // btnSalvaLayout
             // 
-            this.btnSalvaLayout.Location = new System.Drawing.Point(328, 64);
+            this.btnSalvaLayout.Location = new System.Drawing.Point(1287, 60);
             this.btnSalvaLayout.Name = "btnSalvaLayout";
-            this.btnSalvaLayout.Size = new System.Drawing.Size(126, 23);
+            this.btnSalvaLayout.Size = new System.Drawing.Size(83, 24);
             this.btnSalvaLayout.TabIndex = 3;
             this.btnSalvaLayout.Text = "Salva Layout";
             this.btnSalvaLayout.UseVisualStyleBackColor = true;
@@ -548,6 +576,9 @@ namespace GestioneDomandeDX
         private DevExpress.XtraGrid.Columns.GridColumn colDO_GRDOMCORR;
         private DevExpress.XtraGrid.Columns.GridColumn colDO_ALTROTESTO;
         private DevExpress.XtraGrid.Columns.GridColumn colDO_TESTO_AIUTO;
+        private DevExpress.XtraBars.BarButtonItem btnLock;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem btnLascia;
     }
 }
 

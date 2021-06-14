@@ -36,7 +36,7 @@ namespace GestioneDomandeDX
             -DECIDERE SULLA MODALITà DI CARICAMENTO FATTO
             -GESTIRE IL TESTO IN TEDESCO E FRANCESE
                 !VIENE AGGIUNTO UN CARATTERE IN PIù IN MEZZO AGLI ALTRI
-            -Combobox per alcuni flag
+            -Combobox per alcuni flag 1/2
             -cambiare form modifica
             -lock e gestione crash
             -aggiunta domande e risposte
@@ -56,6 +56,10 @@ namespace GestioneDomandeDX
         List<BarItem> itemMenu;
         Dictionary<string, int> DictTC;
         RepositoryItemMemoEdit memoEdit;
+        public bool IsLocked(egafEntities ctx)
+        {
+            return false;
+        }
         public FormPrincipale()
         {
             #region Inizializzazione
@@ -139,23 +143,9 @@ namespace GestioneDomandeDX
                 HandleCambiatiMaster.Clear();
                 HandleCambiatiDetail.Clear();
                 context = new egafEntities();
-                
-                /*
-                context.Entry(context.risposte).State = EntityState.Detached;
-                context.Entry(context.domande).State = EntityState.Detached;
-                */
                 grdMain.DataSource = new BindingList<domande>(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
                 gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
-                RepositoryItemComboBox a = new RepositoryItemComboBox();
-                a.Closed += onCloseCmb;
-                a.Items.Add("");
-                a.Items.Add("Bloccata");
-                a.Items.Add("Errata");
-                a.ReadOnly = false;
-                a.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.True;
-                a.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-                gridView.OptionsBehavior.Editable = true;
-                gridView.Columns["DO_FLAG_BLOCCATA"].ColumnEdit = a;
+
             }
             catch(Exception ex)
             {
@@ -177,31 +167,19 @@ namespace GestioneDomandeDX
             
             grdMain.DataSource = context.domande.Where(d => iniziali.Any(i => d.DO_CODICE_MINST.StartsWith(i))).ToList();
             gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
-            RepositoryItemComboBox a = new RepositoryItemComboBox();
-            a.Closed += onCloseCmb;
-            a.Items.Add("");
-            a.Items.Add("Bloccata");
-            a.Items.Add("Errata");
-            a.ReadOnly = false;
-            a.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.True;
-            a.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            gridView.OptionsBehavior.Editable = true;
-            gridView.Columns["DO_FLAG_BLOCCATA"].ColumnEdit = a;
-
         }
 
-        private void onCloseCmb(object sender, EventArgs e)
-        {
 
+        private void onClickCmb(object sender, EventArgs e)
+        {
             int flagBlock = ((ComboBoxEdit)sender).SelectedIndex;
-            
+
             GridView main = (GridView)((GridControl)((ComboBoxEdit)sender).Parent).MainView;
             var domanda = (main.GetFocusedRow() as domande);
             int d = domanda.DO_ID;
             ((BindingList<domande>)grdMain.DataSource).Where(dom => dom.DO_ID == d).Select(dom => dom.DO_FLAG_BLOCCATA = flagBlock);
-
-           // d["DO_FLAG_BLOCCATA"] = flagBlock;
         }
+
 
         #region Gestione Master-Detail
         private void gridView_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)

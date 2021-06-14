@@ -11,11 +11,22 @@ namespace GestioneDomandeDX
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class domande
     {
+        public enum bloccata
+        {
+            [Description("")]
+            normale = 0,
+            [Description("Bloccata")]
+            bloccata = 1,
+            [Description("Errata")]
+            errata = 2
+        }
+        
         public domande()
         {
             this.risposte = new HashSet<risposte>();
@@ -32,6 +43,7 @@ namespace GestioneDomandeDX
         public string DO_MULTIMEDIALE { get; set; }
         public Nullable<int> DO_STATISTICA { get; set; }
         public string DO_COMMENTO { get; set; }
+        [EnumDataType(typeof(bloccata))]
         public Nullable<int> DO_FLAG_BLOCCATA { get; set; }
         public string DO_NOTE { get; set; }
         public Nullable<int> DO_FLAG_BLOCCATA_EGAF { get; set; }

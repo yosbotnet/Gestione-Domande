@@ -36,18 +36,6 @@ namespace GestioneDomandeDX
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grdMain = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.menuScelta = new DevExpress.XtraBars.BarSubItem();
-            this.txtIniziale = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.btnSceltaIniziale = new DevExpress.XtraBars.BarButtonItem();
-            this.barListItem1 = new DevExpress.XtraBars.BarListItem();
-            this.menuPatenti = new DevExpress.XtraBars.BarSubItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.grpSceltaViaIniziale = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnSalvaLayout = new System.Windows.Forms.Button();
-            this.controlloOrtografico = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
             this.colDO_ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDO_MINIST_MA_ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDO_TESTO = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -79,6 +67,18 @@ namespace GestioneDomandeDX
             this.colDO_GRDOMCORR = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDO_ALTROTESTO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDO_TESTO_AIUTO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.menuScelta = new DevExpress.XtraBars.BarSubItem();
+            this.txtIniziale = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.btnSceltaIniziale = new DevExpress.XtraBars.BarButtonItem();
+            this.barListItem1 = new DevExpress.XtraBars.BarListItem();
+            this.menuPatenti = new DevExpress.XtraBars.BarSubItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.grpSceltaViaIniziale = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnSalvaLayout = new System.Windows.Forms.Button();
+            this.controlloOrtografico = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -160,103 +160,6 @@ namespace GestioneDomandeDX
             this.gridView.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.gridView_MasterRowGetRelationCount);
             this.gridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView_ValidateRow);
             this.gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView_RowUpdated);
-            // 
-            // ribbon
-            // 
-            this.ribbon.ExpandCollapseItem.Id = 0;
-            this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbon.ExpandCollapseItem,
-            this.menuScelta,
-            this.txtIniziale,
-            this.btnSceltaIniziale,
-            this.barListItem1,
-            this.menuPatenti});
-            this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 8;
-            this.ribbon.Name = "ribbon";
-            this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1});
-            this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTextEdit1});
-            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbon.Size = new System.Drawing.Size(1370, 143);
-            // 
-            // menuScelta
-            // 
-            this.menuScelta.Caption = "Scegli Esame";
-            this.menuScelta.Id = 1;
-            this.menuScelta.Name = "menuScelta";
-            // 
-            // txtIniziale
-            // 
-            this.txtIniziale.Caption = "Iniziali separate da virgole:";
-            this.txtIniziale.Edit = this.repositoryItemTextEdit1;
-            this.txtIniziale.Id = 3;
-            this.txtIniziale.Name = "txtIniziale";
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            // 
-            // btnSceltaIniziale
-            // 
-            this.btnSceltaIniziale.Caption = "Seleziona";
-            this.btnSceltaIniziale.Id = 4;
-            this.btnSceltaIniziale.Name = "btnSceltaIniziale";
-            this.btnSceltaIniziale.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSceltaIniziale_ItemClick);
-            // 
-            // barListItem1
-            // 
-            this.barListItem1.Caption = "barListItem1";
-            this.barListItem1.Id = 5;
-            this.barListItem1.Name = "barListItem1";
-            // 
-            // menuPatenti
-            // 
-            this.menuPatenti.Caption = "Lista Patente";
-            this.menuPatenti.Id = 7;
-            this.menuPatenti.Name = "menuPatenti";
-            // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2,
-            this.grpSceltaViaIniziale});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Scelta Esame";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.AllowTextClipping = false;
-            this.ribbonPageGroup2.ItemLinks.Add(this.menuPatenti);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.ShowCaptionButton = false;
-            this.ribbonPageGroup2.Text = "Scelta via menu";
-            // 
-            // grpSceltaViaIniziale
-            // 
-            this.grpSceltaViaIniziale.AllowTextClipping = false;
-            this.grpSceltaViaIniziale.ItemLinks.Add(this.txtIniziale);
-            this.grpSceltaViaIniziale.ItemLinks.Add(this.btnSceltaIniziale);
-            this.grpSceltaViaIniziale.Name = "grpSceltaViaIniziale";
-            this.grpSceltaViaIniziale.ShowCaptionButton = false;
-            this.grpSceltaViaIniziale.Text = "Scelta Via Iniziale";
-            // 
-            // btnSalvaLayout
-            // 
-            this.btnSalvaLayout.Location = new System.Drawing.Point(328, 64);
-            this.btnSalvaLayout.Name = "btnSalvaLayout";
-            this.btnSalvaLayout.Size = new System.Drawing.Size(126, 23);
-            this.btnSalvaLayout.TabIndex = 3;
-            this.btnSalvaLayout.Text = "Salva Layout";
-            this.btnSalvaLayout.UseVisualStyleBackColor = true;
-            this.btnSalvaLayout.Click += new System.EventHandler(this.btnSalvaLayout_Click);
-            // 
-            // controlloOrtografico
-            // 
-            this.controlloOrtografico.Culture = new System.Globalization.CultureInfo("it-IT");
-            this.controlloOrtografico.ParentContainer = null;
             // 
             // colDO_ID
             // 
@@ -477,6 +380,102 @@ namespace GestioneDomandeDX
             this.colDO_TESTO_AIUTO.Visible = true;
             this.colDO_TESTO_AIUTO.VisibleIndex = 16;
             this.colDO_TESTO_AIUTO.Width = 103;
+            // 
+            // ribbon
+            // 
+            this.ribbon.ExpandCollapseItem.Id = 0;
+            this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbon.ExpandCollapseItem,
+            this.menuScelta,
+            this.txtIniziale,
+            this.btnSceltaIniziale,
+            this.barListItem1,
+            this.menuPatenti});
+            this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.MaxItemId = 8;
+            this.ribbon.Name = "ribbon";
+            this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage1});
+            this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit1});
+            this.ribbon.Size = new System.Drawing.Size(1370, 143);
+            // 
+            // menuScelta
+            // 
+            this.menuScelta.Caption = "Scegli Esame";
+            this.menuScelta.Id = 1;
+            this.menuScelta.Name = "menuScelta";
+            // 
+            // txtIniziale
+            // 
+            this.txtIniziale.Caption = "Iniziali separate da virgole:";
+            this.txtIniziale.Edit = this.repositoryItemTextEdit1;
+            this.txtIniziale.Id = 3;
+            this.txtIniziale.Name = "txtIniziale";
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
+            // btnSceltaIniziale
+            // 
+            this.btnSceltaIniziale.Caption = "Seleziona";
+            this.btnSceltaIniziale.Id = 4;
+            this.btnSceltaIniziale.Name = "btnSceltaIniziale";
+            this.btnSceltaIniziale.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSceltaIniziale_ItemClick);
+            // 
+            // barListItem1
+            // 
+            this.barListItem1.Caption = "barListItem1";
+            this.barListItem1.Id = 5;
+            this.barListItem1.Name = "barListItem1";
+            // 
+            // menuPatenti
+            // 
+            this.menuPatenti.Caption = "Lista Patente";
+            this.menuPatenti.Id = 7;
+            this.menuPatenti.Name = "menuPatenti";
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2,
+            this.grpSceltaViaIniziale});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Scelta Esame";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.AllowTextClipping = false;
+            this.ribbonPageGroup2.ItemLinks.Add(this.menuPatenti);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.ShowCaptionButton = false;
+            this.ribbonPageGroup2.Text = "Scelta via menu";
+            // 
+            // grpSceltaViaIniziale
+            // 
+            this.grpSceltaViaIniziale.AllowTextClipping = false;
+            this.grpSceltaViaIniziale.ItemLinks.Add(this.txtIniziale);
+            this.grpSceltaViaIniziale.ItemLinks.Add(this.btnSceltaIniziale);
+            this.grpSceltaViaIniziale.Name = "grpSceltaViaIniziale";
+            this.grpSceltaViaIniziale.ShowCaptionButton = false;
+            this.grpSceltaViaIniziale.Text = "Scelta Via Iniziale";
+            // 
+            // btnSalvaLayout
+            // 
+            this.btnSalvaLayout.Location = new System.Drawing.Point(328, 64);
+            this.btnSalvaLayout.Name = "btnSalvaLayout";
+            this.btnSalvaLayout.Size = new System.Drawing.Size(126, 23);
+            this.btnSalvaLayout.TabIndex = 3;
+            this.btnSalvaLayout.Text = "Salva Layout";
+            this.btnSalvaLayout.UseVisualStyleBackColor = true;
+            this.btnSalvaLayout.Click += new System.EventHandler(this.btnSalvaLayout_Click);
+            // 
+            // controlloOrtografico
+            // 
+            this.controlloOrtografico.Culture = new System.Globalization.CultureInfo("it-IT");
+            this.controlloOrtografico.ParentContainer = null;
             // 
             // FormPrincipale
             // 

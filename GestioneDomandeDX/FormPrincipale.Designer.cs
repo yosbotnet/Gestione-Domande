@@ -517,6 +517,7 @@ namespace GestioneDomandeDX
             this.Name = "FormPrincipale";
             this.Ribbon = this.ribbon;
             this.Text = "Gestione Domande";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPrincipale_FormClosing);
             this.Load += new System.EventHandler(this.FormPrincipale_Load);
             this.SizeChanged += new System.EventHandler(this.FormPrincipale_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

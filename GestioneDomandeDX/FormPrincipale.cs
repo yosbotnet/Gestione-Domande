@@ -24,22 +24,18 @@ namespace GestioneDomandeDX
         /*
 
 
-
-
-
-
             OBBIETTIVI ATTUALI
             ---------------------------------------------------------------------------------
-                                                 IMPORTANTE
+                                                 LUNEDI 14/6
             ---------------------------------------------------------------------------------
-            -RISTRUTTURARE IL CODICE PER ADATTARLO ALLA LISTA DI GRIGLIE
+            -DOMANDA NON MODIFICABILE QUANDO IL TESTO è VUOTO
+            -AL Click Esplodere la view delle risposte
             ---------------------------------------------------------------------------------
-                                                 IMPORTANTE
+                                                 OBIETTIVI GIORNALIERI
             ---------------------------------------------------------------------------------
             -GESTIRE IL SALVATAGGIO FATTO
                 +CONTROLLARE SE I DATI SALVATI RISPETTANO LE REGOLE FATTO
                 +COLORARE LE RIGHE MODIFICATE  FATTO
-                +USARE  System.ComponentModel.DataAnnotations PER I REQUISITI 
             -DECIDERE SULLA MODALITà DI CARICAMENTO FATTO
             -GESTIRE IL TESTO IN TEDESCO E FRANCESE
                 !VIENE AGGIUNTO UN CARATTERE IN PIù IN MEZZO AGLI ALTRI
@@ -52,8 +48,7 @@ namespace GestioneDomandeDX
             -applicare modifiche in certi campi anche in quelli con codice egaf uguali
             -rendere la domanda non modificabile quando il testo risposta contiene il testo della domanda
             -Organizzare in funzioni parti di codice ripetuta
-
-
+            -
         */
         GridView dettagli;
         egafEntities context;
@@ -86,8 +81,6 @@ namespace GestioneDomandeDX
             Dictionary<string, int> DictTC = context.v_tipipatente.ToDictionary(tc =>tc.MD_DESCRIZIONE,tc=>tc.TC_ID);
             TABEDITABILI = false;
             gridView.OptionsBehavior.Editable = TABEDITABILI;
-            btnLascia.Enabled = false;
-            btnLock.Enabled = true;
             //----Inizializzo il BarManager
             BarManager barm = new BarManager();
             barm.Form = this;            
@@ -304,8 +297,8 @@ namespace GestioneDomandeDX
         {
             
             if (lck.IsLocked())
-            {
-                MessageBox.Show("La tabella è Lockata Da "+ String.Join(", ", context.locks.Select(l=> l.USER).ToArray()));
+            {              
+                MessageBox.Show("La tabella è Lockata Da "+ string.Join(", ", lck.LockOwners() ) );
                 TABEDITABILI = false;
                 return;
             }
@@ -315,12 +308,9 @@ namespace GestioneDomandeDX
         }
         private void btnLascia_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (lck.IsLocked())
-            {
-                lockGriglia();
-                lck.unLock();
-            }
 
+            lockGriglia();
+            lck.unLock();
             return;
         }
         void lockGriglia()
@@ -334,49 +324,83 @@ namespace GestioneDomandeDX
         }
         void unlockGriglia()
         {
-            btnLock.Enabled = false;
-            btnLascia.Enabled = true;
-            lck.lockTables();
-            TABEDITABILI = true;
-            gridView.OptionsBehavior.Editable = true;
-            listaDettagli.ForEach(d => d.OptionsBehavior.Editable = true);
+            
+            if (lck.lockTables())
+            {
+                btnLock.Enabled = false;
+                btnLascia.Enabled = true;
+                TABEDITABILI = true;
+                gridView.OptionsBehavior.Editable = true;
+                listaDettagli.ForEach(d => d.OptionsBehavior.Editable = true); ;
+            }
+            
         }
         //esempio di riga
         // '5', 'Ame', '2007-05-08 12:35:29'
 
         private void setupGrid(List<domande> query)
         {
-            btnLock.Enabled = true;
             HandleCambiatiMaster.Clear();
             HandleCambiatiDetail.Clear();
             context = new egafEntities();
+            lck = new lockUtils(context);
+            lck.unLock();
+            //bottoni
+            btnLock.Enabled = true;
             grdMain.DataSource = new BindingList<domande>(query);
             gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
+            
+        }
+
+        private void FormPrincipale_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            lck.unLock();
         }
     }
+    /// <summary>
+    /// Classe che gestisce i lock
+    /// </summary>
     public class lockUtils
     {
         egafEntities ctx;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="con">contesto</param>
         public lockUtils(egafEntities con)
         {
             this.ctx = con;
         }
         public bool IsLocked()
         {
-            
-            return ctx.locks.Count() > 0;
+            //
+            return ctx.locks.Where(l => l.USER != Environment.UserName).Any();
         }
-        public void lockTables()
+        public bool lockTables()
         {
-            locks newLock = new locks();
-            newLock.DATAORA = DateTime.Now;
-            newLock.USER = Environment.UserName;
-            ctx.locks.Add(newLock);
-            ctx.SaveChanges();
+            if (IsLocked())
+            {
+                //forse servira
+                return false;
+            }
+            else
+            {
+                locks newLock = new locks();
+                newLock.DATAORA = DateTime.Now;
+                newLock.USER = Environment.UserName;
+                ctx.locks.Add(newLock);
+                ctx.SaveChanges();
+                return true;
+            }
+
+        }
+        public string[] LockOwners()
+        {
+            return ctx.locks.Select(l => l.USER).ToArray();
         }
         public void unLock()
         {
-            ctx.Database.ExecuteSqlCommand("DELETE FROM locks WHERE ID>=0");
+            ctx.Database.ExecuteSqlCommand(String.Format("DELETE FROM locks WHERE ID>=0 AND USER ='{0}'",Environment.UserName.Replace("'","''")));
         }
     }
 }

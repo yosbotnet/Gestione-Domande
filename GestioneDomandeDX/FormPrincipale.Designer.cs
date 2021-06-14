@@ -446,9 +446,10 @@ namespace GestioneDomandeDX
             // btnLock
             // 
             this.btnLock.Caption = "Prendi Controllo";
+            this.btnLock.Enabled = false;
             this.btnLock.Id = 8;
             this.btnLock.Name = "btnLock";
-            this.btnLock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            this.btnLock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrendi_ItemClick);
             // 
             // btnLascia
             // 

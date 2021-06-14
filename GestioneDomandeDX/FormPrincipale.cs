@@ -126,6 +126,8 @@ namespace GestioneDomandeDX
             barm.ItemClick += clickSubMenu;
             barm.EndUpdate();
             #endregion
+            btnLock.Enabled = false;
+            btnLascia.Enabled = false;
             gridView.DataController.AllowIEnumerableDetails = true;
 
         }
@@ -156,14 +158,22 @@ namespace GestioneDomandeDX
             {
                 //IMAGE INDEX INDICA IL TC_ID
                 int idNuovo = e.Item.ImageIndex;
-                HandleCambiatiMaster.Clear();
-                HandleCambiatiDetail.Clear();
-                context = new egafEntities();
-                grdMain.DataSource = new BindingList<domande>(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
-                gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
+                setupGrid(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
 
             }
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+        private void btnSceltaIniziale_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                var iniziali = ((string)txtIniziale.EditValue).Split(',').AsEnumerable();
+                setupGrid(context.domande.Where(d => iniziali.Any(i => d.DO_CODICE_MINST.StartsWith(i))).ToList());
+            }catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -173,16 +183,7 @@ namespace GestioneDomandeDX
         {
 
         }
-        private void btnSceltaIniziale_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-            var iniziali = ((string)txtIniziale.EditValue).Split(',').AsEnumerable();
-            HandleCambiatiMaster.Clear();
-            HandleCambiatiDetail.Clear();
-            
-            grdMain.DataSource = context.domande.Where(d => iniziali.Any(i => d.DO_CODICE_MINST.StartsWith(i))).ToList();
-            gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
-        }
+        
         private void onClickCmb(object sender, EventArgs e)
         {
             int flagBlock = ((ComboBoxEdit)sender).SelectedIndex;
@@ -299,13 +300,12 @@ namespace GestioneDomandeDX
             gridView.SaveLayoutToXml(@"..\..\layout.xml");
         }
 
-        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnPrendi_ItemClick(object sender, ItemClickEventArgs e)
         {
-            btnLock.Enabled = false;
-            btnLascia.Enabled = true;
+            
             if (lck.IsLocked())
             {
-                MessageBox.Show("La tabella è Lockata. Aspettare");
+                MessageBox.Show("La tabella è Lockata Da "+ String.Join(", ", context.locks.Select(l=> l.USER).ToArray()));
                 TABEDITABILI = false;
                 return;
             }
@@ -313,21 +313,6 @@ namespace GestioneDomandeDX
             unlockGriglia();
 
         }
-        void lockGriglia()
-        {
-            lck.unLock();
-            TABEDITABILI = false;
-            gridView.OptionsBehavior.Editable = false;
-            listaDettagli.Select(d => d.OptionsBehavior.Editable = false);
-        }
-        void unlockGriglia()
-        {
-            lck.lockTables();
-            TABEDITABILI = true;
-            gridView.OptionsBehavior.Editable = true;
-            listaDettagli.Select(d => d.OptionsBehavior.Editable = true);
-        }
-
         private void btnLascia_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (lck.IsLocked())
@@ -335,9 +320,38 @@ namespace GestioneDomandeDX
                 lockGriglia();
                 lck.unLock();
             }
+
+            return;
+        }
+        void lockGriglia()
+        {
             btnLock.Enabled = true;
             btnLascia.Enabled = false;
-            return;
+            lck.unLock();
+            TABEDITABILI = false;
+            gridView.OptionsBehavior.Editable = false;
+            listaDettagli.ForEach(d => d.OptionsBehavior.Editable = false);
+        }
+        void unlockGriglia()
+        {
+            btnLock.Enabled = false;
+            btnLascia.Enabled = true;
+            lck.lockTables();
+            TABEDITABILI = true;
+            gridView.OptionsBehavior.Editable = true;
+            listaDettagli.ForEach(d => d.OptionsBehavior.Editable = true);
+        }
+        //esempio di riga
+        // '5', 'Ame', '2007-05-08 12:35:29'
+
+        private void setupGrid(List<domande> query)
+        {
+            btnLock.Enabled = true;
+            HandleCambiatiMaster.Clear();
+            HandleCambiatiDetail.Clear();
+            context = new egafEntities();
+            grdMain.DataSource = new BindingList<domande>(query);
+            gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
         }
     }
     public class lockUtils
@@ -362,7 +376,7 @@ namespace GestioneDomandeDX
         }
         public void unLock()
         {
-            ctx.Database.ExecuteSqlCommand("TRUNCATE TABLE locks");
+            ctx.Database.ExecuteSqlCommand("DELETE FROM locks WHERE ID>=0");
         }
     }
 }

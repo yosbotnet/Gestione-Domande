@@ -27,10 +27,10 @@ namespace GestioneDomandeDX
 
             OBBIETTIVI ATTUALI
             ---------------------------------------------------------------------------------
-                                                 LUNEDI 14/6
+                                                 MARTEDI 15/6
             ---------------------------------------------------------------------------------
-            -DOMANDA NON MODIFICABILE QUANDO IL TESTO è VUOTO FATTo
-            -AL Click Esplodere la view delle risposte
+            -applicare modifiche in certi campi anche in quelli con codice egaf uguali
+            -Aggiunta dizionario per controllo ortografico
             ---------------------------------------------------------------------------------
                                                  OBIETTIVI GIORNALIERI
             ---------------------------------------------------------------------------------
@@ -47,8 +47,8 @@ namespace GestioneDomandeDX
             --pulsante per entrare e lockare, uscire e unlockare FATTO
             -!se non sei in modifca, grid readonly FATTO
             -applicare modifiche in certi campi anche in quelli con codice egaf uguali
-            -rendere la domanda non modificabile quando il testo risposta contiene il testo della domanda
-            -Organizzare in funzioni parti di codice ripetuta
+            -rendere la domanda non modificabile quando il testo risposta contiene il testo della domanda FATTO
+            -Organizzare in funzioni parti di codice ripetuta FATTO
             -
         */
         GridView dettagli;
@@ -61,6 +61,7 @@ namespace GestioneDomandeDX
         // forse avro bisogno di un List<GridView> per tutte le viste presenti. Servirà per applicare un singolo cambiamento a tutte
         List<GridView> listaDettagli;
         bool TABEDITABILI;
+        bool DOM_NO_TESTO;
         RepositoryItemMemoEdit memoEdit;
 
         public FormPrincipale()
@@ -157,12 +158,15 @@ namespace GestioneDomandeDX
                 setupGrid(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
                 if(context.v_releaseopere.Where(ro=> ro.RO_TC_ID == idNuovo).FirstOrDefault().RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA == 1)
                 {
+                    DOM_NO_TESTO = true;
                     gridView.Columns["DO_TESTO"].OptionsColumn.AllowEdit = false;
                 }
                 else
                 {
+                    DOM_NO_TESTO = false;
                     gridView.Columns["DO_TESTO"].OptionsColumn.AllowEdit = true;
                 }
+                //expandVisibleRows();
             }
             catch(Exception ex)
             {
@@ -182,6 +186,7 @@ namespace GestioneDomandeDX
                 listaDettagli.ForEach(d => d.OptionsBehavior.Editable = TABEDITABILI);
                 btnLock.Enabled = false;
                 btnLascia.Enabled = false;
+                DOM_NO_TESTO = true;
             }
             catch (Exception ex)
             {
@@ -314,7 +319,12 @@ namespace GestioneDomandeDX
         {
             GridViewInfo viewInfo = gridView.GetViewInfo() as GridViewInfo;
             int visibleRows = viewInfo.RowsInfo.Count;
-            //viewInfo.RowsInfo.GetFirstScrollableRow
+            int firstRow = gridView.TopRowIndex;
+            for (int i = firstRow; i < firstRow + visibleRows; i++)
+            {
+                if(!gridView.GetMasterRowExpanded(i))
+                    gridView.SetMasterRowExpanded(i, true);
+            }
         }
         private void btnPrendi_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -331,7 +341,6 @@ namespace GestioneDomandeDX
         }
         private void btnLascia_ItemClick(object sender, ItemClickEventArgs e)
         {
-
             lockGriglia();
             lck.unLock();
             return;
@@ -367,9 +376,10 @@ namespace GestioneDomandeDX
             HandleCambiatiDetail.Clear();
             context = new egafEntities();
             lck = new lockUtils(context);
-            lck.unLock();
-            //bottoni
+            //codice questionabile
+            lck.unLock();           
             btnLock.Enabled = true;
+            btnLascia.Enabled = false;
             grdMain.DataSource = new BindingList<domande>(query);
             gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
             
@@ -382,11 +392,18 @@ namespace GestioneDomandeDX
 
         private void gridView_RowClick(object sender, RowClickEventArgs e)
         {
+            /*
             domande d = ((GridView)sender).GetRow(e.RowHandle) as domande;
-            if(context.v_releaseopere.Where(ro=> ro.RO_TC_ID == d.esami.ES_TC_ID).FirstOrDefault().RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA == 1  )
+            if(DOM_NO_TESTO && !gridView.GetMasterRowExpanded(e.RowHandle) )
             {
                 gridView.SetMasterRowExpanded(e.RowHandle, true);
             }
+            */
+        }
+
+        private void gridView_TopRowChanged(object sender, EventArgs e)
+        {
+            //expandVisibleRows();
         }
     }
     /// <summary>
@@ -405,7 +422,6 @@ namespace GestioneDomandeDX
         }
         public bool IsLocked()
         {
-            //
             return ctx.locks.Where(l => l.USER != Environment.UserName).Any();
         }
         public bool lockTables()

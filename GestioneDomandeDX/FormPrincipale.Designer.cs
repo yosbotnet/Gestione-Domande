@@ -33,6 +33,7 @@ namespace GestioneDomandeDX
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraSpellChecker.SpellCheckerDictionary spellCheckerDictionary1 = new DevExpress.XtraSpellChecker.SpellCheckerDictionary();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grdMain = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -162,6 +163,7 @@ namespace GestioneDomandeDX
             this.gridView.MasterRowGetChildList += new DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(this.gridView_MasterRowGetChildList);
             this.gridView.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.gridView_MasterRowGetRelationName);
             this.gridView.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.gridView_MasterRowGetRelationCount);
+            this.gridView.TopRowChanged += new System.EventHandler(this.gridView_TopRowChanged);
             this.gridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView_ValidateRow);
             this.gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView_RowUpdated);
             // 
@@ -505,7 +507,15 @@ namespace GestioneDomandeDX
             // controlloOrtografico
             // 
             this.controlloOrtografico.Culture = new System.Globalization.CultureInfo("it-IT");
+            spellCheckerDictionary1.AlphabetPath = "";
+            spellCheckerDictionary1.CacheKey = null;
+            spellCheckerDictionary1.Culture = new System.Globalization.CultureInfo("it-IT");
+            spellCheckerDictionary1.DictionaryPath = "C:\\Users\\stagista\\Documents\\Visual Studio 2015\\Projects\\GestioneDomandeDX\\Medico." +
+    "IT_20111218.oxt";
+            spellCheckerDictionary1.Encoding = System.Text.Encoding.GetEncoding(1252);
+            this.controlloOrtografico.Dictionaries.Add(spellCheckerDictionary1);
             this.controlloOrtografico.ParentContainer = null;
+            this.controlloOrtografico.SpellCheckMode = DevExpress.XtraSpellChecker.SpellCheckMode.AsYouType;
             // 
             // FormPrincipale
             // 

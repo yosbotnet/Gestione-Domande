@@ -1,3 +1,9 @@
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.exe
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.EditForm.resources
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.FormPrincipale.resources
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.Properties.Resources.resources
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.csproj.GenerateResource.Cache
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.exe.licenses
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\GestioneDomandeDX.exe.config
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\GestioneDomandeDX.exe
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\GestioneDomandeDX.pdb
@@ -167,10 +173,4 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ja\DevExpress.XtraTreeList.v21.1.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ru\DevExpress.XtraTreeList.v21.1.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.csprojResolveAssemblyReference.cache
-C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.EditForm.resources
-C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.FormPrincipale.resources
-C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.Properties.Resources.resources
-C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.csproj.GenerateResource.Cache
-C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.exe.licenses
-C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.exe
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.pdb

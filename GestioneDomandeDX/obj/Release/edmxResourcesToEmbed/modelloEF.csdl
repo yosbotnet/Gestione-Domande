@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="egafMainEF" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="abb_dom_materie_minist">
+    <Key>
+      <PropertyRef Name="AB9_ID" />
+    </Key>
+    <Property Name="AB9_ID" Type="Int32" Nullable="false" />
+    <Property Name="AB9_MINIST_MA_ID" Type="Int32" />
+    <Property Name="AB9_DO_ID" Type="Int32" />
+    <Property Name="AB9_FLAGSTATISTICHE" Type="Byte" />
+    <Property Name="AB9_DATAAGG" Type="DateTime" />
+    <Property Name="AB9_RELEASE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="abbinamento_esami_materie">
+    <Key>
+      <PropertyRef Name="AB5_ID" />
+    </Key>
+    <Property Name="AB5_ID" Type="Int32" Nullable="false" />
+    <Property Name="AB5_ES_ID" Type="Int32" />
+    <Property Name="AB5_MA_ID" Type="Int32" />
+    <Property Name="AB5_RELEASE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AB5_SOTTOES_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="dettaglioregole">
+    <Key>
+      <PropertyRef Name="DR_ID" />
+      <PropertyRef Name="DR_PROG" />
+    </Key>
+    <Property Name="DR_ID" Type="Int32" Nullable="false" />
+    <Property Name="DR_RE_ID" Type="Int32" />
+    <Property Name="DR_DESCRIZIONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DR_MATERIE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DR_DA" Type="Byte" />
+    <Property Name="DR_AD" Type="Byte" />
+    <Property Name="DR_PROG" Type="Int32" Nullable="false" />
+    <Property Name="DR_MM_ID" Type="Int32" />
+    <Property Name="DR_ORDINE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="DR_AGGREGAZIONEESAMI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="domande">
+    <Key>
+      <PropertyRef Name="DO_ID" />
+    </Key>
+    <Property Name="DO_ID" Type="Int32" Nullable="false" />
+    <Property Name="DO_MINIST_MA_ID" Type="Int32" />
+    <Property Name="DO_TESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_AR_ID" Type="Int32" />
+    <Property Name="DO_CODICE_MINST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DO_CODICE_EGAF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DO_IMG2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_MULTIMEDIALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_STATISTICA" Type="Int32" />
+    <Property Name="DO_COMMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_FLAG_BLOCCATA" Type="Int32" />
+    <Property Name="DO_NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DO_FLAG_BLOCCATA_EGAF" Type="Int32" />
+    <Property Name="DO_NOTE_EGAF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TEORICOPRATICO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="DO_ES_ID" Type="Int32" />
+    <Property Name="DO_FLAG_OBSOLETA" Type="Int32" />
+    <Property Name="DO_TESTOCN" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTOES" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTOMA" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTOGB" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTORU" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_PROGRESSIVO" Type="Int32" />
+    <Property Name="DO_STATISTICAV" Type="Int32" />
+    <Property Name="DO_STATISTICAF" Type="Int32" />
+    <Property Name="DO_GRDOMCORR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="DO_ALTROTESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTO_AIUTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tipocommissione" Relationship="Self.FK_Domande_TipoCommissione_TC_ID" FromRole="domande" ToRole="tipocommissione" />
+    <NavigationProperty Name="risposte" Relationship="Self.FK_Risposte_Domande_DO_ID" FromRole="domande" ToRole="risposte" />
+    <NavigationProperty Name="esami" Relationship="egafMainEF.FK_Domande_Esame_ES_ID" FromRole="domande" ToRole="esami" />
+  </EntityType>
+  <EntityType Name="esami">
+    <Key>
+      <PropertyRef Name="ES_ID" />
+    </Key>
+    <Property Name="ES_ID" Type="Int32" Nullable="false" />
+    <Property Name="ES_MNEMO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ES_DESCRIZIONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ES_RE_ID" Type="Int32" />
+    <Property Name="ES_SIGLAMULTIMEDIALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ES_SIGLA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ES_TC_ID" Type="Int32" />
+    <Property Name="ES_ESAME_APERTO" Type="Byte" />
+    <Property Name="ES_MONTE_ORE" Type="Int32" />
+    <Property Name="ES_MAX_ASSENZE_ORE" Type="Int32" />
+    <Property Name="ES_MAX_ASSENZE_PERC" Type="Int32" />
+    <Property Name="ES_BROWSERMULTIMEDIALE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ES_SIGLABREVE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ES_DESCRIZIONEATTESTATO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ES_MULTIESBASE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ES_MULTIESLIVELLO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ES_ORDINEAGGREGAZIONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ES_STAMPAATTESTATO" Type="Byte" />
+    <Property Name="ES_NONSELEZIONABILE" Type="Byte" />
+    <Property Name="ES_ORDINAMENTO" Type="Int32" />
+    <Property Name="ES_REVISIONE" Type="Byte" />
+    <Property Name="ES_DESCRIZIONE_APP" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ES_ESCLUDI_DA_APP" Type="Byte" />
+    <NavigationProperty Name="tipocommissione" Relationship="Self.FK_Esami_TipoCommissione_TC_ID" FromRole="esami" ToRole="tipocommissione" />
+    <NavigationProperty Name="domande" Relationship="egafMainEF.FK_Domande_Esame_ES_ID" FromRole="esami" ToRole="domande" />
+  </EntityType>
+  <EntityType Name="regole">
+    <Key>
+      <PropertyRef Name="RE_ID" />
+      <PropertyRef Name="RE_PROG" />
+    </Key>
+    <Property Name="RE_ID" Type="Int32" Nullable="false" />
+    <Property Name="RE_DESCRIZIONE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RE_DOMXQUEST" Type="Int32" />
+    <Property Name="RE_RISXDOM" Type="Int32" />
+    <Property Name="RE_HDOM" Type="Int32" />
+    <Property Name="RE_HTESTODOM" Type="Int32" />
+    <Property Name="RE_HTESTORISP" Type="Int32" />
+    <Property Name="RE_HLINE" Type="Int32" />
+    <Property Name="RE_TIPOREGOLA" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="RE_DEFAULT" Type="Byte" />
+    <Property Name="RE_DOMXPAG" Type="Int32" />
+    <Property Name="RE_FONTSIZEDOM" Type="Int32" />
+    <Property Name="RE_FONTSIZERISP" Type="Int32" />
+    <Property Name="RE_WIMG" Type="Int32" />
+    <Property Name="RE_RIGHEWRAP" Type="Int32" />
+    <Property Name="RE_PERCENTUALE" Type="Int32" />
+    <Property Name="RE_TIPOCALCOLO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RE_PARAMINTESTAZIONE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RE_NUMERARISPOSTE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RE_LIMITE_RISPFALSE" Type="Int32" />
+    <Property Name="RE_ORDINAMENTORISPOSTE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RE_PUNTEGGIOMINIMO" Type="Int32" />
+    <Property Name="RE_PUNTEGGIOMASSIMO" Type="Int32" />
+    <Property Name="RE_ANZIANITA" Type="Int32" />
+    <Property Name="RE_PUNTMINIMOTOTALE" Type="Int32" />
+    <Property Name="RE_TEMPOESAME" Type="Int32" />
+    <Property Name="RE_ORDINAMENTODOMANDE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RE_PROG" Type="Int32" Nullable="false" />
+    <Property Name="RE_RISPMINIMECP" Type="Int32" />
+    <Property Name="RE_RISPMINIMECPANZ" Type="Int32" />
+    <Property Name="RE_LIMITE_MIN_RISPFALSE" Type="Int32" />
+    <Property Name="RE_VOTOMINIMOCP" Type="Int32" />
+    <Property Name="RE_TIPOCALCOLO_ESITO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RE_TIPORIGADINAMICO" Type="Int32" />
+    <Property Name="RE_DOMXPAGNOIMG" Type="Int32" />
+    <Property Name="RE_PESORISPESATTE" Type="Single" />
+    <Property Name="RE_PESORISPERRATE" Type="Single" />
+    <Property Name="RE_PESORISPNONDATE" Type="Single" />
+  </EntityType>
+  <EntityType Name="releaseopere">
+    <Key>
+      <PropertyRef Name="RO_ID" />
+    </Key>
+    <Property Name="RO_ID" Type="Int32" Nullable="false" />
+    <Property Name="RO_TC_ID" Type="Int32" />
+    <Property Name="RO_RELEASE" Type="Int32" />
+    <Property Name="RO_DATA" Type="DateTime" />
+    <Property Name="RO_RELEASE_MULTIMEDIALE" Type="Int32" />
+    <Property Name="RO_DESCR_REL_MULTIMEDIALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RO_TIPOSEGMENTI" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RO_ESISTENZATESTO" Type="Int32" />
+    <Property Name="RO_ESISTENZAAUDIO" Type="Int32" />
+    <Property Name="RO_PUBBLICARELEASE" Type="Int32" />
+    <Property Name="RO_FONTQUESTFISSO" Type="Int32" />
+    <Property Name="RO_LINGUEAMMESSE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RO_COMPATTALIVELLI" Type="Int32" />
+    <Property Name="RO_MULTIMEDIALEOLD" Type="Int32" />
+    <Property Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" Type="Int32" />
+    <Property Name="RO_GENERAQUESTIONARI" Type="Int32" />
+    <Property Name="RO_ESCLUDI_CASIPRATICI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RO_DATAVALIDITA_LICENZA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RO_ALLIEVO_ESCLUDI_QUIZ_ARGOMENTO" Type="Int32" />
+    <Property Name="RO_ALLIEVO_ESCLUDI_QUIZ_DIFFICOLTA" Type="Int32" />
+  </EntityType>
+  <EntityType Name="risposte">
+    <Key>
+      <PropertyRef Name="RI_ID" />
+    </Key>
+    <Property Name="RI_ID" Type="Int32" Nullable="false" />
+    <Property Name="RI_DO_ID" Type="Int32" />
+    <Property Name="RI_TESTOORDINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_VF" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RI_COMMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RI_FLAG_BLOCCATA" Type="Int32" />
+    <Property Name="RI_NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_FLAG_BLOCCATA_EGAF" Type="Int32" />
+    <Property Name="RI_NOTE_EGAF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_ES_ID" Type="Int32" />
+    <Property Name="RI_FLAG_OBSOLETA" Type="Int32" />
+    <Property Name="RI_ORDINAMENTOCASUALE" Type="Int32" />
+    <Property Name="RI_TESTOCN" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTOES" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTOMA" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTOGB" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTORU" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_PROGRESSIVO" Type="Int32" />
+    <Property Name="RI_CODICE_MINIST" Type="Int32" />
+    <Property Name="RI_IMG" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_IMG2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_ALTROTESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="domande" Relationship="Self.FK_Risposte_Domande_DO_ID" FromRole="risposte" ToRole="domande" />
+    <NavigationProperty Name="tipocommissione" Relationship="Self.FK_Risposte_TipoCommissione_TC_ID" FromRole="risposte" ToRole="tipocommissione" />
+  </EntityType>
+  <EntityType Name="tipocommissione">
+    <Key>
+      <PropertyRef Name="TC_ID" />
+    </Key>
+    <Property Name="TC_ID" Type="Int32" Nullable="false" />
+    <Property Name="TC_DESCRIZIONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_TESTOVERBALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_TESTOATTESTATO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_ESAMEAPERTO" Type="Byte" />
+    <Property Name="TC_PROT_VERBALE" Type="Int32" />
+    <Property Name="TC_TIPO_PROT_VERB" Type="Int32" />
+    <Property Name="TC_PROT_ATTESTATO" Type="Int32" />
+    <Property Name="TC_TIPO_PROT_ATT" Type="Int32" />
+    <Property Name="TC_SIMULAZIONE_ESAME" Type="Int32" />
+    <Property Name="TC_CASOPRATICO" Type="Int32" />
+    <Property Name="TC_RELEASE" Type="Int32" />
+    <Property Name="TC_QUESTIONARIOMINIST" Type="Int32" />
+    <Property Name="TC_ESAMEINLINGUA" Type="Byte" />
+    <Property Name="TC_QUIZACASA" Type="Byte" />
+    <Property Name="TC_MULTIESAME" Type="Byte" />
+    <Property Name="TC_CASOPRATICODETT" Type="Int32" />
+    <Property Name="TC_FONTQUESTFISSO" Type="Int32" />
+    <Property Name="TC_RIEPILOGOMACROMAT" Type="Int32" />
+    <Property Name="TC_PERSONALIZZAREGOLE" Type="Byte" />
+    <Property Name="TC_PERSONALIZZAREGOLECP" Type="Byte" />
+    <Property Name="TC_PARAMETRIFLASH" Type="Int32" />
+    <Property Name="TC_MODODOMMULTIMED" Type="Int32" />
+    <Property Name="TC_GESTIONESEMPLIFICATA" Type="Int32" />
+    <Property Name="TC_QUEST_CON_IMG" Type="Int32" />
+    <Property Name="TC_DEFAULT_CHK_IMG" Type="Int32" />
+    <Property Name="TC_CONSENTIDOMCORR" Type="Int32" />
+    <Property Name="TC_PLAYCONTINUO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_LIVELLOLEZIONE" Type="Int32" />
+    <Property Name="TC_TEMPODOMANDA" Type="Int32" />
+    <Property Name="TC_TEMPORISPOSTA" Type="Int32" />
+    <Property Name="TC_TEMPOIMMAGINE" Type="Int32" />
+    <Property Name="TC_MOSTRACOLOREARG" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_TOOLTIPTABELLONE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_AUTOPLAY" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_RISPOSTEBARRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_FLASHCHIUDIFILM" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_FLASHATTIVAQUIZ" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_FLASHATTIVASUGGER" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_FLASHATTIVAZOOMINIZIALE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_FLASHATTIVAAUDIO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_ORDINAMENTOCASUALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_MOSTRALEGENDAARG" Type="Int32" />
+    <Property Name="TC_MINIMIZED" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_ATTIVA_SUGG_VF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_ATTIVA_ANTE_DOMANDA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_MOSTRAPROGDOM" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_MAXLIVARGOMENTI" Type="Int32" />
+    <Property Name="TC_NASCONDI_PROG_CAP" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_GESTIONEDISPENSATO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_ATTIVA_TEMPORISPOSTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_ATTIVA_AVANZAM_MANUALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_ATTIVA_VF_CON_AUDIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_NASCONDI_MINIATURE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_GEN_QUEST_LEZ_LIBERA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_AGGIORNA_PRESENZA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_AUDIOPRIMADOMANDA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_ATTIVAQUIZ" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_USADOMANDEPERSONALIZZATE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_MM_MULTIDB" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_MENUMULTIESAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TC_MM_REVISIONE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TC_TACHIGRAFO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="domande" Relationship="Self.FK_Domande_TipoCommissione_TC_ID" FromRole="tipocommissione" ToRole="domande" />
+    <NavigationProperty Name="esami" Relationship="Self.FK_Esami_TipoCommissione_TC_ID" FromRole="tipocommissione" ToRole="esami" />
+    <NavigationProperty Name="risposte" Relationship="Self.FK_Risposte_TipoCommissione_TC_ID" FromRole="tipocommissione" ToRole="risposte" />
+  </EntityType>
+  <Association Name="FK_Domande_TipoCommissione_TC_ID">
+    <End Role="tipocommissione" Type="Self.tipocommissione" Multiplicity="0..1" />
+    <End Role="domande" Type="Self.domande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocommissione">
+        <PropertyRef Name="TC_ID" />
+      </Principal>
+      <Dependent Role="domande">
+        <PropertyRef Name="DO_ES_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risposte_Domande_DO_ID">
+    <End Role="domande" Type="Self.domande" Multiplicity="0..1" />
+    <End Role="risposte" Type="Self.risposte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="domande">
+        <PropertyRef Name="DO_ID" />
+      </Principal>
+      <Dependent Role="risposte">
+        <PropertyRef Name="RI_DO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Esami_TipoCommissione_TC_ID">
+    <End Role="tipocommissione" Type="Self.tipocommissione" Multiplicity="0..1" />
+    <End Role="esami" Type="Self.esami" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocommissione">
+        <PropertyRef Name="TC_ID" />
+      </Principal>
+      <Dependent Role="esami">
+        <PropertyRef Name="ES_TC_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risposte_TipoCommissione_TC_ID">
+    <End Role="tipocommissione" Type="Self.tipocommissione" Multiplicity="0..1" />
+    <End Role="risposte" Type="Self.risposte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocommissione">
+        <PropertyRef Name="TC_ID" />
+      </Principal>
+      <Dependent Role="risposte">
+        <PropertyRef Name="RI_ES_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="egafEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="abb_dom_materie_minist" EntityType="Self.abb_dom_materie_minist" />
+    <EntitySet Name="abbinamento_esami_materie" EntityType="Self.abbinamento_esami_materie" />
+    <EntitySet Name="dettaglioregole" EntityType="Self.dettaglioregole" />
+    <EntitySet Name="domande" EntityType="Self.domande" />
+    <EntitySet Name="esami" EntityType="Self.esami" />
+    <EntitySet Name="regole" EntityType="Self.regole" />
+    <EntitySet Name="releaseopere" EntityType="Self.releaseopere" />
+    <EntitySet Name="risposte" EntityType="Self.risposte" />
+    <EntitySet Name="tipocommissione" EntityType="Self.tipocommissione" />
+    <AssociationSet Name="FK_Domande_TipoCommissione_TC_ID" Association="Self.FK_Domande_TipoCommissione_TC_ID">
+      <End Role="tipocommissione" EntitySet="tipocommissione" />
+      <End Role="domande" EntitySet="domande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risposte_Domande_DO_ID" Association="Self.FK_Risposte_Domande_DO_ID">
+      <End Role="domande" EntitySet="domande" />
+      <End Role="risposte" EntitySet="risposte" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Esami_TipoCommissione_TC_ID" Association="Self.FK_Esami_TipoCommissione_TC_ID">
+      <End Role="tipocommissione" EntitySet="tipocommissione" />
+      <End Role="esami" EntitySet="esami" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risposte_TipoCommissione_TC_ID" Association="Self.FK_Risposte_TipoCommissione_TC_ID">
+      <End Role="tipocommissione" EntitySet="tipocommissione" />
+      <End Role="risposte" EntitySet="risposte" />
+    </AssociationSet>
+    <EntitySet Name="v_tipipatente" EntityType="egafMainEF.v_tipipatente" />
+    <EntitySet Name="v_esami" EntityType="egafMainEF.v_esami" />
+    <EntitySet Name="v_regole" EntityType="egafMainEF.v_regole" />
+    <EntitySet Name="locks" EntityType="egafMainEF.locks" />
+    <AssociationSet Name="FK_Domande_Esame_ES_ID" Association="egafMainEF.FK_Domande_Esame_ES_ID">
+      <End Role="esami" EntitySet="esami" />
+      <End Role="domande" EntitySet="domande" />
+    </AssociationSet>
+    <EntitySet Name="v_releaseopere" EntityType="egafMainEF.v_releaseopere" />
+    <EntitySet Name="v_domerisp" EntityType="egafMainEF.v_domerisp" />
+  </EntityContainer>
+  <EntityType Name="v_tipipatente">
+    <Key>
+      <PropertyRef Name="TC_ID" />
+      <PropertyRef Name="QTA" />
+    </Key>
+    <Property Name="TC_ID" Type="Int32" Nullable="false" />
+    <Property Name="TC_DESCRIZIONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MD_DESCRIZIONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QTA" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="v_esami">
+    <Key>
+      <PropertyRef Name="ES_ID" />
+    </Key>
+    <Property Name="ES_TC_ID" Type="Int32" />
+    <Property Name="ES_ID" Type="Int32" Nullable="false" />
+    <Property Name="ES_DESCRIZIONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ES_RE_ID" Type="Int32" />
+    <Property Name="ES_REVISIONE" Type="Byte" />
+    <Property Name="ES_NONSELEZIONABILE" Type="Byte" />
+  </EntityType>
+  <EntityType Name="v_regole">
+    <Key>
+      <PropertyRef Name="RE_ID" />
+      <PropertyRef Name="RE_PROG" />
+    </Key>
+    <Property Name="RE_ID" Type="Int32" Nullable="false" />
+    <Property Name="RE_PROG" Type="Int32" Nullable="false" />
+    <Property Name="RE_DESCRIZIONE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RE_RISXDOM" Type="Int32" />
+    <Property Name="RE_TIPOREGOLA" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="RE_LIMITE_RISPFALSE" Type="Int32" />
+    <Property Name="RE_LIMITE_MIN_RISPFALSE" Type="Int32" />
+    <Property Name="Risposte_libere" Type="Int32" />
+  </EntityType>
+  <EntityType Name="locks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="DATAORA" Type="DateTime" />
+  </EntityType>
+  <Association Name="FK_Domande_Esame_ES_ID">
+    <End Type="egafMainEF.esami" Role="esami" Multiplicity="0..1" />
+    <End Type="egafMainEF.domande" Role="domande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="esami">
+        <PropertyRef Name="ES_ID" />
+      </Principal>
+      <Dependent Role="domande">
+        <PropertyRef Name="DO_ES_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="v_releaseopere">
+    <Key>
+      <PropertyRef Name="RO_ID" />
+    </Key>
+    <Property Name="RO_ID" Type="Int32" Nullable="false" />
+    <Property Name="RO_TC_ID" Type="Int32" />
+    <Property Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" Type="Int32" />
+  </EntityType>
+  <EntityType Name="v_domerisp">
+    <Key>
+      <PropertyRef Name="DO_ID" />
+      <PropertyRef Name="RI_ID" />
+      <PropertyRef Name="RI_VF" />
+    </Key>
+    <Property Name="DO_ID" Type="Int32" Nullable="false" />
+    <Property Name="RI_ID" Type="Int32" Nullable="false" />
+    <Property Name="DO_ES_ID" Type="Int32" />
+    <Property Name="RI_ES_ID" Type="Int32" />
+    <Property Name="DO_CODICE_MINST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DO_CODICE_EGAF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTOORDINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_VF" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="DO_IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_IMG2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_FLAG_BLOCCATA" Type="Int32" />
+    <Property Name="DO_NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_FLAG_BLOCCATA" Type="Int32" />
+    <Property Name="RI_NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DO_ALTROTESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTO_AIUTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_GRDOMCORR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RI_IMG" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_IMG2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_ALTROTESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_ORDINAMENTOCASUALE" Type="Int32" />
+    <Property Name="DO_MULTIMEDIALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

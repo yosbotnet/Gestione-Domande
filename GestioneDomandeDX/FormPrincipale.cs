@@ -29,7 +29,7 @@ namespace GestioneDomandeDX
             ---------------------------------------------------------------------------------
                                        MARTEDI 15/6
             ---------------------------------------------------------------------------------
-                ADVBANDEDGRIDVIEW        
+                RIFARE LA GRID     
             ---------------------------------------------------------------------------------
                                       OBIETTIVI GIORNALIERI
             ---------------------------------------------------------------------------------
@@ -124,10 +124,10 @@ namespace GestioneDomandeDX
             #endregion
             btnLock.Enabled = false;
             btnLascia.Enabled = false;
-           
-            //grdMain.DataSource = context.v_domerisp.ToList();
+            
+            grdMain.DataSource = context.v_domerisp.ToList();
             gridView.DataController.AllowIEnumerableDetails = true;
-
+            gridView.OptionsView.AllowCellMerge = true;
             if (!mvvmContext.IsDesignMode)
                 InitializeBindings();
         }
@@ -215,21 +215,21 @@ namespace GestioneDomandeDX
         #region Gestione Master-Detail
         private void gridView_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
         {
-            //domande d = (domande)gridView.GetRow(e.RowHandle);
-            //e.ChildList = d.risposte.ToList();
+            domande d = (domande)gridView.GetRow(e.RowHandle);
+            e.ChildList = d.risposte.ToList();
         }
 
         private void gridView_AfterPrintRow(object sender, DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs e)
         {           
-            //gridView.ExpandMasterRow(e.RowHandle);
+            gridView.ExpandMasterRow(e.RowHandle);
         }
        
         private void gridView_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
         {
-            /*
+            
             domande d = (domande)gridView.GetRow(e.RowHandle);
             e.IsEmpty = d.risposte.Count == 0;
-            */
+            
         }
 
         private void gridView_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
@@ -247,8 +247,6 @@ namespace GestioneDomandeDX
         private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
             context.SaveChanges();
-            //dovrei creare un gridview.RowStyle event in cui l'aggiorno
-            //è un dettaglio?
             GridView griglia = sender as GridView;
             if (griglia.IsDetailView)
             {
@@ -311,10 +309,7 @@ namespace GestioneDomandeDX
             }
             
         }
-        private void FormPrincipale_SizeChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void FormPrincipale_SizeChanged(object sender, EventArgs e) { }
         private void btnSalvaLayout_Click(object sender, EventArgs e)
         {
             gridView.OptionsLayout.Columns.StoreAllOptions = true;
@@ -375,7 +370,12 @@ namespace GestioneDomandeDX
         }
         //esempio di riga
         // '5', 'Ame', '2007-05-08 12:35:29'
-
+        private void displayDomanda()
+        {
+            //prende un ID domanda
+            //var numCol = domanda.risposte.Count
+            //assegna a una colonna il COD EGAF con rowcount
+        }
         private void setupGrid(List<domande> query)
         {
             HandleCambiatiMaster.Clear();
@@ -415,6 +415,16 @@ namespace GestioneDomandeDX
         void InitializeBindings()
         {
             var fluent = mvvmContext.OfType<FormPrincipaleViewModel>();
+           
+        }
+
+        private void gridView_CellMerge(object sender, CellMergeEventArgs e)
+        {           
+            if(e.CellValue1.ToString() == e.CellValue2.ToString())
+            {
+                e.Handled = true;
+                e.Merge = true;
+            }  
         }
     }
     /// <summary>

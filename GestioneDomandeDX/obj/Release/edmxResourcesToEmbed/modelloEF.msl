@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="egafMainEFStoreContainer" CdmEntityContainer="egafEntities">
+    <EntitySetMapping Name="abb_dom_materie_minist">
+      <EntityTypeMapping TypeName="egafMainEF.abb_dom_materie_minist">
+        <MappingFragment StoreEntitySet="abb_dom_materie_minist">
+          <ScalarProperty Name="AB9_ID" ColumnName="AB9_ID" />
+          <ScalarProperty Name="AB9_MINIST_MA_ID" ColumnName="AB9_MINIST_MA_ID" />
+          <ScalarProperty Name="AB9_DO_ID" ColumnName="AB9_DO_ID" />
+          <ScalarProperty Name="AB9_FLAGSTATISTICHE" ColumnName="AB9_FLAGSTATISTICHE" />
+          <ScalarProperty Name="AB9_DATAAGG" ColumnName="AB9_DATAAGG" />
+          <ScalarProperty Name="AB9_RELEASE" ColumnName="AB9_RELEASE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="abbinamento_esami_materie">
+      <EntityTypeMapping TypeName="egafMainEF.abbinamento_esami_materie">
+        <MappingFragment StoreEntitySet="abbinamento_esami_materie">
+          <ScalarProperty Name="AB5_ID" ColumnName="AB5_ID" />
+          <ScalarProperty Name="AB5_ES_ID" ColumnName="AB5_ES_ID" />
+          <ScalarProperty Name="AB5_MA_ID" ColumnName="AB5_MA_ID" />
+          <ScalarProperty Name="AB5_RELEASE" ColumnName="AB5_RELEASE" />
+          <ScalarProperty Name="AB5_SOTTOES_ID" ColumnName="AB5_SOTTOES_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dettaglioregole">
+      <EntityTypeMapping TypeName="egafMainEF.dettaglioregole">
+        <MappingFragment StoreEntitySet="dettaglioregole">
+          <ScalarProperty Name="DR_ID" ColumnName="DR_ID" />
+          <ScalarProperty Name="DR_RE_ID" ColumnName="DR_RE_ID" />
+          <ScalarProperty Name="DR_DESCRIZIONE" ColumnName="DR_DESCRIZIONE" />
+          <ScalarProperty Name="DR_MATERIE" ColumnName="DR_MATERIE" />
+          <ScalarProperty Name="DR_DA" ColumnName="DR_DA" />
+          <ScalarProperty Name="DR_AD" ColumnName="DR_AD" />
+          <ScalarProperty Name="DR_PROG" ColumnName="DR_PROG" />
+          <ScalarProperty Name="DR_MM_ID" ColumnName="DR_MM_ID" />
+          <ScalarProperty Name="DR_ORDINE" ColumnName="DR_ORDINE" />
+          <ScalarProperty Name="DR_AGGREGAZIONEESAMI" ColumnName="DR_AGGREGAZIONEESAMI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="domande">
+      <EntityTypeMapping TypeName="egafMainEF.domande">
+        <MappingFragment StoreEntitySet="domande">
+          <ScalarProperty Name="DO_ID" ColumnName="DO_ID" />
+          <ScalarProperty Name="DO_MINIST_MA_ID" ColumnName="DO_MINIST_MA_ID" />
+          <ScalarProperty Name="DO_TESTO" ColumnName="DO_TESTO" />
+          <ScalarProperty Name="DO_IMG" ColumnName="DO_IMG" />
+          <ScalarProperty Name="DO_AR_ID" ColumnName="DO_AR_ID" />
+          <ScalarProperty Name="DO_CODICE_MINST" ColumnName="DO_CODICE_MINST" />
+          <ScalarProperty Name="DO_CODICE_EGAF" ColumnName="DO_CODICE_EGAF" />
+          <ScalarProperty Name="DO_IMG2" ColumnName="DO_IMG2" />
+          <ScalarProperty Name="DO_MULTIMEDIALE" ColumnName="DO_MULTIMEDIALE" />
+          <ScalarProperty Name="DO_STATISTICA" ColumnName="DO_STATISTICA" />
+          <ScalarProperty Name="DO_COMMENTO" ColumnName="DO_COMMENTO" />
+          <ScalarProperty Name="DO_FLAG_BLOCCATA" ColumnName="DO_FLAG_BLOCCATA" />
+          <ScalarProperty Name="DO_NOTE" ColumnName="DO_NOTE" />
+          <ScalarProperty Name="DO_FLAG_BLOCCATA_EGAF" ColumnName="DO_FLAG_BLOCCATA_EGAF" />
+          <ScalarProperty Name="DO_NOTE_EGAF" ColumnName="DO_NOTE_EGAF" />
+          <ScalarProperty Name="DO_TEORICOPRATICO" ColumnName="DO_TEORICOPRATICO" />
+          <ScalarProperty Name="DO_ES_ID" ColumnName="DO_ES_ID" />
+          <ScalarProperty Name="DO_FLAG_OBSOLETA" ColumnName="DO_FLAG_OBSOLETA" />
+          <ScalarProperty Name="DO_TESTOCN" ColumnName="DO_TESTOCN" />
+          <ScalarProperty Name="DO_TESTOES" ColumnName="DO_TESTOES" />
+          <ScalarProperty Name="DO_TESTOMA" ColumnName="DO_TESTOMA" />
+          <ScalarProperty Name="DO_TESTODE" ColumnName="DO_TESTODE" />
+          <ScalarProperty Name="DO_TESTOGB" ColumnName="DO_TESTOGB" />
+          <ScalarProperty Name="DO_TESTOFR" ColumnName="DO_TESTOFR" />
+          <ScalarProperty Name="DO_TESTORU" ColumnName="DO_TESTORU" />
+          <ScalarProperty Name="DO_PROGRESSIVO" ColumnName="DO_PROGRESSIVO" />
+          <ScalarProperty Name="DO_STATISTICAV" ColumnName="DO_STATISTICAV" />
+          <ScalarProperty Name="DO_STATISTICAF" ColumnName="DO_STATISTICAF" />
+          <ScalarProperty Name="DO_GRDOMCORR" ColumnName="DO_GRDOMCORR" />
+          <ScalarProperty Name="DO_ALTROTESTO" ColumnName="DO_ALTROTESTO" />
+          <ScalarProperty Name="DO_TESTO_AIUTO" ColumnName="DO_TESTO_AIUTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="esami">
+      <EntityTypeMapping TypeName="egafMainEF.esami">
+        <MappingFragment StoreEntitySet="esami">
+          <ScalarProperty Name="ES_ID" ColumnName="ES_ID" />
+          <ScalarProperty Name="ES_MNEMO" ColumnName="ES_MNEMO" />
+          <ScalarProperty Name="ES_DESCRIZIONE" ColumnName="ES_DESCRIZIONE" />
+          <ScalarProperty Name="ES_RE_ID" ColumnName="ES_RE_ID" />
+          <ScalarProperty Name="ES_SIGLAMULTIMEDIALE" ColumnName="ES_SIGLAMULTIMEDIALE" />
+          <ScalarProperty Name="ES_SIGLA" ColumnName="ES_SIGLA" />
+          <ScalarProperty Name="ES_TC_ID" ColumnName="ES_TC_ID" />
+          <ScalarProperty Name="ES_ESAME_APERTO" ColumnName="ES_ESAME_APERTO" />
+          <ScalarProperty Name="ES_MONTE_ORE" ColumnName="ES_MONTE_ORE" />
+          <ScalarProperty Name="ES_MAX_ASSENZE_ORE" ColumnName="ES_MAX_ASSENZE_ORE" />
+          <ScalarProperty Name="ES_MAX_ASSENZE_PERC" ColumnName="ES_MAX_ASSENZE_PERC" />
+          <ScalarProperty Name="ES_BROWSERMULTIMEDIALE" ColumnName="ES_BROWSERMULTIMEDIALE" />
+          <ScalarProperty Name="ES_SIGLABREVE" ColumnName="ES_SIGLABREVE" />
+          <ScalarProperty Name="ES_DESCRIZIONEATTESTATO" ColumnName="ES_DESCRIZIONEATTESTATO" />
+          <ScalarProperty Name="ES_MULTIESBASE" ColumnName="ES_MULTIESBASE" />
+          <ScalarProperty Name="ES_MULTIESLIVELLO" ColumnName="ES_MULTIESLIVELLO" />
+          <ScalarProperty Name="ES_ORDINEAGGREGAZIONE" ColumnName="ES_ORDINEAGGREGAZIONE" />
+          <ScalarProperty Name="ES_STAMPAATTESTATO" ColumnName="ES_STAMPAATTESTATO" />
+          <ScalarProperty Name="ES_NONSELEZIONABILE" ColumnName="ES_NONSELEZIONABILE" />
+          <ScalarProperty Name="ES_ORDINAMENTO" ColumnName="ES_ORDINAMENTO" />
+          <ScalarProperty Name="ES_REVISIONE" ColumnName="ES_REVISIONE" />
+          <ScalarProperty Name="ES_DESCRIZIONE_APP" ColumnName="ES_DESCRIZIONE_APP" />
+          <ScalarProperty Name="ES_ESCLUDI_DA_APP" ColumnName="ES_ESCLUDI_DA_APP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="regole">
+      <EntityTypeMapping TypeName="egafMainEF.regole">
+        <MappingFragment StoreEntitySet="regole">
+          <ScalarProperty Name="RE_ID" ColumnName="RE_ID" />
+          <ScalarProperty Name="RE_DESCRIZIONE" ColumnName="RE_DESCRIZIONE" />
+          <ScalarProperty Name="RE_DOMXQUEST" ColumnName="RE_DOMXQUEST" />
+          <ScalarProperty Name="RE_RISXDOM" ColumnName="RE_RISXDOM" />
+          <ScalarProperty Name="RE_HDOM" ColumnName="RE_HDOM" />
+          <ScalarProperty Name="RE_HTESTODOM" ColumnName="RE_HTESTODOM" />
+          <ScalarProperty Name="RE_HTESTORISP" ColumnName="RE_HTESTORISP" />
+          <ScalarProperty Name="RE_HLINE" ColumnName="RE_HLINE" />
+          <ScalarProperty Name="RE_TIPOREGOLA" ColumnName="RE_TIPOREGOLA" />
+          <ScalarProperty Name="RE_DEFAULT" ColumnName="RE_DEFAULT" />
+          <ScalarProperty Name="RE_DOMXPAG" ColumnName="RE_DOMXPAG" />
+          <ScalarProperty Name="RE_FONTSIZEDOM" ColumnName="RE_FONTSIZEDOM" />
+          <ScalarProperty Name="RE_FONTSIZERISP" ColumnName="RE_FONTSIZERISP" />
+          <ScalarProperty Name="RE_WIMG" ColumnName="RE_WIMG" />
+          <ScalarProperty Name="RE_RIGHEWRAP" ColumnName="RE_RIGHEWRAP" />
+          <ScalarProperty Name="RE_PERCENTUALE" ColumnName="RE_PERCENTUALE" />
+          <ScalarProperty Name="RE_TIPOCALCOLO" ColumnName="RE_TIPOCALCOLO" />
+          <ScalarProperty Name="RE_PARAMINTESTAZIONE" ColumnName="RE_PARAMINTESTAZIONE" />
+          <ScalarProperty Name="RE_NUMERARISPOSTE" ColumnName="RE_NUMERARISPOSTE" />
+          <ScalarProperty Name="RE_LIMITE_RISPFALSE" ColumnName="RE_LIMITE_RISPFALSE" />
+          <ScalarProperty Name="RE_ORDINAMENTORISPOSTE" ColumnName="RE_ORDINAMENTORISPOSTE" />
+          <ScalarProperty Name="RE_PUNTEGGIOMINIMO" ColumnName="RE_PUNTEGGIOMINIMO" />
+          <ScalarProperty Name="RE_PUNTEGGIOMASSIMO" ColumnName="RE_PUNTEGGIOMASSIMO" />
+          <ScalarProperty Name="RE_ANZIANITA" ColumnName="RE_ANZIANITA" />
+          <ScalarProperty Name="RE_PUNTMINIMOTOTALE" ColumnName="RE_PUNTMINIMOTOTALE" />
+          <ScalarProperty Name="RE_TEMPOESAME" ColumnName="RE_TEMPOESAME" />
+          <ScalarProperty Name="RE_ORDINAMENTODOMANDE" ColumnName="RE_ORDINAMENTODOMANDE" />
+          <ScalarProperty Name="RE_PROG" ColumnName="RE_PROG" />
+          <ScalarProperty Name="RE_RISPMINIMECP" ColumnName="RE_RISPMINIMECP" />
+          <ScalarProperty Name="RE_RISPMINIMECPANZ" ColumnName="RE_RISPMINIMECPANZ" />
+          <ScalarProperty Name="RE_LIMITE_MIN_RISPFALSE" ColumnName="RE_LIMITE_MIN_RISPFALSE" />
+          <ScalarProperty Name="RE_VOTOMINIMOCP" ColumnName="RE_VOTOMINIMOCP" />
+          <ScalarProperty Name="RE_TIPOCALCOLO_ESITO" ColumnName="RE_TIPOCALCOLO_ESITO" />
+          <ScalarProperty Name="RE_TIPORIGADINAMICO" ColumnName="RE_TIPORIGADINAMICO" />
+          <ScalarProperty Name="RE_DOMXPAGNOIMG" ColumnName="RE_DOMXPAGNOIMG" />
+          <ScalarProperty Name="RE_PESORISPESATTE" ColumnName="RE_PESORISPESATTE" />
+          <ScalarProperty Name="RE_PESORISPERRATE" ColumnName="RE_PESORISPERRATE" />
+          <ScalarProperty Name="RE_PESORISPNONDATE" ColumnName="RE_PESORISPNONDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="releaseopere">
+      <EntityTypeMapping TypeName="egafMainEF.releaseopere">
+        <MappingFragment StoreEntitySet="releaseopere">
+          <ScalarProperty Name="RO_ID" ColumnName="RO_ID" />
+          <ScalarProperty Name="RO_TC_ID" ColumnName="RO_TC_ID" />
+          <ScalarProperty Name="RO_RELEASE" ColumnName="RO_RELEASE" />
+          <ScalarProperty Name="RO_DATA" ColumnName="RO_DATA" />
+          <ScalarProperty Name="RO_RELEASE_MULTIMEDIALE" ColumnName="RO_RELEASE_MULTIMEDIALE" />
+          <ScalarProperty Name="RO_DESCR_REL_MULTIMEDIALE" ColumnName="RO_DESCR_REL_MULTIMEDIALE" />
+          <ScalarProperty Name="RO_TIPOSEGMENTI" ColumnName="RO_TIPOSEGMENTI" />
+          <ScalarProperty Name="RO_ESISTENZATESTO" ColumnName="RO_ESISTENZATESTO" />
+          <ScalarProperty Name="RO_ESISTENZAAUDIO" ColumnName="RO_ESISTENZAAUDIO" />
+          <ScalarProperty Name="RO_PUBBLICARELEASE" ColumnName="RO_PUBBLICARELEASE" />
+          <ScalarProperty Name="RO_FONTQUESTFISSO" ColumnName="RO_FONTQUESTFISSO" />
+          <ScalarProperty Name="RO_LINGUEAMMESSE" ColumnName="RO_LINGUEAMMESSE" />
+          <ScalarProperty Name="RO_COMPATTALIVELLI" ColumnName="RO_COMPATTALIVELLI" />
+          <ScalarProperty Name="RO_MULTIMEDIALEOLD" ColumnName="RO_MULTIMEDIALEOLD" />
+          <ScalarProperty Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" ColumnName="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" />
+          <ScalarProperty Name="RO_GENERAQUESTIONARI" ColumnName="RO_GENERAQUESTIONARI" />
+          <ScalarProperty Name="RO_ESCLUDI_CASIPRATICI" ColumnName="RO_ESCLUDI_CASIPRATICI" />
+          <ScalarProperty Name="RO_DATAVALIDITA_LICENZA" ColumnName="RO_DATAVALIDITA_LICENZA" />
+          <ScalarProperty Name="RO_ALLIEVO_ESCLUDI_QUIZ_ARGOMENTO" ColumnName="RO_ALLIEVO_ESCLUDI_QUIZ_ARGOMENTO" />
+          <ScalarProperty Name="RO_ALLIEVO_ESCLUDI_QUIZ_DIFFICOLTA" ColumnName="RO_ALLIEVO_ESCLUDI_QUIZ_DIFFICOLTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="risposte">
+      <EntityTypeMapping TypeName="egafMainEF.risposte">
+        <MappingFragment StoreEntitySet="risposte">
+          <ScalarProperty Name="RI_ID" ColumnName="RI_ID" />
+          <ScalarProperty Name="RI_DO_ID" ColumnName="RI_DO_ID" />
+          <ScalarProperty Name="RI_TESTOORDINE" ColumnName="RI_TESTOORDINE" />
+          <ScalarProperty Name="RI_TESTO" ColumnName="RI_TESTO" />
+          <ScalarProperty Name="RI_VF" ColumnName="RI_VF" />
+          <ScalarProperty Name="RI_COMMENTO" ColumnName="RI_COMMENTO" />
+          <ScalarProperty Name="RI_FLAG_BLOCCATA" ColumnName="RI_FLAG_BLOCCATA" />
+          <ScalarProperty Name="RI_NOTE" ColumnName="RI_NOTE" />
+          <ScalarProperty Name="RI_FLAG_BLOCCATA_EGAF" ColumnName="RI_FLAG_BLOCCATA_EGAF" />
+          <ScalarProperty Name="RI_NOTE_EGAF" ColumnName="RI_NOTE_EGAF" />
+          <ScalarProperty Name="RI_ES_ID" ColumnName="RI_ES_ID" />
+          <ScalarProperty Name="RI_FLAG_OBSOLETA" ColumnName="RI_FLAG_OBSOLETA" />
+          <ScalarProperty Name="RI_ORDINAMENTOCASUALE" ColumnName="RI_ORDINAMENTOCASUALE" />
+          <ScalarProperty Name="RI_TESTOCN" ColumnName="RI_TESTOCN" />
+          <ScalarProperty Name="RI_TESTOES" ColumnName="RI_TESTOES" />
+          <ScalarProperty Name="RI_TESTOMA" ColumnName="RI_TESTOMA" />
+          <ScalarProperty Name="RI_TESTODE" ColumnName="RI_TESTODE" />
+          <ScalarProperty Name="RI_TESTOGB" ColumnName="RI_TESTOGB" />
+          <ScalarProperty Name="RI_TESTOFR" ColumnName="RI_TESTOFR" />
+          <ScalarProperty Name="RI_TESTORU" ColumnName="RI_TESTORU" />
+          <ScalarProperty Name="RI_PROGRESSIVO" ColumnName="RI_PROGRESSIVO" />
+          <ScalarProperty Name="RI_CODICE_MINIST" ColumnName="RI_CODICE_MINIST" />
+          <ScalarProperty Name="RI_IMG" ColumnName="RI_IMG" />
+          <ScalarProperty Name="RI_IMG2" ColumnName="RI_IMG2" />
+          <ScalarProperty Name="RI_ALTROTESTO" ColumnName="RI_ALTROTESTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipocommissione">
+      <EntityTypeMapping TypeName="egafMainEF.tipocommissione">
+        <MappingFragment StoreEntitySet="tipocommissione">
+          <ScalarProperty Name="TC_ID" ColumnName="TC_ID" />
+          <ScalarProperty Name="TC_DESCRIZIONE" ColumnName="TC_DESCRIZIONE" />
+          <ScalarProperty Name="TC_TESTOVERBALE" ColumnName="TC_TESTOVERBALE" />
+          <ScalarProperty Name="TC_TESTOATTESTATO" ColumnName="TC_TESTOATTESTATO" />
+          <ScalarProperty Name="TC_ESAMEAPERTO" ColumnName="TC_ESAMEAPERTO" />
+          <ScalarProperty Name="TC_PROT_VERBALE" ColumnName="TC_PROT_VERBALE" />
+          <ScalarProperty Name="TC_TIPO_PROT_VERB" ColumnName="TC_TIPO_PROT_VERB" />
+          <ScalarProperty Name="TC_PROT_ATTESTATO" ColumnName="TC_PROT_ATTESTATO" />
+          <ScalarProperty Name="TC_TIPO_PROT_ATT" ColumnName="TC_TIPO_PROT_ATT" />
+          <ScalarProperty Name="TC_SIMULAZIONE_ESAME" ColumnName="TC_SIMULAZIONE_ESAME" />
+          <ScalarProperty Name="TC_CASOPRATICO" ColumnName="TC_CASOPRATICO" />
+          <ScalarProperty Name="TC_RELEASE" ColumnName="TC_RELEASE" />
+          <ScalarProperty Name="TC_QUESTIONARIOMINIST" ColumnName="TC_QUESTIONARIOMINIST" />
+          <ScalarProperty Name="TC_ESAMEINLINGUA" ColumnName="TC_ESAMEINLINGUA" />
+          <ScalarProperty Name="TC_QUIZACASA" ColumnName="TC_QUIZACASA" />
+          <ScalarProperty Name="TC_MULTIESAME" ColumnName="TC_MULTIESAME" />
+          <ScalarProperty Name="TC_CASOPRATICODETT" ColumnName="TC_CASOPRATICODETT" />
+          <ScalarProperty Name="TC_FONTQUESTFISSO" ColumnName="TC_FONTQUESTFISSO" />
+          <ScalarProperty Name="TC_RIEPILOGOMACROMAT" ColumnName="TC_RIEPILOGOMACROMAT" />
+          <ScalarProperty Name="TC_PERSONALIZZAREGOLE" ColumnName="TC_PERSONALIZZAREGOLE" />
+          <ScalarProperty Name="TC_PERSONALIZZAREGOLECP" ColumnName="TC_PERSONALIZZAREGOLECP" />
+          <ScalarProperty Name="TC_PARAMETRIFLASH" ColumnName="TC_PARAMETRIFLASH" />
+          <ScalarProperty Name="TC_MODODOMMULTIMED" ColumnName="TC_MODODOMMULTIMED" />
+          <ScalarProperty Name="TC_GESTIONESEMPLIFICATA" ColumnName="TC_GESTIONESEMPLIFICATA" />
+          <ScalarProperty Name="TC_QUEST_CON_IMG" ColumnName="TC_QUEST_CON_IMG" />
+          <ScalarProperty Name="TC_DEFAULT_CHK_IMG" ColumnName="TC_DEFAULT_CHK_IMG" />
+          <ScalarProperty Name="TC_CONSENTIDOMCORR" ColumnName="TC_CONSENTIDOMCORR" />
+          <ScalarProperty Name="TC_PLAYCONTINUO" ColumnName="TC_PLAYCONTINUO" />
+          <ScalarProperty Name="TC_LIVELLOLEZIONE" ColumnName="TC_LIVELLOLEZIONE" />
+          <ScalarProperty Name="TC_TEMPODOMANDA" ColumnName="TC_TEMPODOMANDA" />
+          <ScalarProperty Name="TC_TEMPORISPOSTA" ColumnName="TC_TEMPORISPOSTA" />
+          <ScalarProperty Name="TC_TEMPOIMMAGINE" ColumnName="TC_TEMPOIMMAGINE" />
+          <ScalarProperty Name="TC_MOSTRACOLOREARG" ColumnName="TC_MOSTRACOLOREARG" />
+          <ScalarProperty Name="TC_TOOLTIPTABELLONE" ColumnName="TC_TOOLTIPTABELLONE" />
+          <ScalarProperty Name="TC_AUTOPLAY" ColumnName="TC_AUTOPLAY" />
+          <ScalarProperty Name="TC_RISPOSTEBARRA" ColumnName="TC_RISPOSTEBARRA" />
+          <ScalarProperty Name="TC_FLASHCHIUDIFILM" ColumnName="TC_FLASHCHIUDIFILM" />
+          <ScalarProperty Name="TC_FLASHATTIVAQUIZ" ColumnName="TC_FLASHATTIVAQUIZ" />
+          <ScalarProperty Name="TC_FLASHATTIVASUGGER" ColumnName="TC_FLASHATTIVASUGGER" />
+          <ScalarProperty Name="TC_FLASHATTIVAZOOMINIZIALE" ColumnName="TC_FLASHATTIVAZOOMINIZIALE" />
+          <ScalarProperty Name="TC_FLASHATTIVAAUDIO" ColumnName="TC_FLASHATTIVAAUDIO" />
+          <ScalarProperty Name="TC_ORDINAMENTOCASUALE" ColumnName="TC_ORDINAMENTOCASUALE" />
+          <ScalarProperty Name="TC_MOSTRALEGENDAARG" ColumnName="TC_MOSTRALEGENDAARG" />
+          <ScalarProperty Name="TC_MINIMIZED" ColumnName="TC_MINIMIZED" />
+          <ScalarProperty Name="TC_ATTIVA_SUGG_VF" ColumnName="TC_ATTIVA_SUGG_VF" />
+          <ScalarProperty Name="TC_ATTIVA_ANTE_DOMANDA" ColumnName="TC_ATTIVA_ANTE_DOMANDA" />
+          <ScalarProperty Name="TC_MOSTRAPROGDOM" ColumnName="TC_MOSTRAPROGDOM" />
+          <ScalarProperty Name="TC_MAXLIVARGOMENTI" ColumnName="TC_MAXLIVARGOMENTI" />
+          <ScalarProperty Name="TC_NASCONDI_PROG_CAP" ColumnName="TC_NASCONDI_PROG_CAP" />
+          <ScalarProperty Name="TC_GESTIONEDISPENSATO" ColumnName="TC_GESTIONEDISPENSATO" />
+          <ScalarProperty Name="TC_ATTIVA_TEMPORISPOSTA" ColumnName="TC_ATTIVA_TEMPORISPOSTA" />
+          <ScalarProperty Name="TC_ATTIVA_AVANZAM_MANUALE" ColumnName="TC_ATTIVA_AVANZAM_MANUALE" />
+          <ScalarProperty Name="TC_ATTIVA_VF_CON_AUDIO" ColumnName="TC_ATTIVA_VF_CON_AUDIO" />
+          <ScalarProperty Name="TC_NASCONDI_MINIATURE" ColumnName="TC_NASCONDI_MINIATURE" />
+          <ScalarProperty Name="TC_GEN_QUEST_LEZ_LIBERA" ColumnName="TC_GEN_QUEST_LEZ_LIBERA" />
+          <ScalarProperty Name="TC_AGGIORNA_PRESENZA" ColumnName="TC_AGGIORNA_PRESENZA" />
+          <ScalarProperty Name="TC_AUDIOPRIMADOMANDA" ColumnName="TC_AUDIOPRIMADOMANDA" />
+          <ScalarProperty Name="TC_ATTIVAQUIZ" ColumnName="TC_ATTIVAQUIZ" />
+          <ScalarProperty Name="TC_USADOMANDEPERSONALIZZATE" ColumnName="TC_USADOMANDEPERSONALIZZATE" />
+          <ScalarProperty Name="TC_MM_MULTIDB" ColumnName="TC_MM_MULTIDB" />
+          <ScalarProperty Name="TC_MENUMULTIESAME" ColumnName="TC_MENUMULTIESAME" />
+          <ScalarProperty Name="TC_MM_REVISIONE" ColumnName="TC_MM_REVISIONE" />
+          <ScalarProperty Name="TC_TACHIGRAFO" ColumnName="TC_TACHIGRAFO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_tipipatente">
+      <EntityTypeMapping TypeName="egafMainEF.v_tipipatente">
+        <MappingFragment StoreEntitySet="v_tipipatente">
+          <ScalarProperty Name="QTA" ColumnName="QTA" />
+          <ScalarProperty Name="MD_DESCRIZIONE" ColumnName="MD_DESCRIZIONE" />
+          <ScalarProperty Name="TC_DESCRIZIONE" ColumnName="TC_DESCRIZIONE" />
+          <ScalarProperty Name="TC_ID" ColumnName="TC_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_esami">
+      <EntityTypeMapping TypeName="egafMainEF.v_esami">
+        <MappingFragment StoreEntitySet="v_esami">
+          <ScalarProperty Name="ES_NONSELEZIONABILE" ColumnName="ES_NONSELEZIONABILE" />
+          <ScalarProperty Name="ES_REVISIONE" ColumnName="ES_REVISIONE" />
+          <ScalarProperty Name="ES_RE_ID" ColumnName="ES_RE_ID" />
+          <ScalarProperty Name="ES_DESCRIZIONE" ColumnName="ES_DESCRIZIONE" />
+          <ScalarProperty Name="ES_ID" ColumnName="ES_ID" />
+          <ScalarProperty Name="ES_TC_ID" ColumnName="ES_TC_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_regole">
+      <EntityTypeMapping TypeName="egafMainEF.v_regole">
+        <MappingFragment StoreEntitySet="v_regole">
+          <ScalarProperty Name="Risposte_libere" ColumnName="Risposte_libere" />
+          <ScalarProperty Name="RE_LIMITE_MIN_RISPFALSE" ColumnName="RE_LIMITE_MIN_RISPFALSE" />
+          <ScalarProperty Name="RE_LIMITE_RISPFALSE" ColumnName="RE_LIMITE_RISPFALSE" />
+          <ScalarProperty Name="RE_TIPOREGOLA" ColumnName="RE_TIPOREGOLA" />
+          <ScalarProperty Name="RE_RISXDOM" ColumnName="RE_RISXDOM" />
+          <ScalarProperty Name="RE_DESCRIZIONE" ColumnName="RE_DESCRIZIONE" />
+          <ScalarProperty Name="RE_PROG" ColumnName="RE_PROG" />
+          <ScalarProperty Name="RE_ID" ColumnName="RE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="locks">
+      <EntityTypeMapping TypeName="egafMainEF.locks">
+        <MappingFragment StoreEntitySet="locks">
+          <ScalarProperty Name="DATAORA" ColumnName="DATAORA" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_releaseopere">
+      <EntityTypeMapping TypeName="egafMainEF.v_releaseopere">
+        <MappingFragment StoreEntitySet="v_releaseopere">
+          <ScalarProperty Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" ColumnName="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" />
+          <ScalarProperty Name="RO_TC_ID" ColumnName="RO_TC_ID" />
+          <ScalarProperty Name="RO_ID" ColumnName="RO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_domerisp">
+      <EntityTypeMapping TypeName="egafMainEF.v_domerisp">
+        <MappingFragment StoreEntitySet="v_domerisp">
+          <ScalarProperty Name="DO_MULTIMEDIALE" ColumnName="DO_MULTIMEDIALE" />
+          <ScalarProperty Name="RI_ORDINAMENTOCASUALE" ColumnName="RI_ORDINAMENTOCASUALE" />
+          <ScalarProperty Name="RI_ALTROTESTO" ColumnName="RI_ALTROTESTO" />
+          <ScalarProperty Name="RI_IMG2" ColumnName="RI_IMG2" />
+          <ScalarProperty Name="RI_IMG" ColumnName="RI_IMG" />
+          <ScalarProperty Name="DO_GRDOMCORR" ColumnName="DO_GRDOMCORR" />
+          <ScalarProperty Name="DO_TESTO_AIUTO" ColumnName="DO_TESTO_AIUTO" />
+          <ScalarProperty Name="DO_ALTROTESTO" ColumnName="DO_ALTROTESTO" />
+          <ScalarProperty Name="RI_NOTE" ColumnName="RI_NOTE" />
+          <ScalarProperty Name="RI_FLAG_BLOCCATA" ColumnName="RI_FLAG_BLOCCATA" />
+          <ScalarProperty Name="DO_NOTE" ColumnName="DO_NOTE" />
+          <ScalarProperty Name="DO_FLAG_BLOCCATA" ColumnName="DO_FLAG_BLOCCATA" />
+          <ScalarProperty Name="DO_IMG2" ColumnName="DO_IMG2" />
+          <ScalarProperty Name="DO_IMG" ColumnName="DO_IMG" />
+          <ScalarProperty Name="RI_VF" ColumnName="RI_VF" />
+          <ScalarProperty Name="RI_TESTOFR" ColumnName="RI_TESTOFR" />
+          <ScalarProperty Name="RI_TESTODE" ColumnName="RI_TESTODE" />
+          <ScalarProperty Name="RI_TESTO" ColumnName="RI_TESTO" />
+          <ScalarProperty Name="DO_TESTOFR" ColumnName="DO_TESTOFR" />
+          <ScalarProperty Name="DO_TESTODE" ColumnName="DO_TESTODE" />
+          <ScalarProperty Name="RI_TESTOORDINE" ColumnName="RI_TESTOORDINE" />
+          <ScalarProperty Name="DO_TESTO" ColumnName="DO_TESTO" />
+          <ScalarProperty Name="DO_CODICE_EGAF" ColumnName="DO_CODICE_EGAF" />
+          <ScalarProperty Name="DO_CODICE_MINST" ColumnName="DO_CODICE_MINST" />
+          <ScalarProperty Name="RI_ES_ID" ColumnName="RI_ES_ID" />
+          <ScalarProperty Name="DO_ES_ID" ColumnName="DO_ES_ID" />
+          <ScalarProperty Name="RI_ID" ColumnName="RI_ID" />
+          <ScalarProperty Name="DO_ID" ColumnName="DO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

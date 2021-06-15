@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="egafMainEF.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="abb_dom_materie_minist">
+    <Key>
+      <PropertyRef Name="AB9_ID" />
+    </Key>
+    <Property Name="AB9_ID" Type="int" Nullable="false" />
+    <Property Name="AB9_MINIST_MA_ID" Type="int" />
+    <Property Name="AB9_DO_ID" Type="int" />
+    <Property Name="AB9_FLAGSTATISTICHE" Type="utinyint" />
+    <Property Name="AB9_DATAAGG" Type="datetime" Precision="0" />
+    <Property Name="AB9_RELEASE" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="abbinamento_esami_materie">
+    <Key>
+      <PropertyRef Name="AB5_ID" />
+    </Key>
+    <Property Name="AB5_ID" Type="int" Nullable="false" />
+    <Property Name="AB5_ES_ID" Type="int" />
+    <Property Name="AB5_MA_ID" Type="int" />
+    <Property Name="AB5_RELEASE" Type="varchar" MaxLength="50" />
+    <Property Name="AB5_SOTTOES_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="dettaglioregole">
+    <Key>
+      <PropertyRef Name="DR_ID" />
+      <PropertyRef Name="DR_PROG" />
+    </Key>
+    <Property Name="DR_ID" Type="int" Nullable="false" />
+    <Property Name="DR_RE_ID" Type="int" />
+    <Property Name="DR_DESCRIZIONE" Type="varchar" MaxLength="100" />
+    <Property Name="DR_MATERIE" Type="varchar" MaxLength="100" />
+    <Property Name="DR_DA" Type="utinyint" />
+    <Property Name="DR_AD" Type="utinyint" />
+    <Property Name="DR_PROG" Type="int" Nullable="false" />
+    <Property Name="DR_MM_ID" Type="int" />
+    <Property Name="DR_ORDINE" Type="varchar" MaxLength="2" />
+    <Property Name="DR_AGGREGAZIONEESAMI" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="domande">
+    <Key>
+      <PropertyRef Name="DO_ID" />
+    </Key>
+    <Property Name="DO_ID" Type="int" Nullable="false" />
+    <Property Name="DO_MINIST_MA_ID" Type="int" />
+    <Property Name="DO_TESTO" Type="longtext" />
+    <Property Name="DO_IMG" Type="varchar" MaxLength="50" />
+    <Property Name="DO_AR_ID" Type="int" />
+    <Property Name="DO_CODICE_MINST" Type="varchar" MaxLength="20" />
+    <Property Name="DO_CODICE_EGAF" Type="varchar" MaxLength="20" />
+    <Property Name="DO_IMG2" Type="varchar" MaxLength="50" />
+    <Property Name="DO_MULTIMEDIALE" Type="varchar" MaxLength="50" />
+    <Property Name="DO_STATISTICA" Type="int" />
+    <Property Name="DO_COMMENTO" Type="varchar" MaxLength="50" />
+    <Property Name="DO_FLAG_BLOCCATA" Type="int" />
+    <Property Name="DO_NOTE" Type="varchar" MaxLength="255" />
+    <Property Name="DO_FLAG_BLOCCATA_EGAF" Type="int" />
+    <Property Name="DO_NOTE_EGAF" Type="varchar" MaxLength="255" />
+    <Property Name="DO_TEORICOPRATICO" Type="varchar" MaxLength="1" />
+    <Property Name="DO_ES_ID" Type="int" />
+    <Property Name="DO_FLAG_OBSOLETA" Type="int" />
+    <Property Name="DO_TESTOCN" Type="longtext" />
+    <Property Name="DO_TESTOES" Type="longtext" />
+    <Property Name="DO_TESTOMA" Type="longtext" />
+    <Property Name="DO_TESTODE" Type="longtext" />
+    <Property Name="DO_TESTOGB" Type="longtext" />
+    <Property Name="DO_TESTOFR" Type="longtext" />
+    <Property Name="DO_TESTORU" Type="longtext" />
+    <Property Name="DO_PROGRESSIVO" Type="int" />
+    <Property Name="DO_STATISTICAV" Type="int" />
+    <Property Name="DO_STATISTICAF" Type="int" />
+    <Property Name="DO_GRDOMCORR" Type="varchar" MaxLength="1" />
+    <Property Name="DO_ALTROTESTO" Type="longtext" />
+    <Property Name="DO_TESTO_AIUTO" Type="longtext" />
+  </EntityType>
+  <EntityType Name="esami">
+    <Key>
+      <PropertyRef Name="ES_ID" />
+    </Key>
+    <Property Name="ES_ID" Type="int" Nullable="false" />
+    <Property Name="ES_MNEMO" Type="varchar" MaxLength="50" />
+    <Property Name="ES_DESCRIZIONE" Type="varchar" MaxLength="50" />
+    <Property Name="ES_RE_ID" Type="int" />
+    <Property Name="ES_SIGLAMULTIMEDIALE" Type="varchar" MaxLength="50" />
+    <Property Name="ES_SIGLA" Type="varchar" MaxLength="50" />
+    <Property Name="ES_TC_ID" Type="int" />
+    <Property Name="ES_ESAME_APERTO" Type="utinyint" />
+    <Property Name="ES_MONTE_ORE" Type="int" />
+    <Property Name="ES_MAX_ASSENZE_ORE" Type="int" />
+    <Property Name="ES_MAX_ASSENZE_PERC" Type="int" />
+    <Property Name="ES_BROWSERMULTIMEDIALE" Type="varchar" MaxLength="255" />
+    <Property Name="ES_SIGLABREVE" Type="varchar" MaxLength="20" />
+    <Property Name="ES_DESCRIZIONEATTESTATO" Type="varchar" MaxLength="255" />
+    <Property Name="ES_MULTIESBASE" Type="varchar" MaxLength="1" />
+    <Property Name="ES_MULTIESLIVELLO" Type="varchar" MaxLength="5" />
+    <Property Name="ES_ORDINEAGGREGAZIONE" Type="varchar" MaxLength="50" />
+    <Property Name="ES_STAMPAATTESTATO" Type="utinyint" />
+    <Property Name="ES_NONSELEZIONABILE" Type="utinyint" />
+    <Property Name="ES_ORDINAMENTO" Type="int" />
+    <Property Name="ES_REVISIONE" Type="utinyint" />
+    <Property Name="ES_DESCRIZIONE_APP" Type="varchar" MaxLength="250" />
+    <Property Name="ES_ESCLUDI_DA_APP" Type="utinyint" />
+  </EntityType>
+  <EntityType Name="locks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER" Type="varchar" MaxLength="45" />
+    <Property Name="DATAORA" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="regole">
+    <Key>
+      <PropertyRef Name="RE_ID" />
+      <PropertyRef Name="RE_PROG" />
+    </Key>
+    <Property Name="RE_ID" Type="int" Nullable="false" />
+    <Property Name="RE_DESCRIZIONE" Type="varchar" MaxLength="255" />
+    <Property Name="RE_DOMXQUEST" Type="int" />
+    <Property Name="RE_RISXDOM" Type="int" />
+    <Property Name="RE_HDOM" Type="int" />
+    <Property Name="RE_HTESTODOM" Type="int" />
+    <Property Name="RE_HTESTORISP" Type="int" />
+    <Property Name="RE_HLINE" Type="int" />
+    <Property Name="RE_TIPOREGOLA" Type="varchar" MaxLength="2" />
+    <Property Name="RE_DEFAULT" Type="utinyint" />
+    <Property Name="RE_DOMXPAG" Type="int" />
+    <Property Name="RE_FONTSIZEDOM" Type="int" />
+    <Property Name="RE_FONTSIZERISP" Type="int" />
+    <Property Name="RE_WIMG" Type="int" />
+    <Property Name="RE_RIGHEWRAP" Type="int" />
+    <Property Name="RE_PERCENTUALE" Type="int" />
+    <Property Name="RE_TIPOCALCOLO" Type="varchar" MaxLength="1" />
+    <Property Name="RE_PARAMINTESTAZIONE" Type="varchar" MaxLength="255" />
+    <Property Name="RE_NUMERARISPOSTE" Type="varchar" MaxLength="1" />
+    <Property Name="RE_LIMITE_RISPFALSE" Type="int" />
+    <Property Name="RE_ORDINAMENTORISPOSTE" Type="varchar" MaxLength="1" />
+    <Property Name="RE_PUNTEGGIOMINIMO" Type="int" />
+    <Property Name="RE_PUNTEGGIOMASSIMO" Type="int" />
+    <Property Name="RE_ANZIANITA" Type="int" />
+    <Property Name="RE_PUNTMINIMOTOTALE" Type="int" />
+    <Property Name="RE_TEMPOESAME" Type="int" />
+    <Property Name="RE_ORDINAMENTODOMANDE" Type="varchar" MaxLength="1" />
+    <Property Name="RE_PROG" Type="int" Nullable="false" />
+    <Property Name="RE_RISPMINIMECP" Type="int" />
+    <Property Name="RE_RISPMINIMECPANZ" Type="int" />
+    <Property Name="RE_LIMITE_MIN_RISPFALSE" Type="int" />
+    <Property Name="RE_VOTOMINIMOCP" Type="int" />
+    <Property Name="RE_TIPOCALCOLO_ESITO" Type="varchar" MaxLength="1" />
+    <Property Name="RE_TIPORIGADINAMICO" Type="int" />
+    <Property Name="RE_DOMXPAGNOIMG" Type="int" />
+    <Property Name="RE_PESORISPESATTE" Type="float" />
+    <Property Name="RE_PESORISPERRATE" Type="float" />
+    <Property Name="RE_PESORISPNONDATE" Type="float" />
+  </EntityType>
+  <EntityType Name="releaseopere">
+    <Key>
+      <PropertyRef Name="RO_ID" />
+    </Key>
+    <Property Name="RO_ID" Type="int" Nullable="false" />
+    <Property Name="RO_TC_ID" Type="int" />
+    <Property Name="RO_RELEASE" Type="int" />
+    <Property Name="RO_DATA" Type="datetime" Precision="0" />
+    <Property Name="RO_RELEASE_MULTIMEDIALE" Type="int" />
+    <Property Name="RO_DESCR_REL_MULTIMEDIALE" Type="varchar" MaxLength="50" />
+    <Property Name="RO_TIPOSEGMENTI" Type="varchar" MaxLength="1" />
+    <Property Name="RO_ESISTENZATESTO" Type="int" />
+    <Property Name="RO_ESISTENZAAUDIO" Type="int" />
+    <Property Name="RO_PUBBLICARELEASE" Type="int" />
+    <Property Name="RO_FONTQUESTFISSO" Type="int" />
+    <Property Name="RO_LINGUEAMMESSE" Type="varchar" MaxLength="100" />
+    <Property Name="RO_COMPATTALIVELLI" Type="int" />
+    <Property Name="RO_MULTIMEDIALEOLD" Type="int" />
+    <Property Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" Type="int" />
+    <Property Name="RO_GENERAQUESTIONARI" Type="int" />
+    <Property Name="RO_ESCLUDI_CASIPRATICI" Type="varchar" MaxLength="255" />
+    <Property Name="RO_DATAVALIDITA_LICENZA" Type="varchar" MaxLength="50" />
+    <Property Name="RO_ALLIEVO_ESCLUDI_QUIZ_ARGOMENTO" Type="int" />
+    <Property Name="RO_ALLIEVO_ESCLUDI_QUIZ_DIFFICOLTA" Type="int" />
+  </EntityType>
+  <EntityType Name="risposte">
+    <Key>
+      <PropertyRef Name="RI_ID" />
+    </Key>
+    <Property Name="RI_ID" Type="int" Nullable="false" />
+    <Property Name="RI_DO_ID" Type="int" />
+    <Property Name="RI_TESTOORDINE" Type="varchar" MaxLength="50" />
+    <Property Name="RI_TESTO" Type="longtext" />
+    <Property Name="RI_VF" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="RI_COMMENTO" Type="varchar" MaxLength="50" />
+    <Property Name="RI_FLAG_BLOCCATA" Type="int" />
+    <Property Name="RI_NOTE" Type="varchar" MaxLength="255" />
+    <Property Name="RI_FLAG_BLOCCATA_EGAF" Type="int" />
+    <Property Name="RI_NOTE_EGAF" Type="varchar" MaxLength="255" />
+    <Property Name="RI_ES_ID" Type="int" />
+    <Property Name="RI_FLAG_OBSOLETA" Type="int" />
+    <Property Name="RI_ORDINAMENTOCASUALE" Type="int" />
+    <Property Name="RI_TESTOCN" Type="longtext" />
+    <Property Name="RI_TESTOES" Type="longtext" />
+    <Property Name="RI_TESTOMA" Type="longtext" />
+    <Property Name="RI_TESTODE" Type="longtext" />
+    <Property Name="RI_TESTOGB" Type="longtext" />
+    <Property Name="RI_TESTOFR" Type="longtext" />
+    <Property Name="RI_TESTORU" Type="longtext" />
+    <Property Name="RI_PROGRESSIVO" Type="int" />
+    <Property Name="RI_CODICE_MINIST" Type="int" />
+    <Property Name="RI_IMG" Type="varchar" MaxLength="255" />
+    <Property Name="RI_IMG2" Type="varchar" MaxLength="255" />
+    <Property Name="RI_ALTROTESTO" Type="longtext" />
+  </EntityType>
+  <EntityType Name="tipocommissione">
+    <Key>
+      <PropertyRef Name="TC_ID" />
+    </Key>
+    <Property Name="TC_ID" Type="int" Nullable="false" />
+    <Property Name="TC_DESCRIZIONE" Type="varchar" MaxLength="50" />
+    <Property Name="TC_TESTOVERBALE" Type="varchar" MaxLength="50" />
+    <Property Name="TC_TESTOATTESTATO" Type="varchar" MaxLength="50" />
+    <Property Name="TC_ESAMEAPERTO" Type="utinyint" />
+    <Property Name="TC_PROT_VERBALE" Type="int" />
+    <Property Name="TC_TIPO_PROT_VERB" Type="int" />
+    <Property Name="TC_PROT_ATTESTATO" Type="int" />
+    <Property Name="TC_TIPO_PROT_ATT" Type="int" />
+    <Property Name="TC_SIMULAZIONE_ESAME" Type="int" />
+    <Property Name="TC_CASOPRATICO" Type="int" />
+    <Property Name="TC_RELEASE" Type="int" />
+    <Property Name="TC_QUESTIONARIOMINIST" Type="int" />
+    <Property Name="TC_ESAMEINLINGUA" Type="utinyint" />
+    <Property Name="TC_QUIZACASA" Type="utinyint" />
+    <Property Name="TC_MULTIESAME" Type="utinyint" />
+    <Property Name="TC_CASOPRATICODETT" Type="int" />
+    <Property Name="TC_FONTQUESTFISSO" Type="int" />
+    <Property Name="TC_RIEPILOGOMACROMAT" Type="int" />
+    <Property Name="TC_PERSONALIZZAREGOLE" Type="utinyint" />
+    <Property Name="TC_PERSONALIZZAREGOLECP" Type="utinyint" />
+    <Property Name="TC_PARAMETRIFLASH" Type="int" />
+    <Property Name="TC_MODODOMMULTIMED" Type="int" />
+    <Property Name="TC_GESTIONESEMPLIFICATA" Type="int" />
+    <Property Name="TC_QUEST_CON_IMG" Type="int" />
+    <Property Name="TC_DEFAULT_CHK_IMG" Type="int" />
+    <Property Name="TC_CONSENTIDOMCORR" Type="int" />
+    <Property Name="TC_PLAYCONTINUO" Type="varchar" MaxLength="1" />
+    <Property Name="TC_LIVELLOLEZIONE" Type="int" />
+    <Property Name="TC_TEMPODOMANDA" Type="int" />
+    <Property Name="TC_TEMPORISPOSTA" Type="int" />
+    <Property Name="TC_TEMPOIMMAGINE" Type="int" />
+    <Property Name="TC_MOSTRACOLOREARG" Type="varchar" MaxLength="1" />
+    <Property Name="TC_TOOLTIPTABELLONE" Type="varchar" MaxLength="1" />
+    <Property Name="TC_AUTOPLAY" Type="varchar" MaxLength="1" />
+    <Property Name="TC_RISPOSTEBARRA" Type="varchar" MaxLength="50" />
+    <Property Name="TC_FLASHCHIUDIFILM" Type="varchar" MaxLength="1" />
+    <Property Name="TC_FLASHATTIVAQUIZ" Type="varchar" MaxLength="1" />
+    <Property Name="TC_FLASHATTIVASUGGER" Type="varchar" MaxLength="1" />
+    <Property Name="TC_FLASHATTIVAZOOMINIZIALE" Type="varchar" MaxLength="1" />
+    <Property Name="TC_FLASHATTIVAAUDIO" Type="varchar" MaxLength="1" />
+    <Property Name="TC_ORDINAMENTOCASUALE" Type="varchar" MaxLength="50" />
+    <Property Name="TC_MOSTRALEGENDAARG" Type="int" />
+    <Property Name="TC_MINIMIZED" Type="varchar" MaxLength="1" />
+    <Property Name="TC_ATTIVA_SUGG_VF" Type="varchar" MaxLength="50" />
+    <Property Name="TC_ATTIVA_ANTE_DOMANDA" Type="varchar" MaxLength="1" />
+    <Property Name="TC_MOSTRAPROGDOM" Type="varchar" MaxLength="1" />
+    <Property Name="TC_MAXLIVARGOMENTI" Type="int" />
+    <Property Name="TC_NASCONDI_PROG_CAP" Type="varchar" MaxLength="1" />
+    <Property Name="TC_GESTIONEDISPENSATO" Type="varchar" MaxLength="1" />
+    <Property Name="TC_ATTIVA_TEMPORISPOSTA" Type="varchar" MaxLength="50" />
+    <Property Name="TC_ATTIVA_AVANZAM_MANUALE" Type="varchar" MaxLength="50" />
+    <Property Name="TC_ATTIVA_VF_CON_AUDIO" Type="varchar" MaxLength="50" />
+    <Property Name="TC_NASCONDI_MINIATURE" Type="varchar" MaxLength="1" />
+    <Property Name="TC_GEN_QUEST_LEZ_LIBERA" Type="varchar" MaxLength="1" />
+    <Property Name="TC_AGGIORNA_PRESENZA" Type="varchar" MaxLength="1" />
+    <Property Name="TC_AUDIOPRIMADOMANDA" Type="varchar" MaxLength="1" />
+    <Property Name="TC_ATTIVAQUIZ" Type="varchar" MaxLength="1" />
+    <Property Name="TC_USADOMANDEPERSONALIZZATE" Type="varchar" MaxLength="1" />
+    <Property Name="TC_MM_MULTIDB" Type="varchar" MaxLength="1" />
+    <Property Name="TC_MENUMULTIESAME" Type="varchar" MaxLength="50" />
+    <Property Name="TC_MM_REVISIONE" Type="varchar" MaxLength="1" />
+    <Property Name="TC_TACHIGRAFO" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_domerisp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_domerisp">
+    <Key>
+      <PropertyRef Name="DO_ID" />
+      <PropertyRef Name="RI_ID" />
+      <PropertyRef Name="RI_VF" />
+    </Key>
+    <Property Name="DO_ID" Type="int" Nullable="false" />
+    <Property Name="RI_ID" Type="int" Nullable="false" />
+    <Property Name="DO_ES_ID" Type="int" />
+    <Property Name="RI_ES_ID" Type="int" />
+    <Property Name="DO_CODICE_MINST" Type="varchar" MaxLength="20" />
+    <Property Name="DO_CODICE_EGAF" Type="varchar" MaxLength="20" />
+    <Property Name="DO_TESTO" Type="longtext" />
+    <Property Name="RI_TESTOORDINE" Type="varchar" MaxLength="50" />
+    <Property Name="DO_TESTODE" Type="longtext" />
+    <Property Name="DO_TESTOFR" Type="longtext" />
+    <Property Name="RI_TESTO" Type="longtext" />
+    <Property Name="RI_TESTODE" Type="longtext" />
+    <Property Name="RI_TESTOFR" Type="longtext" />
+    <Property Name="RI_VF" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="DO_IMG" Type="varchar" MaxLength="50" />
+    <Property Name="DO_IMG2" Type="varchar" MaxLength="50" />
+    <Property Name="DO_FLAG_BLOCCATA" Type="int" />
+    <Property Name="DO_NOTE" Type="varchar" MaxLength="255" />
+    <Property Name="RI_FLAG_BLOCCATA" Type="int" />
+    <Property Name="RI_NOTE" Type="varchar" MaxLength="255" />
+    <Property Name="DO_ALTROTESTO" Type="longtext" />
+    <Property Name="DO_TESTO_AIUTO" Type="longtext" />
+    <Property Name="DO_GRDOMCORR" Type="varchar" MaxLength="1" />
+    <Property Name="RI_IMG" Type="varchar" MaxLength="255" />
+    <Property Name="RI_IMG2" Type="varchar" MaxLength="255" />
+    <Property Name="RI_ALTROTESTO" Type="longtext" />
+    <Property Name="RI_ORDINAMENTOCASUALE" Type="int" />
+    <Property Name="DO_MULTIMEDIALE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_esami' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_esami">
+    <Key>
+      <PropertyRef Name="ES_ID" />
+    </Key>
+    <Property Name="ES_TC_ID" Type="int" />
+    <Property Name="ES_ID" Type="int" Nullable="false" />
+    <Property Name="ES_DESCRIZIONE" Type="varchar" MaxLength="50" />
+    <Property Name="ES_RE_ID" Type="int" />
+    <Property Name="ES_REVISIONE" Type="utinyint" />
+    <Property Name="ES_NONSELEZIONABILE" Type="utinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_regole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_regole">
+    <Key>
+      <PropertyRef Name="RE_ID" />
+      <PropertyRef Name="RE_PROG" />
+    </Key>
+    <Property Name="RE_ID" Type="int" Nullable="false" />
+    <Property Name="RE_PROG" Type="int" Nullable="false" />
+    <Property Name="RE_DESCRIZIONE" Type="varchar" MaxLength="255" />
+    <Property Name="RE_RISXDOM" Type="int" />
+    <Property Name="RE_TIPOREGOLA" Type="varchar" MaxLength="2" />
+    <Property Name="RE_LIMITE_RISPFALSE" Type="int" />
+    <Property Name="RE_LIMITE_MIN_RISPFALSE" Type="int" />
+    <Property Name="Risposte_libere" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_releaseopere' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_releaseopere">
+    <Key>
+      <PropertyRef Name="RO_ID" />
+    </Key>
+    <Property Name="RO_ID" Type="int" Nullable="false" />
+    <Property Name="RO_TC_ID" Type="int" />
+    <Property Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_tipipatente">
+    <Key>
+      <PropertyRef Name="TC_ID" />
+      <PropertyRef Name="QTA" />
+    </Key>
+    <Property Name="TC_ID" Type="int" Nullable="false" />
+    <Property Name="TC_DESCRIZIONE" Type="varchar" MaxLength="50" />
+    <Property Name="MD_DESCRIZIONE" Type="varchar" MaxLength="100" />
+    <Property Name="QTA" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Domande_Esame_ES_ID">
+    <End Role="esami" Type="Self.esami" Multiplicity="0..1" />
+    <End Role="domande" Type="Self.domande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="esami">
+        <PropertyRef Name="ES_ID" />
+      </Principal>
+      <Dependent Role="domande">
+        <PropertyRef Name="DO_ES_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Domande_TipoCommissione_TC_ID">
+    <End Role="tipocommissione" Type="Self.tipocommissione" Multiplicity="0..1" />
+    <End Role="domande" Type="Self.domande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocommissione">
+        <PropertyRef Name="TC_ID" />
+      </Principal>
+      <Dependent Role="domande">
+        <PropertyRef Name="DO_ES_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Esami_TipoCommissione_TC_ID">
+    <End Role="tipocommissione" Type="Self.tipocommissione" Multiplicity="0..1" />
+    <End Role="esami" Type="Self.esami" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocommissione">
+        <PropertyRef Name="TC_ID" />
+      </Principal>
+      <Dependent Role="esami">
+        <PropertyRef Name="ES_TC_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risposte_Domande_DO_ID">
+    <End Role="domande" Type="Self.domande" Multiplicity="0..1" />
+    <End Role="risposte" Type="Self.risposte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="domande">
+        <PropertyRef Name="DO_ID" />
+      </Principal>
+      <Dependent Role="risposte">
+        <PropertyRef Name="RI_DO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risposte_TipoCommissione_TC_ID">
+    <End Role="tipocommissione" Type="Self.tipocommissione" Multiplicity="0..1" />
+    <End Role="risposte" Type="Self.risposte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocommissione">
+        <PropertyRef Name="TC_ID" />
+      </Principal>
+      <Dependent Role="risposte">
+        <PropertyRef Name="RI_ES_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="egafMainEFStoreContainer">
+    <EntitySet Name="abb_dom_materie_minist" EntityType="Self.abb_dom_materie_minist" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="abbinamento_esami_materie" EntityType="Self.abbinamento_esami_materie" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="dettaglioregole" EntityType="Self.dettaglioregole" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="domande" EntityType="Self.domande" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="esami" EntityType="Self.esami" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="locks" EntityType="Self.locks" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="regole" EntityType="Self.regole" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="releaseopere" EntityType="Self.releaseopere" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="risposte" EntityType="Self.risposte" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="tipocommissione" EntityType="Self.tipocommissione" Schema="egaf_main" store:Type="Tables" />
+    <EntitySet Name="v_domerisp" EntityType="Self.v_domerisp" store:Type="Views" store:Schema="egaf_main">
+      <DefiningQuery>SELECT
+`v_domerisp`.`DO_ID`, 
+`v_domerisp`.`RI_ID`, 
+`v_domerisp`.`DO_ES_ID`, 
+`v_domerisp`.`RI_ES_ID`, 
+`v_domerisp`.`DO_CODICE_MINST`, 
+`v_domerisp`.`DO_CODICE_EGAF`, 
+`v_domerisp`.`DO_TESTO`, 
+`v_domerisp`.`RI_TESTOORDINE`, 
+`v_domerisp`.`DO_TESTODE`, 
+`v_domerisp`.`DO_TESTOFR`, 
+`v_domerisp`.`RI_TESTO`, 
+`v_domerisp`.`RI_TESTODE`, 
+`v_domerisp`.`RI_TESTOFR`, 
+`v_domerisp`.`RI_VF`, 
+`v_domerisp`.`DO_IMG`, 
+`v_domerisp`.`DO_IMG2`, 
+`v_domerisp`.`DO_FLAG_BLOCCATA`, 
+`v_domerisp`.`DO_NOTE`, 
+`v_domerisp`.`RI_FLAG_BLOCCATA`, 
+`v_domerisp`.`RI_NOTE`, 
+`v_domerisp`.`DO_ALTROTESTO`, 
+`v_domerisp`.`DO_TESTO_AIUTO`, 
+`v_domerisp`.`DO_GRDOMCORR`, 
+`v_domerisp`.`RI_IMG`, 
+`v_domerisp`.`RI_IMG2`, 
+`v_domerisp`.`RI_ALTROTESTO`, 
+`v_domerisp`.`RI_ORDINAMENTOCASUALE`, 
+`v_domerisp`.`DO_MULTIMEDIALE`
+FROM `v_domerisp` AS `v_domerisp`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_esami" EntityType="Self.v_esami" store:Type="Views" store:Schema="egaf_main">
+      <DefiningQuery>SELECT
+`v_esami`.`ES_TC_ID`, 
+`v_esami`.`ES_ID`, 
+`v_esami`.`ES_DESCRIZIONE`, 
+`v_esami`.`ES_RE_ID`, 
+`v_esami`.`ES_REVISIONE`, 
+`v_esami`.`ES_NONSELEZIONABILE`
+FROM `v_esami` AS `v_esami`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_regole" EntityType="Self.v_regole" store:Type="Views" store:Schema="egaf_main">
+      <DefiningQuery>SELECT
+`v_regole`.`RE_ID`, 
+`v_regole`.`RE_PROG`, 
+`v_regole`.`RE_DESCRIZIONE`, 
+`v_regole`.`RE_RISXDOM`, 
+`v_regole`.`RE_TIPOREGOLA`, 
+`v_regole`.`RE_LIMITE_RISPFALSE`, 
+`v_regole`.`RE_LIMITE_MIN_RISPFALSE`, 
+`v_regole`.`Risposte_libere`
+FROM `v_regole` AS `v_regole`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_releaseopere" EntityType="Self.v_releaseopere" store:Type="Views" store:Schema="egaf_main">
+      <DefiningQuery>SELECT
+`v_releaseopere`.`RO_ID`, 
+`v_releaseopere`.`RO_TC_ID`, 
+`v_releaseopere`.`RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA`
+FROM `v_releaseopere` AS `v_releaseopere`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_tipipatente" EntityType="Self.v_tipipatente" store:Type="Views" store:Schema="egaf_main">
+      <DefiningQuery>SELECT
+`v_tipipatente`.`TC_ID`, 
+`v_tipipatente`.`TC_DESCRIZIONE`, 
+`v_tipipatente`.`MD_DESCRIZIONE`, 
+`v_tipipatente`.`QTA`
+FROM `v_tipipatente` AS `v_tipipatente`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Domande_Esame_ES_ID" Association="Self.FK_Domande_Esame_ES_ID">
+      <End Role="esami" EntitySet="esami" />
+      <End Role="domande" EntitySet="domande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Domande_TipoCommissione_TC_ID" Association="Self.FK_Domande_TipoCommissione_TC_ID">
+      <End Role="tipocommissione" EntitySet="tipocommissione" />
+      <End Role="domande" EntitySet="domande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Esami_TipoCommissione_TC_ID" Association="Self.FK_Esami_TipoCommissione_TC_ID">
+      <End Role="tipocommissione" EntitySet="tipocommissione" />
+      <End Role="esami" EntitySet="esami" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risposte_Domande_DO_ID" Association="Self.FK_Risposte_Domande_DO_ID">
+      <End Role="domande" EntitySet="domande" />
+      <End Role="risposte" EntitySet="risposte" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risposte_TipoCommissione_TC_ID" Association="Self.FK_Risposte_TipoCommissione_TC_ID">
+      <End Role="tipocommissione" EntitySet="tipocommissione" />
+      <End Role="risposte" EntitySet="risposte" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

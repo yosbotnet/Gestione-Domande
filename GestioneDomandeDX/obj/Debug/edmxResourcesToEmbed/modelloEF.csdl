@@ -361,6 +361,7 @@
       <End Role="domande" EntitySet="domande" />
     </AssociationSet>
     <EntitySet Name="v_releaseopere" EntityType="egafMainEF.v_releaseopere" />
+    <EntitySet Name="v_domerisp" EntityType="egafMainEF.v_domerisp" />
   </EntityContainer>
   <EntityType Name="v_tipipatente">
     <Key>
@@ -424,5 +425,40 @@
     <Property Name="RO_ID" Type="Int32" Nullable="false" />
     <Property Name="RO_TC_ID" Type="Int32" />
     <Property Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" Type="Int32" />
+  </EntityType>
+  <EntityType Name="v_domerisp">
+    <Key>
+      <PropertyRef Name="DO_ID" />
+      <PropertyRef Name="RI_ID" />
+      <PropertyRef Name="RI_VF" />
+    </Key>
+    <Property Name="DO_ID" Type="Int32" Nullable="false" />
+    <Property Name="RI_ID" Type="Int32" Nullable="false" />
+    <Property Name="DO_ES_ID" Type="Int32" />
+    <Property Name="RI_ES_ID" Type="Int32" />
+    <Property Name="DO_CODICE_MINST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DO_CODICE_EGAF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTOORDINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_VF" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="DO_IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_IMG2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DO_FLAG_BLOCCATA" Type="Int32" />
+    <Property Name="DO_NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_FLAG_BLOCCATA" Type="Int32" />
+    <Property Name="RI_NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DO_ALTROTESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_TESTO_AIUTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DO_GRDOMCORR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="RI_IMG" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_IMG2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RI_ALTROTESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="RI_ORDINAMENTOCASUALE" Type="Int32" />
+    <Property Name="DO_MULTIMEDIALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

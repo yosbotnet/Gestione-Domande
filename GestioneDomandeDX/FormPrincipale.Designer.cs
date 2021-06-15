@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.Utils.MVVM;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace GestioneDomandeDX
 {
@@ -34,7 +35,8 @@ namespace GestioneDomandeDX
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             DevExpress.XtraSpellChecker.SpellCheckerDictionary spellCheckerDictionary1 = new DevExpress.XtraSpellChecker.SpellCheckerDictionary();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.advBandGridView = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.grdMain = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colDO_ID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -81,21 +83,32 @@ namespace GestioneDomandeDX
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.grpSceltaViaIniziale = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.btnSalvaLayout = new System.Windows.Forms.Button();
             this.controlloOrtografico = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.mvvmContext = new DevExpress.Utils.MVVM.MVVMContext(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.advBandGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).BeginInit();
             this.SuspendLayout();
             // 
-            // gridView1
+            // advBandGridView
             // 
-            this.gridView1.GridControl = this.grdMain;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsDetail.EnableDetailToolTip = true;
-            this.gridView1.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled;
+            this.advBandGridView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand1});
+            this.advBandGridView.GridControl = this.grdMain;
+            this.advBandGridView.Name = "advBandGridView";
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Codice Egaf";
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 84;
             // 
             // grdMain
             // 
@@ -109,7 +122,8 @@ namespace GestioneDomandeDX
             this.grdMain.UseEmbeddedNavigator = true;
             this.grdMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView,
-            this.gridView1});
+            this.gridView1,
+            this.advBandGridView});
             this.grdMain.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.grdMain_ViewRegistered);
             this.grdMain.ViewRemoved += new DevExpress.XtraGrid.ViewOperationEventHandler(this.grdMain_ViewRemoved);
             // 
@@ -494,6 +508,13 @@ namespace GestioneDomandeDX
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Lock";
             // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.grdMain;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsDetail.EnableDetailToolTip = true;
+            this.gridView1.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled;
+            // 
             // btnSalvaLayout
             // 
             this.btnSalvaLayout.Location = new System.Drawing.Point(1287, 60);
@@ -517,6 +538,11 @@ namespace GestioneDomandeDX
             this.controlloOrtografico.ParentContainer = null;
             this.controlloOrtografico.SpellCheckMode = DevExpress.XtraSpellChecker.SpellCheckMode.AsYouType;
             // 
+            // mvvmContext
+            // 
+            this.mvvmContext.ContainerControl = this;
+            this.mvvmContext.ViewModelType = typeof(GestioneDomandeDX.FormPrincipaleViewModel);
+            // 
             // FormPrincipale
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -531,11 +557,13 @@ namespace GestioneDomandeDX
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPrincipale_FormClosing);
             this.Load += new System.EventHandler(this.FormPrincipale_Load);
             this.SizeChanged += new System.EventHandler(this.FormPrincipale_SizeChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advBandGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -592,6 +620,9 @@ namespace GestioneDomandeDX
         private DevExpress.XtraBars.BarButtonItem btnLock;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem btnLascia;
+        private DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView advBandGridView;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private MVVMContext mvvmContext;
     }
 }
 

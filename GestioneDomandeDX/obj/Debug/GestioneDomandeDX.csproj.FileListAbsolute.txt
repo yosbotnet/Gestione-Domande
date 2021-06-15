@@ -6,9 +6,11 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Data.v21.1.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.DataAccess.v21.1.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Images.v21.1.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Mvvm.v21.1.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Office.v21.1.Core.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Pdf.v21.1.Core.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Pdf.v21.1.Drawing.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Printing.v15.2.Core.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Printing.v21.1.Core.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.RichEdit.v21.1.Core.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.RichEdit.v21.1.Export.dll
@@ -23,8 +25,8 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.XtraRichEdit.v21.1.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.XtraSpellChecker.v21.1.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\EntityFramework.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.AspNet.Scaffolding.EntityFramework.12.0.dll
-C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.EntityFrameworkCore.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
@@ -39,6 +41,7 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\System.Collections.Immutable.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\System.Interactive.Async.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.CodeParser.v21.1.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Data.v15.2.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.XtraLayout.v21.1.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.XtraTreeList.v21.1.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.AspNet.Scaffolding.12.0.dll
@@ -47,9 +50,11 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\stdole.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Data.v21.1.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.DataAccess.v21.1.xml
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Mvvm.v21.1.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Office.v21.1.Core.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Pdf.v21.1.Core.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Pdf.v21.1.Drawing.xml
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Printing.v15.2.Core.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Printing.v21.1.Core.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.RichEdit.v21.1.Core.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.SpellChecker.v21.1.Core.xml
@@ -64,8 +69,8 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.XtraRichEdit.v21.1.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.XtraSpellChecker.v21.1.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\EntityFramework.xml
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.AspNet.Scaffolding.EntityFramework.12.0.xml
-C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.EntityFrameworkCore.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
@@ -79,6 +84,7 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Remotion.Linq.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\System.Collections.Immutable.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\System.Interactive.Async.xml
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.Data.v15.2.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.XtraLayout.v21.1.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\DevExpress.XtraTreeList.v21.1.xml
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\Microsoft.AspNet.Scaffolding.12.0.xml
@@ -100,6 +106,10 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\es\DevExpress.Pdf.v21.1.Core.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ja\DevExpress.Pdf.v21.1.Core.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ru\DevExpress.Pdf.v21.1.Core.resources.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\de\DevExpress.Printing.v15.2.Core.resources.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\es\DevExpress.Printing.v15.2.Core.resources.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ja\DevExpress.Printing.v15.2.Core.resources.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ru\DevExpress.Printing.v15.2.Core.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\de\DevExpress.Printing.v21.1.Core.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\es\DevExpress.Printing.v21.1.Core.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ja\DevExpress.Printing.v21.1.Core.resources.dll
@@ -144,6 +154,10 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\es\DevExpress.XtraSpellChecker.v21.1.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ja\DevExpress.XtraSpellChecker.v21.1.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ru\DevExpress.XtraSpellChecker.v21.1.resources.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\de\DevExpress.Data.v15.2.resources.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\es\DevExpress.Data.v15.2.resources.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ja\DevExpress.Data.v15.2.resources.dll
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ru\DevExpress.Data.v15.2.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\de\DevExpress.XtraLayout.v21.1.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\es\DevExpress.XtraLayout.v21.1.resources.dll
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\bin\Debug\ja\DevExpress.XtraLayout.v21.1.resources.dll

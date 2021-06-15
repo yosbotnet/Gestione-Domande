@@ -27,12 +27,11 @@ namespace GestioneDomandeDX
 
             OBBIETTIVI ATTUALI
             ---------------------------------------------------------------------------------
-                                                 MARTEDI 15/6
+                                       MARTEDI 15/6
             ---------------------------------------------------------------------------------
-            -applicare modifiche in certi campi anche in quelli con codice egaf uguali
-            -Aggiunta dizionario per controllo ortografico
+                ADVBANDEDGRIDVIEW        
             ---------------------------------------------------------------------------------
-                                                 OBIETTIVI GIORNALIERI
+                                      OBIETTIVI GIORNALIERI
             ---------------------------------------------------------------------------------
             -GESTIRE IL SALVATAGGIO FATTO
                 +CONTROLLARE SE I DATI SALVATI RISPETTANO LE REGOLE FATTO
@@ -51,6 +50,7 @@ namespace GestioneDomandeDX
             -Organizzare in funzioni parti di codice ripetuta FATTO
             -
         */
+        
         GridView dettagli;
         egafEntities context;
         lockUtils lck;
@@ -124,8 +124,12 @@ namespace GestioneDomandeDX
             #endregion
             btnLock.Enabled = false;
             btnLascia.Enabled = false;
+           
+            //grdMain.DataSource = context.v_domerisp.ToList();
             gridView.DataController.AllowIEnumerableDetails = true;
 
+            if (!mvvmContext.IsDesignMode)
+                InitializeBindings();
         }
 
         private bool valida(domande d)
@@ -211,19 +215,21 @@ namespace GestioneDomandeDX
         #region Gestione Master-Detail
         private void gridView_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
         {
-            domande d = (domande)gridView.GetRow(e.RowHandle);
-            e.ChildList = d.risposte.ToList();
+            //domande d = (domande)gridView.GetRow(e.RowHandle);
+            //e.ChildList = d.risposte.ToList();
         }
 
         private void gridView_AfterPrintRow(object sender, DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs e)
-        {
-            gridView.ExpandMasterRow(e.RowHandle);
+        {           
+            //gridView.ExpandMasterRow(e.RowHandle);
         }
        
         private void gridView_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
         {
+            /*
             domande d = (domande)gridView.GetRow(e.RowHandle);
             e.IsEmpty = d.risposte.Count == 0;
+            */
         }
 
         private void gridView_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
@@ -404,6 +410,11 @@ namespace GestioneDomandeDX
         private void gridView_TopRowChanged(object sender, EventArgs e)
         {
             //expandVisibleRows();
+        }
+
+        void InitializeBindings()
+        {
+            var fluent = mvvmContext.OfType<FormPrincipaleViewModel>();
         }
     }
     /// <summary>

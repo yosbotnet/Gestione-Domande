@@ -330,5 +330,39 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="v_domerisp">
+      <EntityTypeMapping TypeName="egafMainEF.v_domerisp">
+        <MappingFragment StoreEntitySet="v_domerisp">
+          <ScalarProperty Name="DO_MULTIMEDIALE" ColumnName="DO_MULTIMEDIALE" />
+          <ScalarProperty Name="RI_ORDINAMENTOCASUALE" ColumnName="RI_ORDINAMENTOCASUALE" />
+          <ScalarProperty Name="RI_ALTROTESTO" ColumnName="RI_ALTROTESTO" />
+          <ScalarProperty Name="RI_IMG2" ColumnName="RI_IMG2" />
+          <ScalarProperty Name="RI_IMG" ColumnName="RI_IMG" />
+          <ScalarProperty Name="DO_GRDOMCORR" ColumnName="DO_GRDOMCORR" />
+          <ScalarProperty Name="DO_TESTO_AIUTO" ColumnName="DO_TESTO_AIUTO" />
+          <ScalarProperty Name="DO_ALTROTESTO" ColumnName="DO_ALTROTESTO" />
+          <ScalarProperty Name="RI_NOTE" ColumnName="RI_NOTE" />
+          <ScalarProperty Name="RI_FLAG_BLOCCATA" ColumnName="RI_FLAG_BLOCCATA" />
+          <ScalarProperty Name="DO_NOTE" ColumnName="DO_NOTE" />
+          <ScalarProperty Name="DO_FLAG_BLOCCATA" ColumnName="DO_FLAG_BLOCCATA" />
+          <ScalarProperty Name="DO_IMG2" ColumnName="DO_IMG2" />
+          <ScalarProperty Name="DO_IMG" ColumnName="DO_IMG" />
+          <ScalarProperty Name="RI_VF" ColumnName="RI_VF" />
+          <ScalarProperty Name="RI_TESTOFR" ColumnName="RI_TESTOFR" />
+          <ScalarProperty Name="RI_TESTODE" ColumnName="RI_TESTODE" />
+          <ScalarProperty Name="RI_TESTO" ColumnName="RI_TESTO" />
+          <ScalarProperty Name="DO_TESTOFR" ColumnName="DO_TESTOFR" />
+          <ScalarProperty Name="DO_TESTODE" ColumnName="DO_TESTODE" />
+          <ScalarProperty Name="RI_TESTOORDINE" ColumnName="RI_TESTOORDINE" />
+          <ScalarProperty Name="DO_TESTO" ColumnName="DO_TESTO" />
+          <ScalarProperty Name="DO_CODICE_EGAF" ColumnName="DO_CODICE_EGAF" />
+          <ScalarProperty Name="DO_CODICE_MINST" ColumnName="DO_CODICE_MINST" />
+          <ScalarProperty Name="RI_ES_ID" ColumnName="RI_ES_ID" />
+          <ScalarProperty Name="DO_ES_ID" ColumnName="DO_ES_ID" />
+          <ScalarProperty Name="RI_ID" ColumnName="RI_ID" />
+          <ScalarProperty Name="DO_ID" ColumnName="DO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

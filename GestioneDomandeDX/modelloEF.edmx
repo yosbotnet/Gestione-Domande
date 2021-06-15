@@ -282,6 +282,43 @@
           <Property Name="TC_TACHIGRAFO" Type="varchar" MaxLength="1" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'def.egaf_main.v_domerisp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_domerisp">
+          <Key>
+            <PropertyRef Name="DO_ID" />
+            <PropertyRef Name="RI_ID" />
+            <PropertyRef Name="RI_VF" />
+          </Key>
+          <Property Name="DO_ID" Type="int" Nullable="false" />
+          <Property Name="RI_ID" Type="int" Nullable="false" />
+          <Property Name="DO_ES_ID" Type="int" />
+          <Property Name="RI_ES_ID" Type="int" />
+          <Property Name="DO_CODICE_MINST" Type="varchar" MaxLength="20" />
+          <Property Name="DO_CODICE_EGAF" Type="varchar" MaxLength="20" />
+          <Property Name="DO_TESTO" Type="longtext" />
+          <Property Name="RI_TESTOORDINE" Type="varchar" MaxLength="50" />
+          <Property Name="DO_TESTODE" Type="longtext" />
+          <Property Name="DO_TESTOFR" Type="longtext" />
+          <Property Name="RI_TESTO" Type="longtext" />
+          <Property Name="RI_TESTODE" Type="longtext" />
+          <Property Name="RI_TESTOFR" Type="longtext" />
+          <Property Name="RI_VF" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="DO_IMG" Type="varchar" MaxLength="50" />
+          <Property Name="DO_IMG2" Type="varchar" MaxLength="50" />
+          <Property Name="DO_FLAG_BLOCCATA" Type="int" />
+          <Property Name="DO_NOTE" Type="varchar" MaxLength="255" />
+          <Property Name="RI_FLAG_BLOCCATA" Type="int" />
+          <Property Name="RI_NOTE" Type="varchar" MaxLength="255" />
+          <Property Name="DO_ALTROTESTO" Type="longtext" />
+          <Property Name="DO_TESTO_AIUTO" Type="longtext" />
+          <Property Name="DO_GRDOMCORR" Type="varchar" MaxLength="1" />
+          <Property Name="RI_IMG" Type="varchar" MaxLength="255" />
+          <Property Name="RI_IMG2" Type="varchar" MaxLength="255" />
+          <Property Name="RI_ALTROTESTO" Type="longtext" />
+          <Property Name="RI_ORDINAMENTOCASUALE" Type="int" />
+          <Property Name="DO_MULTIMEDIALE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'def.egaf_main.v_esami' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_esami">
           <Key>
@@ -403,6 +440,38 @@ warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a prima
           <EntitySet Name="releaseopere" EntityType="Self.releaseopere" Schema="egaf_main" store:Type="Tables" />
           <EntitySet Name="risposte" EntityType="Self.risposte" Schema="egaf_main" store:Type="Tables" />
           <EntitySet Name="tipocommissione" EntityType="Self.tipocommissione" Schema="egaf_main" store:Type="Tables" />
+          <EntitySet Name="v_domerisp" EntityType="Self.v_domerisp" store:Type="Views" store:Schema="egaf_main">
+            <DefiningQuery>SELECT
+`v_domerisp`.`DO_ID`, 
+`v_domerisp`.`RI_ID`, 
+`v_domerisp`.`DO_ES_ID`, 
+`v_domerisp`.`RI_ES_ID`, 
+`v_domerisp`.`DO_CODICE_MINST`, 
+`v_domerisp`.`DO_CODICE_EGAF`, 
+`v_domerisp`.`DO_TESTO`, 
+`v_domerisp`.`RI_TESTOORDINE`, 
+`v_domerisp`.`DO_TESTODE`, 
+`v_domerisp`.`DO_TESTOFR`, 
+`v_domerisp`.`RI_TESTO`, 
+`v_domerisp`.`RI_TESTODE`, 
+`v_domerisp`.`RI_TESTOFR`, 
+`v_domerisp`.`RI_VF`, 
+`v_domerisp`.`DO_IMG`, 
+`v_domerisp`.`DO_IMG2`, 
+`v_domerisp`.`DO_FLAG_BLOCCATA`, 
+`v_domerisp`.`DO_NOTE`, 
+`v_domerisp`.`RI_FLAG_BLOCCATA`, 
+`v_domerisp`.`RI_NOTE`, 
+`v_domerisp`.`DO_ALTROTESTO`, 
+`v_domerisp`.`DO_TESTO_AIUTO`, 
+`v_domerisp`.`DO_GRDOMCORR`, 
+`v_domerisp`.`RI_IMG`, 
+`v_domerisp`.`RI_IMG2`, 
+`v_domerisp`.`RI_ALTROTESTO`, 
+`v_domerisp`.`RI_ORDINAMENTOCASUALE`, 
+`v_domerisp`.`DO_MULTIMEDIALE`
+FROM `v_domerisp` AS `v_domerisp`</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_esami" EntityType="Self.v_esami" store:Type="Views" store:Schema="egaf_main">
             <DefiningQuery>SELECT
 `v_esami`.`ES_TC_ID`, 
@@ -826,6 +895,7 @@ FROM `v_tipipatente` AS `v_tipipatente`</DefiningQuery>
             <End Role="domande" EntitySet="domande" />
           </AssociationSet>
           <EntitySet Name="v_releaseopere" EntityType="egafMainEF.v_releaseopere" />
+          <EntitySet Name="v_domerisp" EntityType="egafMainEF.v_domerisp" />
         </EntityContainer>
         <EntityType Name="v_tipipatente">
           <Key>
@@ -889,6 +959,41 @@ FROM `v_tipipatente` AS `v_tipipatente`</DefiningQuery>
           <Property Name="RO_ID" Type="Int32" Nullable="false" />
           <Property Name="RO_TC_ID" Type="Int32" />
           <Property Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_domerisp">
+          <Key>
+            <PropertyRef Name="DO_ID" />
+            <PropertyRef Name="RI_ID" />
+            <PropertyRef Name="RI_VF" />
+          </Key>
+          <Property Name="DO_ID" Type="Int32" Nullable="false" />
+          <Property Name="RI_ID" Type="Int32" Nullable="false" />
+          <Property Name="DO_ES_ID" Type="Int32" />
+          <Property Name="RI_ES_ID" Type="Int32" />
+          <Property Name="DO_CODICE_MINST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DO_CODICE_EGAF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DO_TESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="RI_TESTOORDINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DO_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="DO_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="RI_TESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="RI_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="RI_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="RI_VF" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DO_IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DO_IMG2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DO_FLAG_BLOCCATA" Type="Int32" />
+          <Property Name="DO_NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RI_FLAG_BLOCCATA" Type="Int32" />
+          <Property Name="RI_NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DO_ALTROTESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="DO_TESTO_AIUTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="DO_GRDOMCORR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="RI_IMG" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RI_IMG2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RI_ALTROTESTO" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="RI_ORDINAMENTOCASUALE" Type="Int32" />
+          <Property Name="DO_MULTIMEDIALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1222,6 +1327,40 @@ FROM `v_tipipatente` AS `v_tipipatente`</DefiningQuery>
                 <ScalarProperty Name="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" ColumnName="RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA" />
                 <ScalarProperty Name="RO_TC_ID" ColumnName="RO_TC_ID" />
                 <ScalarProperty Name="RO_ID" ColumnName="RO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_domerisp">
+            <EntityTypeMapping TypeName="egafMainEF.v_domerisp">
+              <MappingFragment StoreEntitySet="v_domerisp">
+                <ScalarProperty Name="DO_MULTIMEDIALE" ColumnName="DO_MULTIMEDIALE" />
+                <ScalarProperty Name="RI_ORDINAMENTOCASUALE" ColumnName="RI_ORDINAMENTOCASUALE" />
+                <ScalarProperty Name="RI_ALTROTESTO" ColumnName="RI_ALTROTESTO" />
+                <ScalarProperty Name="RI_IMG2" ColumnName="RI_IMG2" />
+                <ScalarProperty Name="RI_IMG" ColumnName="RI_IMG" />
+                <ScalarProperty Name="DO_GRDOMCORR" ColumnName="DO_GRDOMCORR" />
+                <ScalarProperty Name="DO_TESTO_AIUTO" ColumnName="DO_TESTO_AIUTO" />
+                <ScalarProperty Name="DO_ALTROTESTO" ColumnName="DO_ALTROTESTO" />
+                <ScalarProperty Name="RI_NOTE" ColumnName="RI_NOTE" />
+                <ScalarProperty Name="RI_FLAG_BLOCCATA" ColumnName="RI_FLAG_BLOCCATA" />
+                <ScalarProperty Name="DO_NOTE" ColumnName="DO_NOTE" />
+                <ScalarProperty Name="DO_FLAG_BLOCCATA" ColumnName="DO_FLAG_BLOCCATA" />
+                <ScalarProperty Name="DO_IMG2" ColumnName="DO_IMG2" />
+                <ScalarProperty Name="DO_IMG" ColumnName="DO_IMG" />
+                <ScalarProperty Name="RI_VF" ColumnName="RI_VF" />
+                <ScalarProperty Name="RI_TESTOFR" ColumnName="RI_TESTOFR" />
+                <ScalarProperty Name="RI_TESTODE" ColumnName="RI_TESTODE" />
+                <ScalarProperty Name="RI_TESTO" ColumnName="RI_TESTO" />
+                <ScalarProperty Name="DO_TESTOFR" ColumnName="DO_TESTOFR" />
+                <ScalarProperty Name="DO_TESTODE" ColumnName="DO_TESTODE" />
+                <ScalarProperty Name="RI_TESTOORDINE" ColumnName="RI_TESTOORDINE" />
+                <ScalarProperty Name="DO_TESTO" ColumnName="DO_TESTO" />
+                <ScalarProperty Name="DO_CODICE_EGAF" ColumnName="DO_CODICE_EGAF" />
+                <ScalarProperty Name="DO_CODICE_MINST" ColumnName="DO_CODICE_MINST" />
+                <ScalarProperty Name="RI_ES_ID" ColumnName="RI_ES_ID" />
+                <ScalarProperty Name="DO_ES_ID" ColumnName="DO_ES_ID" />
+                <ScalarProperty Name="RI_ID" ColumnName="RI_ID" />
+                <ScalarProperty Name="DO_ID" ColumnName="DO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,461 @@
+﻿<XtraSerializer version="1.0" application="View">
+  <property name="#LayoutVersion" />
+  <property name="#LayoutScaleFactor">@1,Width=1@1,Height=1</property>
+  <property name="OptionsView" isnull="true" iskey="true">
+    <property name="AllowCellMerge">true</property>
+    <property name="RowAutoHeight">true</property>
+    <property name="ShowChildrenInGroupPanel">true</property>
+  </property>
+  <property name="ActiveFilterEnabled">true</property>
+  <property name="Columns" iskey="true" value="28">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="Name">colDO_ID</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">True</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_ID</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">0</property>
+      <property name="Visible">true</property>
+      <property name="Width">68</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="Name">colRI_ID</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_ID</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">1</property>
+      <property name="Visible">true</property>
+      <property name="Width">68</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTO</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">True</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_TESTO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">2</property>
+      <property name="Visible">true</property>
+      <property name="Width">313</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="Name">colRI_TESTOORDINE</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_TESTOORDINE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">3</property>
+      <property name="Visible">true</property>
+      <property name="Width">58</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTODE</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_TESTODE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">4</property>
+      <property name="Visible">true</property>
+      <property name="Width">58</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTOFR</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_TESTOFR</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">5</property>
+      <property name="Visible">true</property>
+      <property name="Width">58</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item7" isnull="true" iskey="true">
+      <property name="Name">colRI_TESTO</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_TESTO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">6</property>
+      <property name="Visible">true</property>
+      <property name="Width">489</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item8" isnull="true" iskey="true">
+      <property name="Name">colRI_TESTODE</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_TESTODE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">7</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item9" isnull="true" iskey="true">
+      <property name="Name">colRI_TESTOFR</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_TESTOFR</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">8</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item10" isnull="true" iskey="true">
+      <property name="Name">colRI_VF</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_VF</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">9</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item11" isnull="true" iskey="true">
+      <property name="Name">colDO_IMG</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_IMG</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">10</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item12" isnull="true" iskey="true">
+      <property name="Name">colDO_IMG2</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_IMG2</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">11</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item13" isnull="true" iskey="true">
+      <property name="Name">colDO_FLAG_BLOCCATA</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_FLAG_BLOCCATA</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">12</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item14" isnull="true" iskey="true">
+      <property name="Name">colDO_NOTE</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_NOTE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">13</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item15" isnull="true" iskey="true">
+      <property name="Name">colRI_FLAG_BLOCCATA</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_FLAG_BLOCCATA</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">14</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item16" isnull="true" iskey="true">
+      <property name="Name">colRI_NOTE</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_NOTE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">15</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item17" isnull="true" iskey="true">
+      <property name="Name">colDO_ALTROTESTO</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_ALTROTESTO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">16</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item18" isnull="true" iskey="true">
+      <property name="Name">colDO_TESTO_AIUTO</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_TESTO_AIUTO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">17</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item19" isnull="true" iskey="true">
+      <property name="Name">colRI_IMG</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_IMG</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">18</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item20" isnull="true" iskey="true">
+      <property name="Name">colRI_IMG2</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_IMG2</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">19</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item21" isnull="true" iskey="true">
+      <property name="Name">colRI_ALTROTESTO</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_ALTROTESTO</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">20</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item22" isnull="true" iskey="true">
+      <property name="Name">colDO_MULTIMEDIALE</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">True</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_MULTIMEDIALE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">21</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item23" isnull="true" iskey="true">
+      <property name="Name">colDO_ES_ID</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_ES_ID</property>
+      <property name="ColumnEditName" />
+      <property name="Width">24</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item24" isnull="true" iskey="true">
+      <property name="Name">colRI_ES_ID</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_ES_ID</property>
+      <property name="ColumnEditName" />
+      <property name="Width">24</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item25" isnull="true" iskey="true">
+      <property name="Name">colDO_CODICE_MINST</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">True</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_CODICE_MINST</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">22</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item26" isnull="true" iskey="true">
+      <property name="Name">colDO_CODICE_EGAF</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">True</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_CODICE_EGAF</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">23</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item27" isnull="true" iskey="true">
+      <property name="Name">colDO_GRDOMCORR</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">DO_GRDOMCORR</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">24</property>
+      <property name="Visible">true</property>
+      <property name="Width">38</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+    <property name="Item28" isnull="true" iskey="true">
+      <property name="Name">colRI_ORDINAMENTOCASUALE</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="AllowMerge">False</property>
+      </property>
+      <property name="ImageAlignment">Near</property>
+      <property name="ImageIndex">-1</property>
+      <property name="FieldName">RI_ORDINAMENTOCASUALE</property>
+      <property name="ColumnEditName" />
+      <property name="VisibleIndex">25</property>
+      <property name="Visible">true</property>
+      <property name="Width">82</property>
+      <property name="MinWidth">20</property>
+      <property name="MaxWidth">0</property>
+      <property name="UnboundDataTypeName" />
+    </property>
+  </property>
+  <property name="GroupSummary" iskey="true" value="0" />
+  <property name="ActiveFilterString" />
+  <property name="GroupSummarySortInfoState" />
+  <property name="FindFilterText" />
+  <property name="FindPanelVisible">false</property>
+</XtraSerializer>

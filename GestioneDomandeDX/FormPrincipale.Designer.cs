@@ -32,11 +32,12 @@ namespace GestioneDomandeDX
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraSpellChecker.SpellCheckerDictionary spellCheckerDictionary1 = new DevExpress.XtraSpellChecker.SpellCheckerDictionary();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraSpellChecker.SpellCheckerDictionary spellCheckerDictionary1 = new DevExpress.XtraSpellChecker.SpellCheckerDictionary();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.grdMain = new DevExpress.XtraGrid.GridControl();
+            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.menuScelta = new DevExpress.XtraBars.BarSubItem();
             this.txtIniziale = new DevExpress.XtraBars.BarEditItem();
@@ -54,13 +55,40 @@ namespace GestioneDomandeDX
             this.btnSalvaLayout = new System.Windows.Forms.Button();
             this.controlloOrtografico = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
             this.mvvmContext = new DevExpress.Utils.MVVM.MVVMContext(this.components);
-            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colDO_ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_TESTO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_TESTOORDINE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_TESTODE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_TESTOFR = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_TESTO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_TESTODE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_TESTOFR = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_VF = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_IMG = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_IMG2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_FLAG_BLOCCATA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_NOTE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_FLAG_BLOCCATA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_NOTE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_ALTROTESTO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_TESTO_AIUTO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_IMG = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_IMG2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_ALTROTESTO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_MULTIMEDIALE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_ES_ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_ES_ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_CODICE_MINST = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_CODICE_EGAF = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDO_GRDOMCORR = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRI_ORDINAMENTOCASUALE = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
             // 
             // gridBand1
@@ -79,10 +107,52 @@ namespace GestioneDomandeDX
             this.grdMain.TabIndex = 1;
             this.grdMain.UseEmbeddedNavigator = true;
             this.grdMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1,
-            this.gridView});
+            this.gridView,
+            this.gridView1});
             this.grdMain.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.grdMain_ViewRegistered);
             this.grdMain.ViewRemoved += new DevExpress.XtraGrid.ViewOperationEventHandler(this.grdMain_ViewRemoved);
+            // 
+            // gridView
+            // 
+            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colDO_ID,
+            this.colRI_ID,
+            this.colDO_TESTO,
+            this.colRI_TESTOORDINE,
+            this.colDO_TESTODE,
+            this.colDO_TESTOFR,
+            this.colRI_TESTO,
+            this.colRI_TESTODE,
+            this.colRI_TESTOFR,
+            this.colRI_VF,
+            this.colDO_IMG,
+            this.colDO_IMG2,
+            this.colDO_FLAG_BLOCCATA,
+            this.colDO_NOTE,
+            this.colRI_FLAG_BLOCCATA,
+            this.colRI_NOTE,
+            this.colDO_ALTROTESTO,
+            this.colDO_TESTO_AIUTO,
+            this.colRI_IMG,
+            this.colRI_IMG2,
+            this.colRI_ALTROTESTO,
+            this.colDO_MULTIMEDIALE,
+            this.colDO_ES_ID,
+            this.colRI_ES_ID,
+            this.colDO_CODICE_MINST,
+            this.colDO_CODICE_EGAF,
+            this.colDO_GRDOMCORR,
+            this.colRI_ORDINAMENTOCASUALE});
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Name = "regolaCambiamento";
+            formatConditionRuleExpression1.PredefinedName = "Red Fill";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            this.gridView.FormatRules.Add(gridFormatRule1);
+            this.gridView.GridControl = this.grdMain;
+            this.gridView.Name = "gridView";
+            this.gridView.OptionsView.AllowCellMerge = true;
+            this.gridView.OptionsView.RowAutoHeight = true;
+            this.gridView.OptionsView.ShowChildrenInGroupPanel = true;
             // 
             // ribbon
             // 
@@ -225,16 +295,257 @@ namespace GestioneDomandeDX
             // 
             this.mvvmContext.ContainerControl = this;
             // 
-            // gridView
+            // colDO_ID
             // 
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Name = "regolaCambiamento";
-            formatConditionRuleExpression1.PredefinedName = "Red Fill";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.gridView.FormatRules.Add(gridFormatRule1);
-            this.gridView.GridControl = this.grdMain;
-            this.gridView.Name = "gridView";
-            this.gridView.OptionsView.ShowChildrenInGroupPanel = true;
+            this.colDO_ID.FieldName = "DO_ID";
+            this.colDO_ID.Name = "colDO_ID";
+            this.colDO_ID.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.colDO_ID.Visible = true;
+            this.colDO_ID.VisibleIndex = 0;
+            this.colDO_ID.Width = 67;
+            // 
+            // colRI_ID
+            // 
+            this.colRI_ID.FieldName = "RI_ID";
+            this.colRI_ID.Name = "colRI_ID";
+            this.colRI_ID.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_ID.Visible = true;
+            this.colRI_ID.VisibleIndex = 1;
+            this.colRI_ID.Width = 67;
+            // 
+            // colDO_TESTO
+            // 
+            this.colDO_TESTO.FieldName = "DO_TESTO";
+            this.colDO_TESTO.Name = "colDO_TESTO";
+            this.colDO_TESTO.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.colDO_TESTO.Visible = true;
+            this.colDO_TESTO.VisibleIndex = 2;
+            this.colDO_TESTO.Width = 304;
+            // 
+            // colRI_TESTOORDINE
+            // 
+            this.colRI_TESTOORDINE.FieldName = "RI_TESTOORDINE";
+            this.colRI_TESTOORDINE.Name = "colRI_TESTOORDINE";
+            this.colRI_TESTOORDINE.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_TESTOORDINE.Visible = true;
+            this.colRI_TESTOORDINE.VisibleIndex = 3;
+            this.colRI_TESTOORDINE.Width = 57;
+            // 
+            // colDO_TESTODE
+            // 
+            this.colDO_TESTODE.FieldName = "DO_TESTODE";
+            this.colDO_TESTODE.Name = "colDO_TESTODE";
+            this.colDO_TESTODE.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_TESTODE.Visible = true;
+            this.colDO_TESTODE.VisibleIndex = 4;
+            this.colDO_TESTODE.Width = 57;
+            // 
+            // colDO_TESTOFR
+            // 
+            this.colDO_TESTOFR.FieldName = "DO_TESTOFR";
+            this.colDO_TESTOFR.Name = "colDO_TESTOFR";
+            this.colDO_TESTOFR.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_TESTOFR.Visible = true;
+            this.colDO_TESTOFR.VisibleIndex = 5;
+            this.colDO_TESTOFR.Width = 57;
+            // 
+            // colRI_TESTO
+            // 
+            this.colRI_TESTO.FieldName = "RI_TESTO";
+            this.colRI_TESTO.Name = "colRI_TESTO";
+            this.colRI_TESTO.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_TESTO.Visible = true;
+            this.colRI_TESTO.VisibleIndex = 6;
+            this.colRI_TESTO.Width = 332;
+            // 
+            // colRI_TESTODE
+            // 
+            this.colRI_TESTODE.FieldName = "RI_TESTODE";
+            this.colRI_TESTODE.Name = "colRI_TESTODE";
+            this.colRI_TESTODE.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_TESTODE.Visible = true;
+            this.colRI_TESTODE.VisibleIndex = 7;
+            this.colRI_TESTODE.Width = 42;
+            // 
+            // colRI_TESTOFR
+            // 
+            this.colRI_TESTOFR.FieldName = "RI_TESTOFR";
+            this.colRI_TESTOFR.Name = "colRI_TESTOFR";
+            this.colRI_TESTOFR.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_TESTOFR.Visible = true;
+            this.colRI_TESTOFR.VisibleIndex = 8;
+            this.colRI_TESTOFR.Width = 42;
+            // 
+            // colRI_VF
+            // 
+            this.colRI_VF.FieldName = "RI_VF";
+            this.colRI_VF.Name = "colRI_VF";
+            this.colRI_VF.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_VF.Visible = true;
+            this.colRI_VF.VisibleIndex = 9;
+            this.colRI_VF.Width = 42;
+            // 
+            // colDO_IMG
+            // 
+            this.colDO_IMG.FieldName = "DO_IMG";
+            this.colDO_IMG.Name = "colDO_IMG";
+            this.colDO_IMG.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_IMG.Visible = true;
+            this.colDO_IMG.VisibleIndex = 10;
+            this.colDO_IMG.Width = 42;
+            // 
+            // colDO_IMG2
+            // 
+            this.colDO_IMG2.FieldName = "DO_IMG2";
+            this.colDO_IMG2.Name = "colDO_IMG2";
+            this.colDO_IMG2.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_IMG2.Visible = true;
+            this.colDO_IMG2.VisibleIndex = 11;
+            this.colDO_IMG2.Width = 42;
+            // 
+            // colDO_FLAG_BLOCCATA
+            // 
+            this.colDO_FLAG_BLOCCATA.FieldName = "DO_FLAG_BLOCCATA";
+            this.colDO_FLAG_BLOCCATA.Name = "colDO_FLAG_BLOCCATA";
+            this.colDO_FLAG_BLOCCATA.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_FLAG_BLOCCATA.Visible = true;
+            this.colDO_FLAG_BLOCCATA.VisibleIndex = 12;
+            this.colDO_FLAG_BLOCCATA.Width = 42;
+            // 
+            // colDO_NOTE
+            // 
+            this.colDO_NOTE.FieldName = "DO_NOTE";
+            this.colDO_NOTE.Name = "colDO_NOTE";
+            this.colDO_NOTE.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_NOTE.Visible = true;
+            this.colDO_NOTE.VisibleIndex = 13;
+            this.colDO_NOTE.Width = 42;
+            // 
+            // colRI_FLAG_BLOCCATA
+            // 
+            this.colRI_FLAG_BLOCCATA.FieldName = "RI_FLAG_BLOCCATA";
+            this.colRI_FLAG_BLOCCATA.Name = "colRI_FLAG_BLOCCATA";
+            this.colRI_FLAG_BLOCCATA.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_FLAG_BLOCCATA.Visible = true;
+            this.colRI_FLAG_BLOCCATA.VisibleIndex = 14;
+            this.colRI_FLAG_BLOCCATA.Width = 42;
+            // 
+            // colRI_NOTE
+            // 
+            this.colRI_NOTE.FieldName = "RI_NOTE";
+            this.colRI_NOTE.Name = "colRI_NOTE";
+            this.colRI_NOTE.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_NOTE.Visible = true;
+            this.colRI_NOTE.VisibleIndex = 15;
+            this.colRI_NOTE.Width = 42;
+            // 
+            // colDO_ALTROTESTO
+            // 
+            this.colDO_ALTROTESTO.FieldName = "DO_ALTROTESTO";
+            this.colDO_ALTROTESTO.Name = "colDO_ALTROTESTO";
+            this.colDO_ALTROTESTO.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_ALTROTESTO.Visible = true;
+            this.colDO_ALTROTESTO.VisibleIndex = 16;
+            this.colDO_ALTROTESTO.Width = 42;
+            // 
+            // colDO_TESTO_AIUTO
+            // 
+            this.colDO_TESTO_AIUTO.FieldName = "DO_TESTO_AIUTO";
+            this.colDO_TESTO_AIUTO.Name = "colDO_TESTO_AIUTO";
+            this.colDO_TESTO_AIUTO.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_TESTO_AIUTO.Visible = true;
+            this.colDO_TESTO_AIUTO.VisibleIndex = 17;
+            this.colDO_TESTO_AIUTO.Width = 42;
+            // 
+            // colRI_IMG
+            // 
+            this.colRI_IMG.FieldName = "RI_IMG";
+            this.colRI_IMG.Name = "colRI_IMG";
+            this.colRI_IMG.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_IMG.Visible = true;
+            this.colRI_IMG.VisibleIndex = 18;
+            this.colRI_IMG.Width = 42;
+            // 
+            // colRI_IMG2
+            // 
+            this.colRI_IMG2.FieldName = "RI_IMG2";
+            this.colRI_IMG2.Name = "colRI_IMG2";
+            this.colRI_IMG2.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_IMG2.Visible = true;
+            this.colRI_IMG2.VisibleIndex = 19;
+            this.colRI_IMG2.Width = 42;
+            // 
+            // colRI_ALTROTESTO
+            // 
+            this.colRI_ALTROTESTO.FieldName = "RI_ALTROTESTO";
+            this.colRI_ALTROTESTO.Name = "colRI_ALTROTESTO";
+            this.colRI_ALTROTESTO.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_ALTROTESTO.Visible = true;
+            this.colRI_ALTROTESTO.VisibleIndex = 20;
+            this.colRI_ALTROTESTO.Width = 42;
+            // 
+            // colDO_MULTIMEDIALE
+            // 
+            this.colDO_MULTIMEDIALE.FieldName = "DO_MULTIMEDIALE";
+            this.colDO_MULTIMEDIALE.Name = "colDO_MULTIMEDIALE";
+            this.colDO_MULTIMEDIALE.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.colDO_MULTIMEDIALE.Visible = true;
+            this.colDO_MULTIMEDIALE.VisibleIndex = 21;
+            this.colDO_MULTIMEDIALE.Width = 42;
+            // 
+            // colDO_ES_ID
+            // 
+            this.colDO_ES_ID.FieldName = "DO_ES_ID";
+            this.colDO_ES_ID.Name = "colDO_ES_ID";
+            this.colDO_ES_ID.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_ES_ID.Visible = true;
+            this.colDO_ES_ID.VisibleIndex = 22;
+            this.colDO_ES_ID.Width = 42;
+            // 
+            // colRI_ES_ID
+            // 
+            this.colRI_ES_ID.FieldName = "RI_ES_ID";
+            this.colRI_ES_ID.Name = "colRI_ES_ID";
+            this.colRI_ES_ID.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_ES_ID.Visible = true;
+            this.colRI_ES_ID.VisibleIndex = 23;
+            this.colRI_ES_ID.Width = 42;
+            // 
+            // colDO_CODICE_MINST
+            // 
+            this.colDO_CODICE_MINST.FieldName = "DO_CODICE_MINST";
+            this.colDO_CODICE_MINST.Name = "colDO_CODICE_MINST";
+            this.colDO_CODICE_MINST.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.colDO_CODICE_MINST.Visible = true;
+            this.colDO_CODICE_MINST.VisibleIndex = 24;
+            this.colDO_CODICE_MINST.Width = 42;
+            // 
+            // colDO_CODICE_EGAF
+            // 
+            this.colDO_CODICE_EGAF.FieldName = "DO_CODICE_EGAF";
+            this.colDO_CODICE_EGAF.Name = "colDO_CODICE_EGAF";
+            this.colDO_CODICE_EGAF.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.colDO_CODICE_EGAF.Visible = true;
+            this.colDO_CODICE_EGAF.VisibleIndex = 25;
+            this.colDO_CODICE_EGAF.Width = 42;
+            // 
+            // colDO_GRDOMCORR
+            // 
+            this.colDO_GRDOMCORR.FieldName = "DO_GRDOMCORR";
+            this.colDO_GRDOMCORR.Name = "colDO_GRDOMCORR";
+            this.colDO_GRDOMCORR.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colDO_GRDOMCORR.Visible = true;
+            this.colDO_GRDOMCORR.VisibleIndex = 26;
+            this.colDO_GRDOMCORR.Width = 42;
+            // 
+            // colRI_ORDINAMENTOCASUALE
+            // 
+            this.colRI_ORDINAMENTOCASUALE.FieldName = "RI_ORDINAMENTOCASUALE";
+            this.colRI_ORDINAMENTOCASUALE.Name = "colRI_ORDINAMENTOCASUALE";
+            this.colRI_ORDINAMENTOCASUALE.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRI_ORDINAMENTOCASUALE.Visible = true;
+            this.colRI_ORDINAMENTOCASUALE.VisibleIndex = 27;
+            this.colRI_ORDINAMENTOCASUALE.Width = 97;
             // 
             // FormPrincipale
             // 
@@ -251,11 +562,11 @@ namespace GestioneDomandeDX
             this.Load += new System.EventHandler(this.FormPrincipale_Load);
             this.SizeChanged += new System.EventHandler(this.FormPrincipale_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,6 +595,34 @@ namespace GestioneDomandeDX
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private MVVMContext mvvmContext;
         private GridView gridView;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_ID;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_ID;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_TESTO;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_TESTOORDINE;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_TESTODE;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_TESTOFR;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_TESTO;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_TESTODE;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_TESTOFR;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_VF;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_IMG;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_IMG2;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_FLAG_BLOCCATA;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_NOTE;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_FLAG_BLOCCATA;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_NOTE;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_ALTROTESTO;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_TESTO_AIUTO;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_IMG;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_IMG2;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_ALTROTESTO;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_MULTIMEDIALE;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_ES_ID;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_ES_ID;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_CODICE_MINST;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_CODICE_EGAF;
+        private DevExpress.XtraGrid.Columns.GridColumn colDO_GRDOMCORR;
+        private DevExpress.XtraGrid.Columns.GridColumn colRI_ORDINAMENTOCASUALE;
     }
 }
 

@@ -285,9 +285,7 @@
 warning 6002: The table/view 'def.egaf_main.v_domerisp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_domerisp">
           <Key>
-            <PropertyRef Name="DO_ID" />
             <PropertyRef Name="RI_ID" />
-            <PropertyRef Name="RI_VF" />
           </Key>
           <Property Name="DO_ID" Type="int" Nullable="false" />
           <Property Name="RI_ID" Type="int" Nullable="false" />
@@ -440,38 +438,7 @@ warning 6002: The table/view 'def.egaf_main.v_tipipatente' does not have a prima
           <EntitySet Name="releaseopere" EntityType="Self.releaseopere" Schema="egaf_main" store:Type="Tables" />
           <EntitySet Name="risposte" EntityType="Self.risposte" Schema="egaf_main" store:Type="Tables" />
           <EntitySet Name="tipocommissione" EntityType="Self.tipocommissione" Schema="egaf_main" store:Type="Tables" />
-          <EntitySet Name="v_domerisp" EntityType="Self.v_domerisp" store:Type="Views" store:Schema="egaf_main">
-            <DefiningQuery>SELECT
-`v_domerisp`.`DO_ID`, 
-`v_domerisp`.`RI_ID`, 
-`v_domerisp`.`DO_ES_ID`, 
-`v_domerisp`.`RI_ES_ID`, 
-`v_domerisp`.`DO_CODICE_MINST`, 
-`v_domerisp`.`DO_CODICE_EGAF`, 
-`v_domerisp`.`DO_TESTO`, 
-`v_domerisp`.`RI_TESTOORDINE`, 
-`v_domerisp`.`DO_TESTODE`, 
-`v_domerisp`.`DO_TESTOFR`, 
-`v_domerisp`.`RI_TESTO`, 
-`v_domerisp`.`RI_TESTODE`, 
-`v_domerisp`.`RI_TESTOFR`, 
-`v_domerisp`.`RI_VF`, 
-`v_domerisp`.`DO_IMG`, 
-`v_domerisp`.`DO_IMG2`, 
-`v_domerisp`.`DO_FLAG_BLOCCATA`, 
-`v_domerisp`.`DO_NOTE`, 
-`v_domerisp`.`RI_FLAG_BLOCCATA`, 
-`v_domerisp`.`RI_NOTE`, 
-`v_domerisp`.`DO_ALTROTESTO`, 
-`v_domerisp`.`DO_TESTO_AIUTO`, 
-`v_domerisp`.`DO_GRDOMCORR`, 
-`v_domerisp`.`RI_IMG`, 
-`v_domerisp`.`RI_IMG2`, 
-`v_domerisp`.`RI_ALTROTESTO`, 
-`v_domerisp`.`RI_ORDINAMENTOCASUALE`, 
-`v_domerisp`.`DO_MULTIMEDIALE`
-FROM `v_domerisp` AS `v_domerisp`</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="v_domerisp" EntityType="Self.v_domerisp"  Schema="egaf_main" store:Type="Tables"/>
           <EntitySet Name="v_esami" EntityType="Self.v_esami" store:Type="Views" store:Schema="egaf_main">
             <DefiningQuery>SELECT
 `v_esami`.`ES_TC_ID`, 
@@ -596,9 +563,9 @@ FROM `v_tipipatente` AS `v_tipipatente`</DefiningQuery>
           <Property Name="DO_TESTOCN" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Name="DO_TESTOES" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Name="DO_TESTOMA" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Name="DO_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="DO_TESTODE" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="true" />
           <Property Name="DO_TESTOGB" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Name="DO_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="DO_TESTOFR" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="true" />
           <Property Name="DO_TESTORU" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Name="DO_PROGRESSIVO" Type="Int32" />
           <Property Name="DO_STATISTICAV" Type="Int32" />
@@ -962,9 +929,7 @@ FROM `v_tipipatente` AS `v_tipipatente`</DefiningQuery>
         </EntityType>
         <EntityType Name="v_domerisp">
           <Key>
-            <PropertyRef Name="DO_ID" />
             <PropertyRef Name="RI_ID" />
-            <PropertyRef Name="RI_VF" />
           </Key>
           <Property Name="DO_ID" Type="Int32" Nullable="false" />
           <Property Name="RI_ID" Type="Int32" Nullable="false" />

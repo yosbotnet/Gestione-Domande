@@ -16,6 +16,7 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraGrid.Columns;
 
 namespace GestioneDomandeDX
 {
@@ -29,7 +30,9 @@ namespace GestioneDomandeDX
             ---------------------------------------------------------------------------------
                                        MARTEDI 15/6
             ---------------------------------------------------------------------------------
-                RIFARE LA GRID     
+               RIUSCIRE AD APPLICARE I CAMBIAMENTI ALLA DOMANDA/RISPOSTA VERA TRAMITE IL GETTER E SETTER
+               AGGIORNARE IL SUBMENU
+               EDIT DI DOMANDE
             ---------------------------------------------------------------------------------
                                       OBIETTIVI GIORNALIERI
             ---------------------------------------------------------------------------------
@@ -63,7 +66,7 @@ namespace GestioneDomandeDX
         bool TABEDITABILI;
         bool DOM_NO_TESTO;
         RepositoryItemMemoEdit memoEdit;
-
+        string[] colonneMerge = {"DO_ID","DO_CODICE_EGAF","DO_CODICE_MINST", "DO_TESTO", "DO_MULTIMEDIALE" };
         public FormPrincipale()
         {
             #region Inizializzazione
@@ -124,12 +127,21 @@ namespace GestioneDomandeDX
             #endregion
             btnLock.Enabled = false;
             btnLascia.Enabled = false;
-            
-            grdMain.DataSource = context.v_domerisp.ToList();
+
+            //grdMain.DataSource = context.v_domerisp.Where(v=> v.DO_ES_ID > 40).ToList();
             gridView.DataController.AllowIEnumerableDetails = true;
             gridView.OptionsView.AllowCellMerge = true;
-            if (!mvvmContext.IsDesignMode)
-                InitializeBindings();
+            foreach ( GridColumn c in gridView.Columns)
+            {
+                if (!colonneMerge.Contains(c.FieldName))
+                {
+                    c.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+                }
+                else
+                {
+                    c.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+                }
+            }
         }
 
         private bool valida(domande d)
@@ -159,8 +171,11 @@ namespace GestioneDomandeDX
             {
                 //IMAGE INDEX INDICA IL TC_ID
                 int idNuovo = e.Item.ImageIndex;
-                setupGrid(context.tipocommissione.Where(tc => tc.TC_ID == idNuovo).First().domande.ToList());
-                if(context.v_releaseopere.Where(ro=> ro.RO_TC_ID == idNuovo).FirstOrDefault().RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA == 1)
+                int idEsame = context.v_esami.Where(ve => ve.ES_TC_ID == idNuovo).OrderBy(r=> r.ES_REVISIONE).First().ES_ID;
+                setupGrid(context.v_domerisp.Where(dr => dr.DO_ES_ID ==idEsame).ToList());
+                gridView.Columns["RI_TESTO"].ColumnEdit = memoEdit;
+                gridView.OptionsView.RowAutoHeight = true;
+                if (context.v_releaseopere.Where(ro=> ro.RO_TC_ID == idNuovo).FirstOrDefault().RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA == 1)
                 {
                     DOM_NO_TESTO = true;
                     gridView.Columns["DO_TESTO"].OptionsColumn.AllowEdit = false;
@@ -170,7 +185,17 @@ namespace GestioneDomandeDX
                     DOM_NO_TESTO = false;
                     gridView.Columns["DO_TESTO"].OptionsColumn.AllowEdit = true;
                 }
-                //expandVisibleRows();
+                foreach (GridColumn c in gridView.Columns)
+                {
+                    if (!colonneMerge.Contains(c.FieldName))
+                    {
+                        c.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+                    }
+                    else
+                    {
+                        c.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+                    }
+                }
             }
             catch(Exception ex)
             {
@@ -184,7 +209,7 @@ namespace GestioneDomandeDX
             {
                 var iniziali = ((string)txtIniziale.EditValue).Split(',').AsEnumerable();
                 //Si va in readonly
-                setupGrid(context.domande.Where(d => iniziali.Any(i => d.DO_CODICE_MINST.StartsWith(i))).ToList());
+                setupGrid(context.v_domerisp.Where(d=> iniziali.Any(i=> d.DO_CODICE_MINST.StartsWith(i))).ToList());
                 TABEDITABILI = false;
                 gridView.OptionsBehavior.Editable = TABEDITABILI;
                 listaDettagli.ForEach(d => d.OptionsBehavior.Editable = TABEDITABILI);
@@ -246,7 +271,10 @@ namespace GestioneDomandeDX
         private void gridView_MasterRowCollapsed(object sender, DevExpress.XtraGrid.Views.Grid.CustomMasterRowEventArgs e){}
         private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
+            var test = context.ChangeTracker.Entries().Where(en => en.State == System.Data.Entity.EntityState.Detached).ToList();
+
             context.SaveChanges();
+
             GridView griglia = sender as GridView;
             if (griglia.IsDetailView)
             {
@@ -376,7 +404,7 @@ namespace GestioneDomandeDX
             //var numCol = domanda.risposte.Count
             //assegna a una colonna il COD EGAF con rowcount
         }
-        private void setupGrid(List<domande> query)
+        private void setupGrid(List<v_domerisp> query)
         {
             HandleCambiatiMaster.Clear();
             HandleCambiatiDetail.Clear();
@@ -386,7 +414,8 @@ namespace GestioneDomandeDX
             lck.unLock();           
             btnLock.Enabled = true;
             btnLascia.Enabled = false;
-            grdMain.DataSource = new BindingList<domande>(query);
+            grdMain.DataSource = new BindingList<v_domerisp_proxy>(query.Select(q => new v_domerisp_proxy(q, context)).ToList());
+            //grdMain.DataSource = query.ToList();
             gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
             
         }
@@ -412,19 +441,20 @@ namespace GestioneDomandeDX
             //expandVisibleRows();
         }
 
-        void InitializeBindings()
-        {
-            var fluent = mvvmContext.OfType<FormPrincipaleViewModel>();
-           
-        }
+
 
         private void gridView_CellMerge(object sender, CellMergeEventArgs e)
         {           
-            if(e.CellValue1.ToString() == e.CellValue2.ToString())
+            if((e.CellValue1!=null&&e.CellValue2!=null)&&e.CellValue1.Equals(e.CellValue2) && colonneMerge.Contains(e.Column.FieldName))
             {
                 e.Handled = true;
                 e.Merge = true;
-            }  
+            }
+            else
+            {
+                e.Handled = true;
+                e.Merge = false;
+            }
         }
     }
     /// <summary>

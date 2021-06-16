@@ -9,12 +9,14 @@
 
 namespace GestioneDomandeDX
 {
+    using DevExpress.Xpo;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class v_domerisp
     {
         public int DO_ID { get; set; }
+        [Key]
         public int RI_ID { get; set; }
         public Nullable<int> DO_ES_ID { get; set; }
         public Nullable<int> RI_ES_ID { get; set; }

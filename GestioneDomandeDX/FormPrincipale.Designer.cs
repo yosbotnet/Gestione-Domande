@@ -54,8 +54,7 @@ namespace GestioneDomandeDX
             this.btnSalvaLayout = new System.Windows.Forms.Button();
             this.controlloOrtografico = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
             this.mvvmContext = new DevExpress.Utils.MVVM.MVVMContext(this.components);
-            this.gridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.bandDomand = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -228,8 +227,6 @@ namespace GestioneDomandeDX
             // 
             // gridView
             // 
-            this.gridView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.bandDomand});
             gridFormatRule1.ApplyToRow = true;
             gridFormatRule1.Name = "regolaCambiamento";
             formatConditionRuleExpression1.PredefinedName = "Red Fill";
@@ -238,13 +235,6 @@ namespace GestioneDomandeDX
             this.gridView.GridControl = this.grdMain;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.ShowChildrenInGroupPanel = true;
-            // 
-            // bandDomand
-            // 
-            this.bandDomand.Caption = "Domanda";
-            this.bandDomand.Name = "bandDomand";
-            this.bandDomand.VisibleIndex = 0;
-            this.bandDomand.Width = 60;
             // 
             // FormPrincipale
             // 
@@ -293,8 +283,7 @@ namespace GestioneDomandeDX
         private DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView advBandGridView;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private MVVMContext mvvmContext;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView gridView;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand bandDomand;
+        private GridView gridView;
     }
 }
 

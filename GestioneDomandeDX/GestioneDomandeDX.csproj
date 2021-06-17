@@ -173,10 +173,6 @@
     <Compile Include="abb_dom_materie_minist.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="Common\CollectionViewModel.cs" />
-    <Compile Include="Common\EntitiesViewModel.cs" />
-    <Compile Include="Common\ReadOnlyCollectionViewModel.cs" />
-    <Compile Include="Common\SingleObjectViewModel.cs" />
     <Compile Include="dettaglioregole.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
@@ -189,9 +185,6 @@
     <Compile Include="EditForm.Designer.cs">
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="egafEntitiesDataModel\egafEntitiesUnitOfWork.cs" />
-    <Compile Include="egafEntitiesDataModel\IegafEntitiesUnitOfWork.cs" />
-    <Compile Include="egafEntitiesDataModel\UnitOfWorkSource.cs" />
     <Compile Include="esami.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
@@ -236,32 +229,6 @@
     <Compile Include="tipocommissione.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\abbinamento_esami_materie\abbinamento_esami_materieCollectionViewModel.cs" />
-    <Compile Include="ViewModels\abbinamento_esami_materie\abbinamento_esami_materieViewModel.cs" />
-    <Compile Include="ViewModels\abb_dom_materie_minist\abb_dom_materie_ministCollectionViewModel.cs" />
-    <Compile Include="ViewModels\abb_dom_materie_minist\abb_dom_materie_ministViewModel.cs" />
-    <Compile Include="ViewModels\dettaglioregole\dettaglioregoleCollectionViewModel.cs" />
-    <Compile Include="ViewModels\dettaglioregole\dettaglioregoleViewModel.cs" />
-    <Compile Include="ViewModels\domande\domandeCollectionViewModel.cs" />
-    <Compile Include="ViewModels\domande\domandeViewModel.cs" />
-    <Compile Include="ViewModels\egafEntitiesViewModel.cs" />
-    <Compile Include="ViewModels\esami\esamiCollectionViewModel.cs" />
-    <Compile Include="ViewModels\esami\esamiViewModel.cs" />
-    <Compile Include="ViewModels\locks\locksCollectionViewModel.cs" />
-    <Compile Include="ViewModels\locks\locksViewModel.cs" />
-    <Compile Include="ViewModels\regole\regoleCollectionViewModel.cs" />
-    <Compile Include="ViewModels\regole\regoleViewModel.cs" />
-    <Compile Include="ViewModels\releaseopere\releaseopereCollectionViewModel.cs" />
-    <Compile Include="ViewModels\releaseopere\releaseopereViewModel.cs" />
-    <Compile Include="ViewModels\risposte\risposteCollectionViewModel.cs" />
-    <Compile Include="ViewModels\risposte\risposteViewModel.cs" />
-    <Compile Include="ViewModels\tipocommissione\tipocommissioneCollectionViewModel.cs" />
-    <Compile Include="ViewModels\tipocommissione\tipocommissioneViewModel.cs" />
-    <Compile Include="ViewModels\v_domerisp\v_domerispCollectionViewModel.cs" />
-    <Compile Include="ViewModels\v_esami\v_esamiCollectionViewModel.cs" />
-    <Compile Include="ViewModels\v_regole\v_regoleCollectionViewModel.cs" />
-    <Compile Include="ViewModels\v_releaseopere\v_releaseopereCollectionViewModel.cs" />
-    <Compile Include="ViewModels\v_tipipatente\v_tipipatenteCollectionViewModel.cs" />
     <Compile Include="v_domerisp.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>

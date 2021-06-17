@@ -82,13 +82,11 @@ namespace GestioneDomandeDX
             this.gridView1 = new GestioneDomandeDX.MyGridView();
             this.btnSalvaLayout = new System.Windows.Forms.Button();
             this.controlloOrtografico = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
-            this.mvvmContext = new DevExpress.Utils.MVVM.MVVMContext(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).BeginInit();
             this.SuspendLayout();
             // 
             // gridBand1
@@ -544,10 +542,6 @@ namespace GestioneDomandeDX
             this.controlloOrtografico.ParentContainer = null;
             this.controlloOrtografico.SpellCheckMode = DevExpress.XtraSpellChecker.SpellCheckMode.AsYouType;
             // 
-            // mvvmContext
-            // 
-            this.mvvmContext.ContainerControl = this;
-            // 
             // FormPrincipale
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -566,7 +560,6 @@ namespace GestioneDomandeDX
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -592,7 +585,6 @@ namespace GestioneDomandeDX
         private DevExpress.XtraBars.BarButtonItem btnLascia;
         private DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView advBandGridView;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private MVVMContext mvvmContext;
         private MyGridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn colDO_ID;
         private DevExpress.XtraGrid.Columns.GridColumn colRI_ID;

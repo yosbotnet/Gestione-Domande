@@ -19,7 +19,7 @@ namespace GestioneDomandeDX
         [Description("Errata")]
         Errata
     }
-    class v_domerisp_proxy : v_domerisp
+    class v_domerisp_proxy : v_domerisp, IEquatable<v_domerisp>
     {
         private egafEntities ctx;
         private domande _d;
@@ -264,6 +264,32 @@ namespace GestioneDomandeDX
                     _r = d.risposte.Where(ri => ri.RI_ID == tutto.RI_ID).FirstOrDefault();
                 return _r;
             }
+        }
+
+        public bool Equals(v_domerisp vdp)
+        {
+
+            return DO_ID == vdp.DO_ID &&
+                   RI_ID == vdp.RI_ID &&
+                   DO_TESTO == vdp.DO_TESTO &&
+                   RI_TESTOORDINE == vdp.RI_TESTOORDINE &&
+                   RI_TESTO == vdp.RI_TESTO &&
+                   RI_TESTOFR == vdp.RI_TESTOFR &&
+                   RI_TESTODE == vdp.RI_TESTODE &&
+                   RI_VF == vdp.RI_VF &&
+                   DO_IMG == vdp.DO_IMG &&
+                   DO_IMG2 == vdp.DO_IMG2 &&
+                   DO_FLAG_BLOCCATA == vdp.DO_FLAG_BLOCCATA &&
+                   DO_NOTE == vdp.DO_NOTE &&
+                   RI_FLAG_BLOCCATA == vdp.RI_FLAG_BLOCCATA &&
+                   RI_NOTE == vdp.RI_NOTE &&
+                   DO_ALTROTESTO == vdp.DO_ALTROTESTO &&
+                   DO_TESTO_AIUTO == vdp.DO_TESTO_AIUTO &&
+                   RI_IMG == vdp.RI_IMG &&
+                   RI_IMG2 == vdp.RI_IMG2 &&
+                   RI_ALTROTESTO == vdp.RI_ALTROTESTO &&
+                   DO_MULTIMEDIALE == vdp.DO_MULTIMEDIALE;
+
         }
     }
 }

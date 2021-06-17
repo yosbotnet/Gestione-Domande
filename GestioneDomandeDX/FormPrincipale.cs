@@ -54,7 +54,6 @@ namespace GestioneDomandeDX
             -
         */
 
-        GridView dettagli;
         egafEntities context;
         lockUtils lck;
         List<int> HandleCambiatiMaster;
@@ -126,7 +125,6 @@ namespace GestioneDomandeDX
             btnLock.Enabled = false;
             btnLascia.Enabled = false;
 
-            //grdMain.DataSource = context.v_domerisp.Where(v=> v.DO_ES_ID > 40).ToList();
             gridView.DataController.AllowIEnumerableDetails = true;
             gridView.OptionsView.AllowCellMerge = true;
             foreach (GridColumn c in gridView.Columns)
@@ -183,17 +181,7 @@ namespace GestioneDomandeDX
                     DOM_NO_TESTO = false;
                     gridView.Columns["DO_TESTO"].OptionsColumn.AllowEdit = true;
                 }
-                foreach (GridColumn c in gridView.Columns)
-                {
-                    if (!colonneMerge.Contains(c.FieldName))
-                    {
-                        c.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-                    }
-                    else
-                    {
-                        c.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
-                    }
-                }
+                
             }
             catch (Exception ex)
             {
@@ -243,14 +231,34 @@ namespace GestioneDomandeDX
         #endregion
         private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
-            var test = context.ChangeTracker.Entries().Where(en => en.State == System.Data.Entity.EntityState.Detached).ToList();
+            var d = (e.Row as v_domerisp_proxy);
+            var vd = context.v_domerisp.Where(dr => dr.RI_ID == d.RI_ID).First();
+            if (!d.Equals(vd))
+            {
+                if(d.DO_TESTO == vd.DO_TESTO)
+                {
+                    HandleCambiatiMaster.Add(e.RowHandle);
+                    context.SaveChanges();
+                    GridView griglia = sender as GridView;
+                    griglia.RefreshRow(e.RowHandle);
 
-            context.SaveChanges();
+                }
+                else
+                {
+                    GridView griglia = sender as GridView;
+                    var gvi = griglia.GetViewInfo() as GridViewInfo;
+                    var gci = gvi.GetGridCellInfo(e.RowHandle, griglia.Columns["DO_TESTO"]);
+                    if(gci.MergedCell != null)
+                    {
+                        gci.MergedCell.MergedCells.ForEach(c => HandleCambiatiMaster.Add(c.RowHandle));
+                    }
+                }
 
-            GridView griglia = sender as GridView;
-            HandleCambiatiMaster.Add(e.RowHandle);
+                
+            }
+                
 
-            griglia.RefreshRow(e.RowHandle);
+
 
 
         }
@@ -342,32 +350,24 @@ namespace GestioneDomandeDX
             btnLock.Enabled = true;
             btnLascia.Enabled = false;
             grdMain.DataSource = new BindingList<v_domerisp_proxy>(query.Select(q => new v_domerisp_proxy(q, context)).ToList());
-            //grdMain.DataSource = query.ToList();
             gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
-
+            foreach (GridColumn c in gridView.Columns)
+            {
+                if (!colonneMerge.Contains(c.FieldName))
+                {
+                    c.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+                }
+                else
+                {
+                    c.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+                }
+            }
         }
 
         private void FormPrincipale_FormClosing(object sender, FormClosingEventArgs e)
         {
             lck.unLock();
         }
-
-        private void gridView_RowClick(object sender, RowClickEventArgs e)
-        {
-            /*
-            domande d = ((GridView)sender).GetRow(e.RowHandle) as domande;
-            if(DOM_NO_TESTO && !gridView.GetMasterRowExpanded(e.RowHandle) )
-            {
-                gridView.SetMasterRowExpanded(e.RowHandle, true);
-            }
-            */
-        }
-
-        private void gridView_TopRowChanged(object sender, EventArgs e)
-        {
-            //expandVisibleRows();
-        }
-
 
 
         private void gridView_CellMerge(object sender, CellMergeEventArgs e)
@@ -383,6 +383,7 @@ namespace GestioneDomandeDX
                 e.Merge = false;
             }
         }
+
 
 
     }

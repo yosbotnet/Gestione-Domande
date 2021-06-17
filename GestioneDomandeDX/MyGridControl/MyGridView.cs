@@ -74,9 +74,7 @@ namespace GestioneDomandeDX
                     GridCellInfo FEDIT = this.fEditingCell;
                     for (int i = 0; i < cellCount; i++)
                     {
-                        this.SetRowCellValue(FEDIT.RowHandle + i, FEDIT.Column, CurValue);
-                       // ViewInfo.RowsInfo[FEDIT.RowHandle+ i].Appearance.BackColor = Color.Yellow;
-                        
+                        this.SetRowCellValue(FEDIT.RowHandle + i, FEDIT.Column, CurValue);              
                     }
                         
                 }

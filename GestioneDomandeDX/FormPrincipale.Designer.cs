@@ -36,8 +36,8 @@ namespace GestioneDomandeDX
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             DevExpress.XtraSpellChecker.SpellCheckerDictionary spellCheckerDictionary1 = new DevExpress.XtraSpellChecker.SpellCheckerDictionary();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.grdMain = new DevExpress.XtraGrid.GridControl();
-            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.grdMain = new GestioneDomandeDX.MyGridControl();
+            this.gridView = new GestioneDomandeDX.MyGridView();
             this.colDO_ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRI_ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDO_TESTO = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -79,7 +79,7 @@ namespace GestioneDomandeDX
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.grpSceltaViaIniziale = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView1 = new GestioneDomandeDX.MyGridView();
             this.btnSalvaLayout = new System.Windows.Forms.Button();
             this.controlloOrtografico = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
             this.mvvmContext = new DevExpress.Utils.MVVM.MVVMContext(this.components);
@@ -151,6 +151,9 @@ namespace GestioneDomandeDX
             this.gridView.OptionsView.AllowCellMerge = true;
             this.gridView.OptionsView.RowAutoHeight = true;
             this.gridView.OptionsView.ShowChildrenInGroupPanel = true;
+            this.gridView.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gridView_CellMerge);
+            this.gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView_RowStyle);
+            this.gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView_RowUpdated);
             // 
             // colDO_ID
             // 
@@ -574,13 +577,12 @@ namespace GestioneDomandeDX
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.BarSubItem menuScelta;
-        private DevExpress.XtraGrid.GridControl grdMain;
+        private MyGridControl grdMain;
         private DevExpress.XtraBars.BarEditItem txtIniziale;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem btnSceltaIniziale;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup grpSceltaViaIniziale;
         private DevExpress.XtraBars.BarListItem barListItem1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.BarSubItem menuPatenti;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private System.Windows.Forms.Button btnSalvaLayout;
@@ -591,7 +593,7 @@ namespace GestioneDomandeDX
         private DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView advBandGridView;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private MVVMContext mvvmContext;
-        private GridView gridView;
+        private MyGridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn colDO_ID;
         private DevExpress.XtraGrid.Columns.GridColumn colRI_ID;
         private DevExpress.XtraGrid.Columns.GridColumn colDO_TESTO;
@@ -620,6 +622,7 @@ namespace GestioneDomandeDX
         private DevExpress.XtraGrid.Columns.GridColumn colDO_CODICE_EGAF;
         private DevExpress.XtraGrid.Columns.GridColumn colDO_GRDOMCORR;
         private DevExpress.XtraGrid.Columns.GridColumn colRI_ORDINAMENTOCASUALE;
+        private MyGridView gridView1;
     }
 }
 

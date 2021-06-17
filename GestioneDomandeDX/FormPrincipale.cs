@@ -53,27 +53,27 @@ namespace GestioneDomandeDX
             -Organizzare in funzioni parti di codice ripetuta FATTO
             -
         */
-        
+
         GridView dettagli;
         egafEntities context;
         lockUtils lck;
         List<int> HandleCambiatiMaster;
         List<Tuple<int, int>> HandleCambiatiDetail;
-        List<Tuple<int,int>> RisposteFlaggate;
+        List<Tuple<int, int>> RisposteFlaggate;
         List<BarItem> itemMenu;
         // forse avro bisogno di un List<GridView> per tutte le viste presenti. Servirà per applicare un singolo cambiamento a tutte
         List<GridView> listaDettagli;
         bool TABEDITABILI;
         bool DOM_NO_TESTO;
         RepositoryItemMemoEdit memoEdit;
-        string[] colonneMerge = {"DO_ID","DO_CODICE_EGAF","DO_CODICE_MINST", "DO_TESTO", "DO_MULTIMEDIALE" };
+        string[] colonneMerge = { "DO_ID", "DO_CODICE_EGAF", "DO_CODICE_MINST", "DO_TESTO", "DO_MULTIMEDIALE" };
         public FormPrincipale()
         {
             #region Inizializzazione
             InitializeComponent();
             context = new egafEntities();
             HandleCambiatiMaster = new List<int>();
-            HandleCambiatiDetail = new List<Tuple<int,int>>();
+            HandleCambiatiDetail = new List<Tuple<int, int>>();
             itemMenu = new List<BarItem>();
             RisposteFlaggate = new List<Tuple<int, int>>();
             memoEdit = new RepositoryItemMemoEdit();
@@ -83,41 +83,41 @@ namespace GestioneDomandeDX
             listaDettagli = new List<GridView>();
             if (context.locks.Any(l => l.USER == Environment.UserName))
                 lck.unLock();
-            Dictionary<string, int> DictTC = context.v_tipipatente.ToDictionary(tc =>tc.MD_DESCRIZIONE,tc=>tc.TC_ID);
+            Dictionary<string, int> DictTC = context.v_tipipatente.ToDictionary(tc => tc.MD_DESCRIZIONE, tc => tc.TC_ID);
             TABEDITABILI = false;
-            
+
             gridView.OptionsBehavior.Editable = TABEDITABILI;
             //----Inizializzo il BarManager
             BarManager barm = new BarManager();
-            barm.Form = this;            
+            barm.Form = this;
             barm.BeginUpdate();
-            
+
             #endregion
             #region aggiunta Patenti al menu patenti
             //----Qua devo creare una serie di bottoni per ogni TC senza subpatente. per quelli che ce l'hanno faccio un submenu
             //controllo se la patente ha subpatenti
-            foreach (KeyValuePair<string,int> coppia in DictTC)
+            foreach (KeyValuePair<string, int> coppia in DictTC)
             {
                 //if(Query returns more than 1 exam)
                 //get the exams
                 //create a BarSubItem for them
                 int tc_id = coppia.Value;
-                if(context.v_tipipatente.Where(v=>v.TC_ID == tc_id).Select(v=> v.QTA).Any(c=>c>1))
+                if (context.v_tipipatente.Where(v => v.TC_ID == tc_id).Select(v => v.QTA).Any(c => c > 1))
                 {
                     //Dovrei trovare gli esami ed aggiungerli
-                    var listaEsami = context.esami.Where(e => e.ES_TC_ID == tc_id).Select(e=> new { e.ES_TC_ID,e.ES_ID,e.ES_DESCRIZIONE,e.ES_RE_ID,e.ES_REVISIONE,e.ES_NONSELEZIONABILE}).ToList();
+                    var listaEsami = context.esami.Where(e => e.ES_TC_ID == tc_id).Select(e => new { e.ES_TC_ID, e.ES_ID, e.ES_DESCRIZIONE, e.ES_RE_ID, e.ES_REVISIONE, e.ES_NONSELEZIONABILE }).ToList();
                     List<BarButtonItem> bottoniEsame = new List<BarButtonItem>();
-                    foreach(var es in listaEsami)
+                    foreach (var es in listaEsami)
                     {
-                        bottoniEsame.Add(new BarButtonItem(barm, es.ES_DESCRIZIONE,tc_id));
+                        bottoniEsame.Add(new BarButtonItem(barm, es.ES_DESCRIZIONE, tc_id));
                     }
                     string nome = coppia.Key;
-                    itemMenu.Add(new BarSubItem(barm,nome,bottoniEsame.ToArray()));
+                    itemMenu.Add(new BarSubItem(barm, nome, bottoniEsame.ToArray()));
                 }
                 else
                 {
                     //creo un nuovo bottone con nome = coppia.Key
-                    itemMenu.Add(new BarButtonItem(barm, coppia.Key,tc_id));
+                    itemMenu.Add(new BarButtonItem(barm, coppia.Key, tc_id));
                 }
             }
             //context.releaseopere.Select(ro => ro.)
@@ -131,7 +131,7 @@ namespace GestioneDomandeDX
             //grdMain.DataSource = context.v_domerisp.Where(v=> v.DO_ES_ID > 40).ToList();
             gridView.DataController.AllowIEnumerableDetails = true;
             gridView.OptionsView.AllowCellMerge = true;
-            foreach ( GridColumn c in gridView.Columns)
+            foreach (GridColumn c in gridView.Columns)
             {
                 if (!colonneMerge.Contains(c.FieldName))
                 {
@@ -160,9 +160,9 @@ namespace GestioneDomandeDX
                 return rispVere == 1 && rispFalse == re.RE_RISXDOM - 1;
             }
             else
-            {                
+            {
                 return rispVere >= re.RE_LIMITE_MIN_RISPFALSE - re.RE_LIMITE_RISPFALSE;
-                
+
             }
         }
         private void clickSubMenu(object sender, ItemClickEventArgs e)
@@ -171,11 +171,11 @@ namespace GestioneDomandeDX
             {
                 //IMAGE INDEX INDICA IL TC_ID
                 int idNuovo = e.Item.ImageIndex;
-                int idEsame = context.v_esami.Where(ve => ve.ES_TC_ID == idNuovo).OrderBy(r=> r.ES_REVISIONE).First().ES_ID;
-                setupGrid(context.v_domerisp.Where(dr => dr.DO_ES_ID ==idEsame).ToList());
+                int idEsame = context.v_esami.Where(ve => ve.ES_TC_ID == idNuovo).OrderBy(r => r.ES_REVISIONE).First().ES_ID;
+                setupGrid(context.v_domerisp.Where(dr => dr.DO_ES_ID == idEsame).ToList());
                 gridView.Columns["RI_TESTO"].ColumnEdit = memoEdit;
                 gridView.OptionsView.RowAutoHeight = true;
-                if (context.v_releaseopere.Where(ro=> ro.RO_TC_ID == idNuovo).FirstOrDefault().RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA == 1)
+                if (context.v_releaseopere.Where(ro => ro.RO_TC_ID == idNuovo).FirstOrDefault().RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA == 1)
                 {
                     DOM_NO_TESTO = true;
                     gridView.Columns["DO_TESTO"].OptionsColumn.AllowEdit = false;
@@ -197,7 +197,7 @@ namespace GestioneDomandeDX
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -209,7 +209,7 @@ namespace GestioneDomandeDX
             {
                 var iniziali = ((string)txtIniziale.EditValue).Split(',').AsEnumerable();
                 //Si va in readonly
-                setupGrid(context.v_domerisp.Where(d=> iniziali.Any(i=> d.DO_CODICE_MINST.StartsWith(i))).ToList());
+                setupGrid(context.v_domerisp.Where(d => iniziali.Any(i => d.DO_CODICE_MINST.StartsWith(i))).ToList());
                 TABEDITABILI = false;
                 gridView.OptionsBehavior.Editable = TABEDITABILI;
                 listaDettagli.ForEach(d => d.OptionsBehavior.Editable = TABEDITABILI);
@@ -227,7 +227,7 @@ namespace GestioneDomandeDX
         {
 
         }
-        
+
         private void onClickCmb(object sender, EventArgs e)
         {
             int flagBlock = ((ComboBoxEdit)sender).SelectedIndex;
@@ -237,8 +237,9 @@ namespace GestioneDomandeDX
             int d = domanda.DO_ID;
             ((BindingList<domande>)grdMain.DataSource).Where(dom => dom.DO_ID == d).Select(dom => dom.DO_FLAG_BLOCCATA = flagBlock);
         }
-        /*
         #region Gestione Master-Detail
+        /*
+        
         private void gridView_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
         {
             domande d = (domande)gridView.GetRow(e.RowHandle);
@@ -270,34 +271,7 @@ namespace GestioneDomandeDX
         #endregion
         private void gridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e) {}
         private void gridView_MasterRowCollapsed(object sender, DevExpress.XtraGrid.Views.Grid.CustomMasterRowEventArgs e){}
-        private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
-        {
-            var test = context.ChangeTracker.Entries().Where(en => en.State == System.Data.Entity.EntityState.Detached).ToList();
 
-            context.SaveChanges();
-
-            GridView griglia = sender as GridView;
-            if (griglia.IsDetailView)
-            {
-                HandleCambiatiDetail.Add(new Tuple<int, int>(griglia.SourceRowHandle,e.RowHandle));
-                if (!valida(((risposte)griglia.GetRow(e.RowHandle)).domande))
-                {
-                    
-                    RisposteFlaggate.Add(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle));
-                    MessageBox.Show("Invalida");
-                }else if (RisposteFlaggate.Contains(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle)))
-                {
-                    RisposteFlaggate.Remove(new Tuple<int, int>(griglia.SourceRowHandle,e.RowHandle));
-                }
-            }
-            else
-            {
-                HandleCambiatiMaster.Add(e.RowHandle);
-            }
-            griglia.RefreshRow(e.RowHandle);
-            
-
-        }
         private void grdMain_ViewRegistered(object sender, ViewOperationEventArgs e)
         {
             dettagli = (GridView)e.View;
@@ -314,32 +288,49 @@ namespace GestioneDomandeDX
             ((GridView)e.View).RowStyle -= new RowStyleEventHandler(gridView_RowStyle);
             listaDettagli.Remove(((GridView)e.View));
         }
-        private void gridView_RowStyle(object sender, RowStyleEventArgs e)
+        */
+        #endregion
+        private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
+            var test = context.ChangeTracker.Entries().Where(en => en.State == System.Data.Entity.EntityState.Detached).ToList();
+
+            context.SaveChanges();
+
             GridView griglia = sender as GridView;
             if (griglia.IsDetailView)
             {
-                if (HandleCambiatiDetail.Contains(new Tuple<int, int>(griglia.SourceRowHandle,e.RowHandle)))
+                HandleCambiatiDetail.Add(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle));
+                if (!valida(((risposte)griglia.GetRow(e.RowHandle)).domande))
                 {
-                    e.Appearance.BackColor = Color.Yellow;
-                    if (RisposteFlaggate.Contains(new Tuple<int,int>(griglia.SourceRowHandle, e.RowHandle)))
-                    {
-                        e.Appearance.BackColor = Color.Red;
-                    }
+
+                    RisposteFlaggate.Add(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle));
+                    MessageBox.Show("Invalida");
                 }
-                
+                else if (RisposteFlaggate.Contains(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle)))
+                {
+                    RisposteFlaggate.Remove(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle));
+                }
             }
             else
             {
-                if (HandleCambiatiMaster.Contains(e.RowHandle))
-                {
-                    e.Appearance.BackColor = Color.Yellow;
-                }
+                HandleCambiatiMaster.Add(e.RowHandle);
             }
-            
+            griglia.RefreshRow(e.RowHandle);
+
+
         }
+        private void gridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            GridView griglia = sender as GridView;
+            if (HandleCambiatiMaster.Contains(e.RowHandle))
+            {
+                e.Appearance.BackColor = Color.Yellow;
+            }
+        }
+
+
         private void FormPrincipale_SizeChanged(object sender, EventArgs e) { }
-        */
+
         private void btnSalvaLayout_Click(object sender, EventArgs e)
         {
             gridView.OptionsLayout.Columns.StoreAllOptions = true;
@@ -353,16 +344,16 @@ namespace GestioneDomandeDX
             int firstRow = gridView.TopRowIndex;
             for (int i = firstRow; i < firstRow + visibleRows; i++)
             {
-                if(!gridView.GetMasterRowExpanded(i))
+                if (!gridView.GetMasterRowExpanded(i))
                     gridView.SetMasterRowExpanded(i, true);
             }
         }
         private void btnPrendi_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+
             if (lck.IsLocked())
-            {              
-                MessageBox.Show("La tabella è Lockata Da "+ string.Join(", ", lck.LockOwners() ) );
+            {
+                MessageBox.Show("La tabella è Lockata Da " + string.Join(", ", lck.LockOwners()));
                 TABEDITABILI = false;
                 return;
             }
@@ -387,7 +378,7 @@ namespace GestioneDomandeDX
         }
         void unlockGriglia()
         {
-            
+
             if (lck.lockTables())
             {
                 btnLock.Enabled = false;
@@ -396,7 +387,7 @@ namespace GestioneDomandeDX
                 gridView.OptionsBehavior.Editable = true;
                 listaDettagli.ForEach(d => d.OptionsBehavior.Editable = true); ;
             }
-            
+
         }
         //esempio di riga
         // '5', 'Ame', '2007-05-08 12:35:29'
@@ -413,13 +404,13 @@ namespace GestioneDomandeDX
             context = new egafEntities();
             lck = new lockUtils(context);
             //codice questionabile
-            lck.unLock();           
+            lck.unLock();
             btnLock.Enabled = true;
             btnLascia.Enabled = false;
             grdMain.DataSource = new BindingList<v_domerisp_proxy>(query.Select(q => new v_domerisp_proxy(q, context)).ToList());
             //grdMain.DataSource = query.ToList();
             gridView.Columns["DO_TESTO"].ColumnEdit = memoEdit;
-            
+
         }
 
         private void FormPrincipale_FormClosing(object sender, FormClosingEventArgs e)
@@ -446,8 +437,8 @@ namespace GestioneDomandeDX
 
 
         private void gridView_CellMerge(object sender, CellMergeEventArgs e)
-        {           
-            if((e.CellValue1!=null&&e.CellValue2!=null)&&e.CellValue1.Equals(e.CellValue2) && colonneMerge.Contains(e.Column.FieldName))
+        {
+            if ((e.CellValue1 != null && e.CellValue2 != null) && e.CellValue1.Equals(e.CellValue2) && colonneMerge.Contains(e.Column.FieldName))
             {
                 e.Handled = true;
                 e.Merge = true;
@@ -458,6 +449,8 @@ namespace GestioneDomandeDX
                 e.Merge = false;
             }
         }
+
+
     }
     /// <summary>
     /// Classe che gestisce i lock
@@ -501,7 +494,7 @@ namespace GestioneDomandeDX
         }
         public void unLock()
         {
-            ctx.Database.ExecuteSqlCommand(String.Format("DELETE FROM locks WHERE ID>=0 AND USER ='{0}'",Environment.UserName.Replace("'","''")));
+            ctx.Database.ExecuteSqlCommand(String.Format("DELETE FROM locks WHERE ID>=0 AND USER ='{0}'", Environment.UserName.Replace("'", "''")));
         }
     }
 }

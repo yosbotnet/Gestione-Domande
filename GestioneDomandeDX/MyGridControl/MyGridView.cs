@@ -1,19 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using DevExpress.XtraGrid;
-using DevExpress.XtraGrid.Registrator;
-using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraGrid.Views.Base.Handler;
-using DevExpress.XtraGrid.Views.Base.ViewInfo;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using DevExpress.Utils;
-using DevExpress.XtraEditors.Container;
-using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.Drawing;
 using DevExpress.XtraEditors.Repository;
@@ -22,35 +6,16 @@ using DevExpress.XtraEditors.Container;
 
 namespace GestioneDomandeDX
 {
-    [ToolboxItem(typeof(GridMergeControl))]
     [System.ComponentModel.DesignerCategory("")]
-    public class GridMergeControl : GridControl
+    public class MyGridView : DevExpress.XtraGrid.Views.Grid.GridView
     {
-        protected override BaseView CreateDefaultView()
-        {
-            return CreateView("GridMergedCell");
-        }
-        protected override void RegisterAvailableViewsCore(InfoCollection collection)
-        {
-            base.RegisterAvailableViewsCore(collection);
-            collection.Add(new MyGridViewInfoRegistrator());
-        }
-    }
-    public class MyGridViewInfoRegistrator : GridInfoRegistrator
-    {
-        public override string ViewName { get { return "MyGridView"; } }
-        public override BaseView CreateView(GridControl grid) { return new GridMergedCellView(grid as GridControl); }
-    }
-    [System.ComponentModel.DesignerCategory("")]
-    public class GridMergedCellView : DevExpress.XtraGrid.Views.Grid.GridView
-    {
-        public GridMergedCellView() : this(null) { }
-        public GridMergedCellView(DevExpress.XtraGrid.GridControl grid)
+        public MyGridView() : this(null) { }
+        public MyGridView(DevExpress.XtraGrid.GridControl grid)
             : base(grid)
         {
             OptionsView.AllowCellMerge = true;
         }
-        protected override string ViewName { get { return "GridMergedCell"; } }
+        protected override string ViewName { get { return "MyGridView"; } }
         protected override void ActivateEditor(GridCellInfo cell)
         {
             if (cell.MergedCell == null)
@@ -95,21 +60,22 @@ namespace GestioneDomandeDX
 
             for (int i = 1; i < cell.MergedCell.MergedCells.Count; i++)
                 bounds.Height += cell.MergedCell.MergedCells[i].Bounds.Height;
-            return bounds;
+                return bounds;
         }
 
         protected override bool PostEditor(bool causeValidation)
         {
+            
             if (IsEditing)
-                if (this.fEditingCell.MergedCell != null)
+                if (this.fEditingCell.MergedCell != null && EditingValue != null)
                 {
                     object CurValue = ExtractEditingValue(this.fEditingCell.ColumnInfo.Column, EditingValue);
-                    for (int i = 0; i < fEditingCell.MergedCell.MergedCells.Count; i++)
-                        this.SetRowCellValue(this.fEditingCell.RowHandle + i, this.fEditingCell.Column, CurValue);
+                    int cellCount = fEditingCell.MergedCell.MergedCells.Count;
+                    GridCellInfo FEDIT = this.fEditingCell;
+                    for (int i = 0; i < cellCount; i++)
+                        this.SetRowCellValue(FEDIT.RowHandle + i, FEDIT.Column, CurValue);
                 }
             return base.PostEditor(causeValidation);
         }
     }
-
 }
-

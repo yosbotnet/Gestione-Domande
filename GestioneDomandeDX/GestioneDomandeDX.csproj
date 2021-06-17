@@ -183,7 +183,6 @@
     <Compile Include="domande.cs">
       <DependentUpon>modelloEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="DomERisp.cs" />
     <Compile Include="EditForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -220,6 +219,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>modelloEF.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MyGridControl\MyGridControl.cs" />
+    <Compile Include="MyGridControl\MyGridView.cs" />
+    <Compile Include="MyGridControl\MyGridViewInfoRegistrator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="regole.cs">

@@ -173,3 +173,4 @@ C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\Gestio
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.exe.licenses
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.exe
 C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.pdb
+C:\Users\stagista\documents\visual studio 2015\Projects\GestioneDomandeDX\GestioneDomandeDX\obj\Debug\GestioneDomandeDX.csprojResolveAssemblyReference.cache

@@ -28,11 +28,10 @@ namespace GestioneDomandeDX
 
             OBBIETTIVI ATTUALI
             ---------------------------------------------------------------------------------
-                                       MARTEDI 15/6
+                                       GIOVEDI E VENERDI 17/6
             ---------------------------------------------------------------------------------
-               RIUSCIRE AD APPLICARE I CAMBIAMENTI ALLA DOMANDA/RISPOSTA VERA TRAMITE IL GETTER E SETTER
-               AGGIORNARE IL SUBMENU
-               EDIT DI DOMANDE
+            -aggiunta domande e risposte 
+            -rendere la domanda non modificabile quando il testo risposta contiene il testo della domanda 
             ---------------------------------------------------------------------------------
                                       OBIETTIVI GIORNALIERI
             ---------------------------------------------------------------------------------
@@ -41,17 +40,9 @@ namespace GestioneDomandeDX
                 +COLORARE LE RIGHE MODIFICATE  FATTO
             -DECIDERE SULLA MODALITà DI CARICAMENTO FATTO
             -GESTIRE IL TESTO IN TEDESCO E FRANCESE
-                !VIENE AGGIUNTO UN CARATTERE IN PIù IN MEZZO AGLI ALTRI
-            -Combobox per alcuni flag 1/2
-            -cambiare form modifica
-            -lock e gestione crash FATTO
-            -aggiunta domande e risposte GESTITO DALLA GRIGLIA
-            --pulsante per entrare e lockare, uscire e unlockare FATTO
-            -!se non sei in modifca, grid readonly FATTO
+                !VIENE AGGIUNTO UN CARATTERE IN PIù IN MEZZO AGLI ALTRI       
             -applicare modifiche in certi campi anche in quelli con codice egaf uguali
-            -rendere la domanda non modificabile quando il testo risposta contiene il testo della domanda FATTO
-            -Organizzare in funzioni parti di codice ripetuta FATTO
-            -
+            
         */
 
         egafEntities context;
@@ -64,7 +55,7 @@ namespace GestioneDomandeDX
         bool TABEDITABILI;
         bool DOM_NO_TESTO;
         RepositoryItemMemoEdit memoEdit;
-        string[] colonneMerge = { "DO_ID", "DO_CODICE_EGAF", "DO_CODICE_MINST", "DO_TESTO", "DO_MULTIMEDIALE" };
+        string[] colonneMerge = { "DO_ID", "DO_CODICE_EGAF", "DO_CODICE_MINST", "DO_TESTO", "DO_TESTOFR","DO_TESTODE" };
         public FormPrincipale()
         {
             #region Inizializzazione
@@ -170,7 +161,12 @@ namespace GestioneDomandeDX
                 int idEsame = context.v_esami.Where(ve => ve.ES_TC_ID == idNuovo).OrderBy(r => r.ES_REVISIONE).First().ES_ID;
                 setupGrid(context.v_domerisp.Where(dr => dr.DO_ES_ID == idEsame).ToList());
                 gridView.Columns["RI_TESTO"].ColumnEdit = memoEdit;
+                gridView.Columns["RI_TESTOFR"].ColumnEdit = memoEdit;
+                gridView.Columns["RI_TESTODE"].ColumnEdit = memoEdit;
+                gridView.Columns["DO_TESTO_AIUTO"].ColumnEdit = memoEdit;
                 gridView.OptionsView.RowAutoHeight = true;
+                gridView.Columns["DO_ID"].OptionsColumn.AllowEdit = false;
+                gridView.Columns["RI_ID"].OptionsColumn.AllowEdit = false;
                 if (context.v_releaseopere.Where(ro => ro.RO_TC_ID == idNuovo).FirstOrDefault().RO_TESTORISPOSTA_CONTIENE_TESTODOMANDA == 1)
                 {
                     DOM_NO_TESTO = true;
@@ -181,7 +177,7 @@ namespace GestioneDomandeDX
                     DOM_NO_TESTO = false;
                     gridView.Columns["DO_TESTO"].OptionsColumn.AllowEdit = true;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -223,19 +219,13 @@ namespace GestioneDomandeDX
             int d = domanda.DO_ID;
             ((BindingList<domande>)grdMain.DataSource).Where(dom => dom.DO_ID == d).Select(dom => dom.DO_FLAG_BLOCCATA = flagBlock);
         }
-        #region Gestione Master-Detail
-        /*
-        #endregion
-
-        */
-        #endregion
         private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
             var d = (e.Row as v_domerisp_proxy);
             var vd = context.v_domerisp.Where(dr => dr.RI_ID == d.RI_ID).First();
             if (!d.Equals(vd))
             {
-                if(d.DO_TESTO == vd.DO_TESTO)
+                if (d.DO_TESTO == vd.DO_TESTO)
                 {
                     HandleCambiatiMaster.Add(e.RowHandle);
                     context.SaveChanges();
@@ -248,15 +238,15 @@ namespace GestioneDomandeDX
                     GridView griglia = sender as GridView;
                     var gvi = griglia.GetViewInfo() as GridViewInfo;
                     var gci = gvi.GetGridCellInfo(e.RowHandle, griglia.Columns["DO_TESTO"]);
-                    if(gci.MergedCell != null)
+                    if (gci.MergedCell != null)
                     {
                         gci.MergedCell.MergedCells.ForEach(c => HandleCambiatiMaster.Add(c.RowHandle));
                     }
                 }
 
-                
+
             }
-                
+
 
 
 
@@ -334,12 +324,6 @@ namespace GestioneDomandeDX
         }
         //esempio di riga
         // '5', 'Ame', '2007-05-08 12:35:29'
-        private void displayDomanda()
-        {
-            //prende un ID domanda
-            //var numCol = domanda.risposte.Count
-            //assegna a una colonna il COD EGAF con rowcount
-        }
         private void setupGrid(List<v_domerisp> query)
         {
             HandleCambiatiMaster.Clear();
@@ -384,8 +368,44 @@ namespace GestioneDomandeDX
             }
         }
 
+        private void gridView_CalcRowHeight(object sender, RowHeightEventArgs e)
+        {
+            /*
+            MemoEdit tmpmemoEdit = new MemoEdit();
+            for (int i = 0; i < gridView.RowCount; i++)
+            {
 
+                List<int> list = Enumerable.Range(0, gridView.RowCount).ToList();
+                if (list.Contains(e.RowHandle))
+                {
+                    int totalHeight = 0;
+                    foreach (int rowHandle in list)
+                    {
+                        string text = this.gridView.GetRowCellDisplayText(rowHandle, "DO_TESTO");
+                        tmpmemoEdit.EditValue = text;
+                        totalHeight += tmpmemoEdit.CalcAutoHeight();
+                    }
+                    tmpmemoEdit.EditValue = this.gridView.GetRowCellDisplayText(e.RowHandle, "RI_TESTO");
+                    int rowHeight = tmpmemoEdit.CalcAutoHeight();
+                    if (rowHeight < totalHeight)
+                    {
+                        tmpmemoEdit.EditValue = this.gridView.GetRowCellDisplayText(e.RowHandle, "DO_TESTO");
+                        e.RowHeight = tmpmemoEdit.CalcAutoHeight();
+                    }
+                    else
+                    {
+                        e.RowHeight = rowHeight;
+                    }
+                }
+            
+            */
+        }
 
+        private void btnAddDomanda_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            EditForm ed = new EditForm();
+            ed.Show();
+        }
     }
     /// <summary>
     /// Classe che gestisce i lock

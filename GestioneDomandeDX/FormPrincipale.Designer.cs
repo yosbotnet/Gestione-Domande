@@ -32,9 +32,9 @@ namespace GestioneDomandeDX
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
-            DevExpress.XtraSpellChecker.SpellCheckerDictionary spellCheckerDictionary1 = new DevExpress.XtraSpellChecker.SpellCheckerDictionary();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraSpellChecker.SpellCheckerDictionary spellCheckerDictionary2 = new DevExpress.XtraSpellChecker.SpellCheckerDictionary();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.grdMain = new GestioneDomandeDX.MyGridControl();
             this.gridView = new GestioneDomandeDX.MyGridView();
@@ -82,6 +82,8 @@ namespace GestioneDomandeDX
             this.gridView1 = new GestioneDomandeDX.MyGridView();
             this.btnSalvaLayout = new System.Windows.Forms.Button();
             this.controlloOrtografico = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnAddDomanda = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -139,11 +141,11 @@ namespace GestioneDomandeDX
             this.colDO_CODICE_EGAF,
             this.colDO_GRDOMCORR,
             this.colRI_ORDINAMENTOCASUALE});
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Name = "regolaCambiamento";
-            formatConditionRuleExpression1.PredefinedName = "Red Fill";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.gridView.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Name = "regolaCambiamento";
+            formatConditionRuleExpression2.PredefinedName = "Red Fill";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.gridView.FormatRules.Add(gridFormatRule2);
             this.gridView.GridControl = this.grdMain;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.AllowCellMerge = true;
@@ -151,6 +153,7 @@ namespace GestioneDomandeDX
             this.gridView.OptionsView.ShowChildrenInGroupPanel = true;
             this.gridView.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gridView_CellMerge);
             this.gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView_RowStyle);
+            this.gridView.CalcRowHeight += new DevExpress.XtraGrid.Views.Grid.RowHeightEventHandler(this.gridView_CalcRowHeight);
             this.gridView.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView_RowUpdated);
             // 
             // colDO_ID
@@ -417,9 +420,10 @@ namespace GestioneDomandeDX
             this.barListItem1,
             this.menuPatenti,
             this.btnLock,
-            this.btnLascia});
+            this.btnLascia,
+            this.btnAddDomanda});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 11;
+            this.ribbon.MaxItemId = 12;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -484,7 +488,8 @@ namespace GestioneDomandeDX
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup2,
             this.grpSceltaViaIniziale,
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Scelta Esame";
             // 
@@ -532,15 +537,28 @@ namespace GestioneDomandeDX
             // controlloOrtografico
             // 
             this.controlloOrtografico.Culture = new System.Globalization.CultureInfo("it-IT");
-            spellCheckerDictionary1.AlphabetPath = "";
-            spellCheckerDictionary1.CacheKey = null;
-            spellCheckerDictionary1.Culture = new System.Globalization.CultureInfo("it-IT");
-            spellCheckerDictionary1.DictionaryPath = "C:\\Users\\stagista\\Documents\\Visual Studio 2015\\Projects\\GestioneDomandeDX\\Medico." +
+            spellCheckerDictionary2.AlphabetPath = "";
+            spellCheckerDictionary2.CacheKey = null;
+            spellCheckerDictionary2.Culture = new System.Globalization.CultureInfo("it-IT");
+            spellCheckerDictionary2.DictionaryPath = "C:\\Users\\stagista\\Documents\\Visual Studio 2015\\Projects\\GestioneDomandeDX\\Medico." +
     "IT_20111218.oxt";
-            spellCheckerDictionary1.Encoding = System.Text.Encoding.GetEncoding(1252);
-            this.controlloOrtografico.Dictionaries.Add(spellCheckerDictionary1);
+            spellCheckerDictionary2.Encoding = System.Text.Encoding.GetEncoding(1252);
+            this.controlloOrtografico.Dictionaries.Add(spellCheckerDictionary2);
             this.controlloOrtografico.ParentContainer = null;
             this.controlloOrtografico.SpellCheckMode = DevExpress.XtraSpellChecker.SpellCheckMode.AsYouType;
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnAddDomanda);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Aggiungi";
+            // 
+            // btnAddDomanda
+            // 
+            this.btnAddDomanda.Caption = "Aggiungi Domanda";
+            this.btnAddDomanda.Id = 11;
+            this.btnAddDomanda.Name = "btnAddDomanda";
+            this.btnAddDomanda.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddDomanda_ItemClick);
             // 
             // FormPrincipale
             // 
@@ -615,6 +633,8 @@ namespace GestioneDomandeDX
         private DevExpress.XtraGrid.Columns.GridColumn colDO_GRDOMCORR;
         private DevExpress.XtraGrid.Columns.GridColumn colRI_ORDINAMENTOCASUALE;
         private MyGridView gridView1;
+        private DevExpress.XtraBars.BarButtonItem btnAddDomanda;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }
 

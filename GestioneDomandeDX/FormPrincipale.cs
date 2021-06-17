@@ -58,7 +58,6 @@ namespace GestioneDomandeDX
         egafEntities context;
         lockUtils lck;
         List<int> HandleCambiatiMaster;
-        List<Tuple<int, int>> HandleCambiatiDetail;
         List<Tuple<int, int>> RisposteFlaggate;
         List<BarItem> itemMenu;
         // forse avro bisogno di un List<GridView> per tutte le viste presenti. Servirà per applicare un singolo cambiamento a tutte
@@ -73,7 +72,6 @@ namespace GestioneDomandeDX
             InitializeComponent();
             context = new egafEntities();
             HandleCambiatiMaster = new List<int>();
-            HandleCambiatiDetail = new List<Tuple<int, int>>();
             itemMenu = new List<BarItem>();
             RisposteFlaggate = new List<Tuple<int, int>>();
             memoEdit = new RepositoryItemMemoEdit();
@@ -239,55 +237,8 @@ namespace GestioneDomandeDX
         }
         #region Gestione Master-Detail
         /*
-        
-        private void gridView_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
-        {
-            domande d = (domande)gridView.GetRow(e.RowHandle);
-            e.ChildList = d.risposte.ToList();
-        }
-
-        private void gridView_AfterPrintRow(object sender, DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs e)
-        {           
-            gridView.ExpandMasterRow(e.RowHandle);
-        }
-       
-        private void gridView_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
-        {
-            
-            domande d = (domande)gridView.GetRow(e.RowHandle);
-            e.IsEmpty = d.risposte.Count == 0;
-            
-        }
-
-        private void gridView_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
-        {
-            e.RelationName = "risposte";
-        }
-
-        private void gridView_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
-        {
-            e.RelationCount = 1;
-        }
         #endregion
-        private void gridView_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e) {}
-        private void gridView_MasterRowCollapsed(object sender, DevExpress.XtraGrid.Views.Grid.CustomMasterRowEventArgs e){}
 
-        private void grdMain_ViewRegistered(object sender, ViewOperationEventArgs e)
-        {
-            dettagli = (GridView)e.View;
-            listaDettagli.Add(dettagli);
-            dettagli.RowUpdated += new RowObjectEventHandler(gridView_RowUpdated);
-            dettagli.RowStyle += new RowStyleEventHandler(gridView_RowStyle);
-            dettagli.Columns["RI_TESTO"].ColumnEdit = memoEdit;
-            dettagli.OptionsBehavior.Editable = TABEDITABILI;
-
-        }
-        private void grdMain_ViewRemoved(object sender, ViewOperationEventArgs e)
-        {
-            ((GridView)e.View).RowUpdated -= new RowObjectEventHandler(gridView_RowUpdated);
-            ((GridView)e.View).RowStyle -= new RowStyleEventHandler(gridView_RowStyle);
-            listaDettagli.Remove(((GridView)e.View));
-        }
         */
         #endregion
         private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
@@ -297,24 +248,8 @@ namespace GestioneDomandeDX
             context.SaveChanges();
 
             GridView griglia = sender as GridView;
-            if (griglia.IsDetailView)
-            {
-                HandleCambiatiDetail.Add(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle));
-                if (!valida(((risposte)griglia.GetRow(e.RowHandle)).domande))
-                {
+            HandleCambiatiMaster.Add(e.RowHandle);
 
-                    RisposteFlaggate.Add(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle));
-                    MessageBox.Show("Invalida");
-                }
-                else if (RisposteFlaggate.Contains(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle)))
-                {
-                    RisposteFlaggate.Remove(new Tuple<int, int>(griglia.SourceRowHandle, e.RowHandle));
-                }
-            }
-            else
-            {
-                HandleCambiatiMaster.Add(e.RowHandle);
-            }
             griglia.RefreshRow(e.RowHandle);
 
 
@@ -400,7 +335,6 @@ namespace GestioneDomandeDX
         private void setupGrid(List<v_domerisp> query)
         {
             HandleCambiatiMaster.Clear();
-            HandleCambiatiDetail.Clear();
             context = new egafEntities();
             lck = new lockUtils(context);
             //codice questionabile

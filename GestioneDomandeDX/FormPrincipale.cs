@@ -237,6 +237,7 @@ namespace GestioneDomandeDX
             int d = domanda.DO_ID;
             ((BindingList<domande>)grdMain.DataSource).Where(dom => dom.DO_ID == d).Select(dom => dom.DO_FLAG_BLOCCATA = flagBlock);
         }
+        /*
         #region Gestione Master-Detail
         private void gridView_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
         {
@@ -338,6 +339,7 @@ namespace GestioneDomandeDX
             
         }
         private void FormPrincipale_SizeChanged(object sender, EventArgs e) { }
+        */
         private void btnSalvaLayout_Click(object sender, EventArgs e)
         {
             gridView.OptionsLayout.Columns.StoreAllOptions = true;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,7 +32,8 @@ namespace GestioneDomandeDX
                                        GIOVEDI E VENERDI 17/6
             ---------------------------------------------------------------------------------
             -aggiunta domande e risposte 
-            -rendere la domanda non modificabile quando il testo risposta contiene il testo della domanda 
+            -rendere la domanda non modificabile quando il testo risposta contiene il testo
+            della domanda 
             ---------------------------------------------------------------------------------
                                       OBIETTIVI GIORNALIERI
             ---------------------------------------------------------------------------------
@@ -403,8 +405,7 @@ namespace GestioneDomandeDX
 
         private void btnAddDomanda_ItemClick(object sender, ItemClickEventArgs e)
         {
-            EditForm ed = new EditForm();
-            ed.Show();
+            
         }
     }
     /// <summary>
